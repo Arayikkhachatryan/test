@@ -1,0 +1,103 @@
+{
+  "address": "Khanjyan 43/1 Yerevan, Armenia",
+  "register": "Register",
+  "onSubmitNotif": "Your application has been sent!",
+  "header": {
+    "aboutUs": "About Us",
+    "services": "Services",
+    "courses": "Courses",
+    "projects": "Projects",
+    "contactUs": "Contact Us",
+    "home": "Home"
+  },
+
+  "footer": {
+    "ourServices": "Our Services",
+    "company": {
+      "title": "Company",
+      "aboutUs": "About Us",
+      "courses": "Courses",
+      "projects": "Projects",
+      "services": "Services"
+    },
+    "contacts": "Contacts",
+    "office": "Office",
+    "copyrights": "Copyright 2022 Finibus | Design By Egens Lab",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "supportPolicy": "Support Policy",
+    "termsOfService": "Terms Of Service",
+    "top": "Top"
+  },
+
+  "contactUs": {
+    "getInTouch": "Get In Touch",
+    "moreQuestion": "Contact Us If You Have More Questions.",
+    "location": "Location",
+    "phone": "Phone",
+    "email": "Email",
+    "haveAnyQuestions": "Have Any Questions"
+  },
+
+  "breadCrumbs": {
+    "home": "Home",
+    "contactUs": "Contact Us",
+    "services": "Services",
+    "courses": "Courses",
+    "projects": "Projects",
+    "aboutUs": "About Us"
+  },
+
+  "contactUsForm": {
+    "name": "Enter Your Name",
+    "email": "Enter your Email",
+    "subject": "Subject",
+    "message": "Your Message",
+    "submit": "Send"
+  },
+
+  "heroPageSlider": {
+    "title": "Start of a new lesson",
+    "forMore": "More"
+  },
+
+  "coursesPage": {
+    "title": "Start your programming journey with us",
+    "title1": "Get a free internship opportunity",
+    "modal": {
+      "courses": {
+        "default": "Choose your course",
+        "html": "HTML & CSS courses",
+        "js": "JavaScript courses",
+        "react": "React JS courses",
+        "node": "Node JS courses",
+        "qa": "Quallity Assurance courses",
+        "uiUx": " Ui/Ux Design courses"
+      },
+      "placeholders": {
+        "name": "Enter Your Name and Surname",
+        "email": "Enter Your Email",
+        "phone": "Enter your Phone Number"
+      },
+      "courseTime": {
+        "default": "Preferred Hours",
+        "morning": "In the morning",
+        "day": "Daytime",
+        "evening": "In the evening",
+        "all": "All Hours"
+      },
+      "online": "Online",
+      "offline": "Offline"
+    }
+  },
+  "singleCoursePage": {
+    "trainers":{
+      "title":  "Trainers",
+      "about": "Our experienced specialists will provide you with seemingly complex information in a rather simplified form."
+    },
+    "slider": {
+      "title": "Programming courses",
+      "about": "Programming courses for beginners"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "address": "Ханджян 43/1 Ереван, Армения",
+  "register": "Зарегистритоватся",
+  "onSubmitNotif": "Ваша заявка отправлена!",
+  "header": {
+    "aboutUs": "О Нас",
+    "courses": "Курсы",
+    "projects": "Портфолио",
+    "contactUs": "Связаться с нами",
+    "services": "Услуги",
+    "home": "Главная"
+  },
+
+  "footer": {
+    "ourServices": "Наши Услуги",
+    "company": {
+      "title": "Компания",
+      "aboutUs": "О Нас",
+      "courses": "Курсы",
+      "projects": "Портфолио",
+      "services": "Услуги"
+    },
+    "contacts": "Контакты",
+    "office": "Офис",
+    "copyrights": "Copyright 2022 Finibus | Design By Egens Lab",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "supportPolicy": "Support Policy",
+    "termsOfService": "Terms Of Service",
+    "top": "На Верх"
+  },
+
+  "contactUs": {
+    "getInTouch": "Get In Touch",
+    "moreQuestion": "Свяжитесь с Нами, Если у Вас Возникнут Дополнительные Вопросы.",
+    "location": "Местоположение",
+    "phone": "Телефон",
+    "email": "Почта",
+    "haveAnyQuestions": "Есть Какие Нибудь Вопросы?"
+  },
+
+  "breadCrumbs": {
+    "home": "Главная",
+    "contactUs": "Связаться с нами",
+    "courses": "Курсы",
+    "services": "Услуги",
+    "projects": "Портфолио",
+    "aboutUs": "О Нас"
+  },
+
+  "contactUsForm": {
+    "name": "Ваше Имя ",
+    "email": "Ваша Почта",
+    "subject": "Тема Письма",
+    "message": "Содержание",
+    "submit": "Отправить"
+  },
+
+  "heroPageSlider": {
+    "title": "Начало Нового Курса",
+    "forMore": "Подробнее"
+  },
+
+  "coursesPage": {
+    "title": "Начни свой путь прогромиста с нами",
+    "title1": "Получите возможность пройти бесплатную стажировку",
+    "modal": {
+      "courses": {
+        "default": "Выберите курс",
+        "html": "Курс по HTML & CSS ",
+        "js": "Курс по JavaScript ",
+        "react": "Курс по React JS ",
+        "node": "Курс по Node JS ",
+        "qa": "Курс по Quallity Assurance ",
+        "uiUx": "Курс по Ui/Ux Design "
+      },
+      "placeholders": {
+        "name": "Введите ваше имя и фамилию",
+        "email": "Введите адрес электронной почты",
+        "phone": "Введите свой номер телефона"
+      },
+      "courseTime": {
+        "default": "Предпочтительные часы",
+        "morning": "Утром",
+        "day": "Дневное время",
+        "evening": "Вечером",
+        "all": "Все часы"
+      },
+      "online": "Онлайн",
+      "offline": "Офлайн"
+    }
+  },
+  "singleCoursePage": {
+    "trainers":{
+      "title":  "Тренеры",
+      "about": "Наши опытные специалисты предоставят вам, казалось бы, сложную информацию в довольно упрощенной форме."
+    },
+    "slider": {
+      "title": "Курсы программирования",
+      "about": "Курсы программирования для начинающих"
+    }
+  }
+}

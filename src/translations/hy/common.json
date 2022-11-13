@@ -1,0 +1,106 @@
+{
+  "address": "Խանջյան 43/1",
+  "register": "Գրանցվել",
+  "onSubmitNotif": "Ձեր հայտը ուղարկված է!",
+  "header": {
+    "aboutUs": "Մեր Մասին",
+    "courses": "Դասնթացներ",
+    "projects": "Պորթֆոլիո",
+    "contactUs": "Հետադարձ կապ",
+    "services": "Ծառայություններ",
+    "home": "Գլխավոր"
+  },
+
+  "footer": {
+    "ourServices": "Մեր Ծառայությունները",
+    "company": {
+      "title": "Ընկերություն",
+      "aboutUs": "Մեր Մասին",
+      "courses": "Դասնթացներ",
+      "projects": "Պորթֆոլիո",
+      "services": "Ծառայություններ"
+    },
+    "contacts": "Կոնտակտներ",
+    "office": "Գրասենյակ",
+    "copyrights": "Copyright 2022 Finibus | Design By Egens Lab",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "supportPolicy": "Support Policy",
+    "termsOfService": "Terms Of Service",
+    "top": "Վերև"
+  },
+
+  "contactUs": {
+    "getInTouch": "Get In Touch",
+    "moreQuestion": "Կապնվեք Մեզ Հետ Եթե ՈՒնեք Լռացուցիչ Հարցեր․",
+    "location": "Հասցե",
+    "phone": "Հեռախոսահամար",
+    "email": "Էլեկտրոնային Փոստ",
+    "haveAnyQuestions": "Հարցերի դեպքում"
+  },
+
+  "breadCrumbs": {
+    "home": "Գլխավոր",
+    "contactUs": "Հետադարձ կապ",
+    "courses": "Դասնթացներ",
+    "services": "Ծառայություններ",
+    "projects": "Պորթֆոլիո",
+    "aboutUs": "Մեր Մասին"
+  },
+
+  "contactUsForm": {
+    "name": "Ձեր անունը",
+    "email": "Ձեր Էլեկտրոնային հասցեն",
+    "subject": "Նամակի թեմա",
+    "message": "Բովանդակություն",
+    "submit": "Ուղարկել"
+  },
+
+  "heroPageSlider": {
+    "title": "Նոր դասնթացի մեկնարկ",
+    "forMore": "Տեսնել Ավելին"
+  },
+
+  "coursesPage": {
+    "title": "Սկսի՛ր քո ծրագրավորման ուղղին մեզ հետ",
+    "title1": "Ստացիր անվճար պրակտիկայի հնարավորություն",
+    "modal": {
+      "courses": {
+        "default": "Ընտրեք դասնթաց",
+        "html": "HTML & CSS դասնթաց",
+        "js": "JavaScript դասնթաց",
+        "react": "React JS դասնթաց",
+        "node": "Node JS դասնթաց",
+        "qa": "Quallity Assurance դասնթաց",
+        "uiUx": " Ui/Ux Design դասնթաց"
+      },
+      "placeholders": {
+        "name": "Անուն Ազգանուն",
+        "email": "Էլ․ Փոստ",
+        "phone": "Հեռախոսահամար"
+      },
+      "courseTime": {
+        "default": "Նախնտրած Ժամեր",
+        "morning": "Առավոտյան",
+        "day": "Ցերեկային",
+        "evening": "Երեկոյան",
+        "all": "Բոլոր Ժամեր"
+      },
+      "online": "Առցանց",
+      "offline": "Անցանց"
+    }
+  },
+
+  "singleCoursePage": {
+    "trainers":{
+      "title":  "Դասընթացավարներ",
+      "about": "Մեր փորձառու մասնագետները կմատուցեն Ձեզ բարդ թվացող ինֆորմացիան բավականին պարզեցված տեսքով"
+    },
+    "slider": {
+      "title": "Ծրագրավորման դասընթացներ",
+      "about": "Ծրագրավորման դասընթացներ նախատեսված սկսնակների համար"
+    }
+  }
+
+  
+}
