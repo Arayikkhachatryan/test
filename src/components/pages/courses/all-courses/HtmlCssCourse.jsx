@@ -1,6 +1,10 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+import { ReactComponent as SingleHtmlIcon } from "../../../../assets/icons/single-course-html.svg";
+import { ReactComponent as SingleCssIcon } from "../../../../assets/icons/single-course-css.svg";
 
-const HtmlCssCourse = () => {
+const HtmlCssCourse = ({ setOpen }) => {
+  const { t } = useTranslation();
   return (
     <section className="single-course">
       <div className="container">
@@ -18,10 +22,15 @@ const HtmlCssCourse = () => {
               quisquam exercitationem libero et doloribus, quibusdam vitae
               voluptates necessitatibus veritatis eius, animi non iusto!
             </p>
+            <div className="single-course-cmn-btn">
+              <button onClick={() => setOpen((prev) => !prev)}>
+                {t("register")}
+              </button>
+            </div>
           </div>
           <div className="single-course-img">
-            <img src="/images/html-single-course.png" alt="html-logo" />
-            <img src="/images/css-single-course.png" alt="css-logo" />
+            <SingleHtmlIcon className="single-course-icon" />
+            <SingleCssIcon className="single-course-icon" />
           </div>
         </div>
       </div>

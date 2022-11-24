@@ -18,7 +18,7 @@ function Footer() {
       <footer>
         <div className="background-footer">
           <img
-            src="./images/footer-bg.png"
+            src="./images/footer-bgh.png"
             alt="footer bg"
             className="background-footer-img"
           />
@@ -29,10 +29,7 @@ function Footer() {
               <div className="footer-widget">
                 <div className="footer-logo">
                   <Link onClick={scrollTop} to={"#"}>
-                    <img
-                      src={process.env.PUBLIC_URL + "/images/logo.png"}
-                      alt="img"
-                    />
+                    <img src="/images/logo-black.png" alt="img" />
                   </Link>
                 </div>
                 <address>

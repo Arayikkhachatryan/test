@@ -45,17 +45,14 @@ function CoursesCards() {
             <h4>{t("coursesPage.title1")}</h4>
           </div>
         </div>
-        <div className="courses-card-bg">
-          <img src="/images/courses-bg.PNG" alt="" />
-        </div>
 
         <div className="container">
-          <div className="row g-4">
+          <div className="row g-4 cards">
             <div className="col-md-12 col-lg-4 col-xl-4">
               <div className="courses-cards-title">
                 <div className="cmn-btn">
                   <button onClick={() => setOpen((prev) => !prev)}>
-                  {t("register")}
+                    {t("register")}
                   </button>
                 </div>
               </div>

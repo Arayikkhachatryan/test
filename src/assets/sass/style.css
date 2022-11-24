@@ -460,18 +460,25 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
 }
 
 .cmn-btn button {
-  background: #A770EF;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #FDB99B, #CF8BF3, #A770EF);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #FDB99B, #CF8BF3, #A770EF);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  width: 150px;
-  height: 50px;
-  border-radius: 20px;
-  border: none;
+  width: 260px;
+  height: 80px;
+  border-radius: 35px;
+
+  background: linear-gradient(#F9F5EF, #F9F5EF) padding-box,
+    linear-gradient(45deg, #d41f3e, #51266b) border-box;
+  border: 5px solid transparent;
+  transition: 0.25s;
+
 
 }
+
+.cmn-btn button:hover {
+  background: linear-gradient(74.21deg, #D41F3E -1.03%, #51266B 101.62%);
+  color: wheat;
+  border: transparent;
+}
+
+
 
 .single-course-cmn-btn {
   display: flex;
@@ -480,16 +487,18 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
 }
 
 .single-course-cmn-btn button {
-  background: #A770EF;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #FDB99B, #CF8BF3, #A770EF);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #FDB99B, #CF8BF3, #A770EF);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  width: 320px;
-  height: 50px;
-  border-radius: 20px;
-  border: none;
+  background: linear-gradient(#F9F5EF, #F9F5EF) padding-box,
+    linear-gradient(45deg, #d41f3e, #51266b) border-box;
+  border: 3px solid transparent;
+  width: 300px;
+  height: 65px;
+  border-radius: 42px;
+}
+
+.single-course-icon {
+  filter: drop-shadow(10px 10px 35px rgba(0, 0, 0, 0.45));
+  width: 233px;
+  height: 217px;
 }
 
 
@@ -650,7 +659,7 @@ header {
   top: 0;
   z-index: 999;
   width: 100%;
-  padding: 15px 100px;
+  padding: 10px 100px;
   -webkit-transition: all 0.8s ease-out 0s;
   transition: all 0.8s ease-out 0s;
   background-color: transparent;
@@ -739,7 +748,7 @@ header {
 only screen and (min-width: 768px) and (max-width: 991px),
 (max-width: 767px) {
   header {
-    padding: 30px 10px;
+    padding: 10px 10px;
   }
 
 
@@ -786,12 +795,7 @@ only screen and (min-width: 768px) and (max-width: 991px),
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 100%;
-}
-
-.main-nav ul :not(:last-child) {
-  padding-right: 30px;
-
+  gap: 50px;
 }
 
 .main-nav ul li {
@@ -1716,16 +1720,19 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   justify-content: center;
 }
 
-.courses-cards-content {
-  color: #fff;
-}
+
 
 .all-courses {
-  padding: 0 100px 80px 100px;
+  display: grid;
+  grid-template-columns: 420px 420px;
+  column-gap: 30px;
+  row-gap: 30px;
 }
 
-.team {
-  padding: 80px 100px;
+.team,
+.single-course,
+.all-courses-slider {
+  padding: 80px 0;
 }
 
 .team-header {
@@ -1786,7 +1793,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 
   .team,
   .all-courses {
-    padding: 80px 50px;
+    padding: 80px 0;
   }
 
   .team-container-single-item {
@@ -1860,12 +1867,23 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   font-family: "ArTarumianErevan";
 }
 
+.cards {
+  padding-top: 80px;
+}
+
+.cards-bg img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  object-fit: cover;
+}
+
 .courses-header {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 80px;
   text-align: center;
   padding: 30px;
   color: #51266B;
@@ -1881,7 +1899,6 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 55%;
 }
 
 
@@ -1890,26 +1907,19 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  background: rgb(81, 38, 107);
-  background: linear-gradient(0deg, rgba(81, 38, 107, 0.7231267507002801) 100%, rgba(29, 188, 253, 0) 100%);
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border-radius: 10px;
   padding: 20px 20px;
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-transition: all 0.5s ease-out 0s;
-  transition: all 0.5s ease-out 0s;
-
+  border-radius: 20px;
   position: relative;
   transition: transform 0.8s;
   transform-style: preserve-3d;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   backface-visibility: hidden;
   -moz-backface-visibility: hidden;
-  width: 100%;
   height: 218px;
 
 }
@@ -1917,6 +1927,8 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 .flip-card {
   background-color: transparent;
   perspective: 1000px;
+  width: 100%;
+  border-radius: 20px;
 }
 
 .flip-card:focus {
@@ -1936,32 +1948,39 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   height: 100%;
   top: 0;
   right: 0;
-  border-radius: 10px;
+  background: linear-gradient(#F9F5EF, #F9F5EF) padding-box,
+    linear-gradient(45deg, #d41f3e, #51266b) border-box;
+  border: 5px solid transparent;
+  border-radius: 20px;
 }
 
 .single-service-front {
-  background-color: #826294;
-  color: black;
   z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: black;
+}
+
+.register-button div {
+  position: sticky;
+  top: 250px;
 }
 
 .single-service-back {
-  background-color: #826294;
-  color: white;
+  background-color: #F9F5EF;
   transform: rotateY(180deg);
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px 20px;
+
 }
 
 .single-service-back p {
-  color: #fff;
+  color: black;
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
@@ -2044,54 +2063,33 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 
 
 .service-icon svg {
-  width: 64px;
-  height: 64px;
+  width: 130px;
+  height: 130px;
 }
 
-.service-icon .html-icon {
-  width: 72px;
-  height: 72px;
-  color: #F75421;
-}
 
-.service-icon .css-icon {
-  width: 72px;
-  height: 72px;
-  color: #026CBA;
-}
-
-.service-icon .js-icon {
-  color: #F7D800;
+.html-icon {
+  margin-right: 50px;
 }
 
 .service-icon .react-icon {
-  color: #00D1F7;
+  width: 160px;
+  height: 130px;
 }
 
 .service-icon .node-icon {
-  color: green;
-}
-
-.js-icon {
-  color: #F7D800;
-
-}
-
-.react-icon {
-  color: #00D1F7;
+  width: 130px;
+  height: 130px;
 }
 
 .node-icon {
-  color: green;
+  width: 130px;
+  height: 130px;
 }
 
 .ui-ux-icon {
-  color: black;
-}
-
-.service-icon {
-  margin-top: 15px;
-  min-width: 70px;
+  width: 130px;
+  height: 130px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -2203,7 +2201,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 .service-content h4 {
   font-size: 28px;
   font-weight: 500;
-  color: #fff;
+  color: black;
   text-transform: capitalize;
   margin-bottom: 10px;
   text-shadow: 3px 1px 4px #f0f0f0;
@@ -2943,6 +2941,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 
 .swiper.portfolio-slider .swiper-pagination {
   bottom: 0 !important;
+  padding-right: 40px;
 }
 
 .swiper.portfolio-slider .swiper-pagination-bullet {
@@ -3044,15 +3043,19 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .single-course-card {
-  height: 270px;
-  background-color: gray;
+  height: 290px;
+  background: linear-gradient(#F9F5EF, #F9F5EF) padding-box,
+    linear-gradient(45deg, #d41f3e, #51266b) border-box;
+  border: 5px solid transparent;
   flex-grow: 1;
   width: 250px;
   padding: 35px 20px;
   text-align: center;
   box-shadow: 1.5px 1.5px 15px rgb(0 0 0 / 5%);
-  border-radius: 22px;
+  border-radius: 20px;
 }
+
+
 
 .single-course-card-content {
   height: 100%;
@@ -3063,20 +3066,20 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 }
 
 .single-course-card-title {
-  background-color: #000;
-  border-radius: 12px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   padding: 10px 15px;
-  color: rebeccapurple;
+  color: black;
 }
 
 .single-course-card-title h4 {
   margin: 0;
 }
+
+
 
 .single-course-card svg {
   width: 160px;
@@ -3818,6 +3821,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 footer {
   position: relative;
   z-index: 1;
+
 }
 
 .background {
@@ -3846,6 +3850,7 @@ footer {
   object-fit: cover;
   top: 0;
   right: 0;
+  background-color: #1C152C;
 }
 
 
@@ -7169,6 +7174,63 @@ only screen and (min-width: 1200px) and (max-width: 1399px) {
     width: 48%;
   }
 
+}
+
+.courses-cards {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.courses-cards-body-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 80px 0;
+}
+
+.courses-cards-wrapper {
+  width: 100%;
+}
+
+.courses-cards-header {
+  height: 100vh;
+}
+
+.courses-cards-header img {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.single-course-header {
+  height: 100vh;
+
+}
+
+.single-course-header img {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.courses-cards-body-bg {
+  width: 100%;
+}
+
+.courses-cards-body-bg img {
+  position: absolute;
+  z-index: -1;
+  height: 870px;
+  width: 100%;
+  object-fit: cover;
 }
 
 /*# sourceMappingURL=style.css.map */

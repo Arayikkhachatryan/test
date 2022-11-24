@@ -1,6 +1,10 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+import { ReactComponent as SingleNodeIcon } from "../../../../assets/images/node-js-icon.svg";
 
-const NodeCourse = () => {
+const NodeCourse = ({ setOpen }) => {
+  const { t } = useTranslation();
+
   return (
     <section className="single-course">
       <div className="container">
@@ -18,9 +22,14 @@ const NodeCourse = () => {
               quisquam exercitationem libero et doloribus, quibusdam vitae
               voluptates necessitatibus veritatis eius, animi non iusto!
             </p>
+            <div className="single-course-cmn-btn">
+              <button onClick={() => setOpen((prev) => !prev)}>
+                {t("register")}
+              </button>
+            </div>
           </div>
           <div className="single-course-img">
-            <img src="/images/node-single-course.png" alt="node logo" />
+            <SingleNodeIcon className="single-course-icon" />
           </div>
         </div>
       </div>

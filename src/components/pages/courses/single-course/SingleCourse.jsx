@@ -42,15 +42,15 @@ const SingleCourse = () => {
 
   return (
     <>
+      <section className="single-course-header">
+        <img src="/images/test-img.jpg" alt="test" />
+      </section>
       {CONFIG.allCoursesSilderConfig.map((course, idx) => {
         const CourseComponent = courseComponent[idx];
         if (path === course.link) {
           return <CourseComponent setOpen={setOpen} />;
         }
       })}
-      <section className="features">
-        <div>features</div>
-      </section>
       <section className="team">
         <div className="container">
           <div className="team-header">

@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import { SRLWrapper } from "simple-react-lightbox";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Navigation } from "swiper";
 import { CONFIG } from "../../../config";
-import { SiJavascript, SiNodedotjs, SiReact } from "react-icons/si";
-import { MdOutlineDesignServices } from "react-icons/md";
 import { ReactComponent as QaIcon } from "../../../assets/images/qa-icon.svg";
-import { ReactComponent as HtmlCssIcon } from "../../../assets/images/html-css-icon.svg";
+import { ReactComponent as HtmlCssIcon } from "../../../assets/icons/html-css-icon.svg";
+import { ReactComponent as JsIcon } from "../../../assets/images/js-icon.svg";
+import { ReactComponent as ReactIcon } from "../../../assets/images/react-icon.svg";
+import { ReactComponent as NodeJsIcon } from "../../../assets/images/node-js-icon.svg";
+import { ReactComponent as UiUxIcon } from "../../../assets/images/ui-ux-icon.svg";
+
 import CoursesModalForm from "./CoursesModalForm";
-import { useState } from "react";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 SwiperCore.use([Navigation, Autoplay]);
@@ -30,14 +31,7 @@ function AllCoursesSlider(props) {
     };
   }, [open]);
 
-  const icons = [
-    HtmlCssIcon,
-    SiJavascript,
-    SiReact,
-    SiNodedotjs,
-    QaIcon,
-    MdOutlineDesignServices,
-  ];
+  const icons = [HtmlCssIcon, JsIcon, ReactIcon, NodeJsIcon, QaIcon, UiUxIcon];
 
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -86,7 +80,7 @@ function AllCoursesSlider(props) {
   };
 
   return (
-    <section className="all-courses">
+    <section className="all-courses-slider">
       <div className="courses-introduction">
         <h2>{t("singleCoursePage.slider.title")}</h2>
         <h4>{t("singleCoursePage.slider.about")}</h4>
@@ -343,7 +337,9 @@ function AllCoursesSlider(props) {
         </div>
       </SRLWrapper>
       <div className="single-course-cmn-btn">
-        <button onClick={() => setOpen((prev) => !prev)}>{t("register")}</button>
+        <button onClick={() => setOpen((prev) => !prev)}>
+          {t("register")}
+        </button>
       </div>
       <CoursesModalForm open={open} onClose={() => setOpen(false)} />
     </section>
