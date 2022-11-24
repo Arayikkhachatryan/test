@@ -8,15 +8,14 @@ function ContactUsArea() {
     <>
       <div className="container">
         <div className="row">
-          <div className="col col-xl-6">
+          <div>
             <div className="title black">
-              <span>{t("contactUs.getInTouch")}</span>
               <h2>{t("contactUs.moreQuestion")}</h2>
             </div>
           </div>
         </div>
         <div className="row">
-          <div className="col-md-6 col-lg-4 col-xl-4">
+          <div className="col-md-6 col-lg-4 col-xl-4 contact-us-card">
             <div className="office-info">
               <div className="icon">
                 <i className="bi bi-geo-alt" />
@@ -31,7 +30,7 @@ function ContactUsArea() {
               </a>
             </div>
           </div>
-          <div className="col-md-6 col-lg-4 col-xl-4">
+          <div className="col-md-6 col-lg-4 col-xl-4 contact-us-card">
             <div className="office-info">
               <div className="icon">
                 <i className="bi bi-telephone" />
@@ -40,7 +39,7 @@ function ContactUsArea() {
               <a href="tel:37493787855">+374 93 78 78 55</a>
             </div>
           </div>
-          <div className="col-md-6 col-lg-4 col-xl-4">
+          <div className="col-md-6 col-lg-4 col-xl-4 contact-us-card">
             <div className="office-info">
               <div className="icon">
                 <i className="bi bi-envelope" />

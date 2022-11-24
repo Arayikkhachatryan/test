@@ -402,8 +402,14 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   background-color: #D90A2C;
 }
 
+.title {
+  text-align: center;
+}
+
+
+
 .title h2 {
-  font-size: 52px;
+  font-size: 48px;
   font-weight: 700;
   color: #fff;
   margin-bottom: 30px;
@@ -5682,10 +5688,11 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
 
 .office-info {
   text-align: center;
-  border: 1px solid #EEEEEE;
+  background: linear-gradient(#F9F5EF, #F9F5EF) padding-box, linear-gradient(45deg, #d41f3e, #51266b) border-box;
+  border: 3px solid transparent;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border-radius: 5px;
+  border-radius: 12px;
   min-height: 250px;
   padding: 30px;
   -webkit-transition: all 0.5s ease-out 0s;
@@ -5704,28 +5711,31 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
 }
 
 .office-info:hover .icon {
-  background-color: #D90A2C;
+  transition: all 7s ease-out;
+  background: linear-gradient(45deg, #d41f3e, #51266b);
 }
 
 .office-info:hover .icon i {
   color: #fff;
 }
 
+
 .office-info .icon {
   width: 80px;
   height: 80px;
-  background-color: #D90A2C30;
+  background-color: rgba(248, 231, 231, 0.839);
   border-radius: 50%;
   text-align: center;
   line-height: 80px;
   margin: 0 auto;
   margin-bottom: 15px;
-  -webkit-transition: all 0.5s ease-out 0s;
-  transition: all 0.5s ease-out 0s;
+  -webkit-transition: all 8s ease-out 8s;
+  transition: all 8s ease-out 8s;
+
 }
 
 .office-info .icon i {
-  color: #D90A2C;
+  color: black;
   font-size: 45px;
   -webkit-transition: all 0.5s ease-out 0s;
   transition: all 0.5s ease-out 0s;
@@ -5779,7 +5789,7 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
 }
 
 .office-info a:hover {
-  color: #D90A2C;
+  color: rgb(124, 33, 124);
 }
 
 .contact-information {
