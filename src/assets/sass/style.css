@@ -7243,4 +7243,62 @@ only screen and (min-width: 1200px) and (max-width: 1399px) {
   object-fit: cover;
 }
 
+.carousel-3D-swiper-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  max-width: 900px;
+  overflow: hidden;
+  min-height: 500px;
+}
+
+.carousel-3D-swiper .swiper-slide {
+  position: relative;
+  height: 250px;
+}
+
+.hero-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F9F5EF;
+  border-radius: 20px;
+  background: linear-gradient(#F9F5EF, #F9F5EF) padding-box,
+    linear-gradient(45deg, #d41f3e, #51266b) border-box;
+  border: 3px solid transparent;
+}
+
+.hero-slide-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.hero-slider-icon {
+  height: 130px;
+}
+
+.hero-section-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-section-info {
+  width: 350px;
+}
+
+.hero-sevtion-prev,
+.hero-sevtion-next {
+  background: linear-gradient(to right, #D41F3E 0%, #51266B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
 /*# sourceMappingURL=style.css.map */

@@ -1,208 +1,92 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "swiper/css/autoplay";
-import { useTranslation } from "react-i18next";
-// import Swiper core and required modules
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SRLWrapper } from "simple-react-lightbox";
+import { SwiperSlide, Swiper } from "swiper/react";
+import { CONFIG } from "../../../config";
+import { ReactComponent as HtmlCssIcon } from "../../../assets/icons/html-css-icon.svg";
+import { ReactComponent as JsIcon } from "../../../assets/images/js-icon.svg";
+import { ReactComponent as ReactIcon } from "../../../assets/images/react-icon.svg";
+import { ReactComponent as NodeJsIcon } from "../../../assets/images/node-js-icon.svg";
+import { ReactComponent as QaIcon } from "../../../assets/images/qa-icon.svg";
+import { ReactComponent as UiUxIcon } from "../../../assets/images/ui-ux-icon.svg";
 import SwiperCore, {
-  Autoplay,
-  EffectFade,
+  EffectCoverflow,
   Navigation,
   Pagination,
+  Autoplay,
 } from "swiper";
-SwiperCore.use([Navigation, Pagination, EffectFade, Autoplay]);
-// install Swiper modules
-function HeroArea() {
-  const HeroSlider = {
-    slidesPerView: 1,
-    speed: 1500,
-    spaceBetween: 0,
-    loop: "true",
-    clickable: true,
-    autoplay: true,
-    effect: "fade",
-    centeredSlides: true,
-    roundLengths: true,
-    fadeEffect: {
-      crossFade: true,
-    },
-  };
-  const scrollTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
 
-  const { t } = useTranslation();
+SwiperCore.use([EffectCoverflow, Pagination, Navigation, Autoplay]);
+
+const HeroArea = () => {
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const icons = [HtmlCssIcon, JsIcon, ReactIcon, NodeJsIcon, QaIcon, UiUxIcon];
 
   return (
-    <>
-      <section className="hero-area">
-        <div className="swiper hero-slider">
-          <Swiper
-            pagination={{
-              type: "bullets",
-              clickable: true,
-            }}
-            {...HeroSlider}
-            loop={true}
-            className="swiper-wrapper"
-          >
-            <SwiperSlide className="swiper-slide">
-              <div className="container-fluid">
-                <div className="row">
-                  <div className="col-12">
-                    <div className="hero-content-wrapper">
-                      <div className="hero-content-wrap">
-                        <div className="hero-content-img">
-                          <img
-                            src={
-                              process.env.PUBLIC_URL +
-                              "/images/swiper/hero_slider_1.jpg"
-                            }
-                            alt="images"
-                          />
-                        </div>
-                        <div className="hero-content">
-                          {/* <h2>Creative</h2> */}
-                          <h1>{t("heroPageSlider.title")}</h1>
-                          <h1>00:00:00</h1>
-                          <Link
-                            onClick={scrollTop}
-                            to={`${process.env.PUBLIC_URL}/courses`}
-                            className="about-btn"
-                          >
-                            {t("heroPageSlider.forMore")}
-                          </Link>
-                          {/* <Link
-                            onClick={scrollTop}
-                            to={`${process.env.PUBLIC_URL}/project-details`}
-                            className="work-btn"
-                          >
-                            How we work
-                          </Link> */}
-                          {/* <div className="slider-num">
-                            <span>01</span>
-                          </div> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide className="swiper-slide">
-              <div className="container-fluid">
-                <div className="row">
-                  <div className="col-12">
-                    <div className="hero-content-wrapper">
-                      <div className="hero-content-wrap">
-                        <div className="hero-content-img">
-                          <img
-                            src={
-                              process.env.PUBLIC_URL +
-                              "/images/swiper/hero_slider_2.jpg"
-                            }
-                            alt="images"
-                          />
-                        </div>
-                        <div className="hero-content">
-                          {/* <h2>Creative</h2> */}
-                          <h1>{t("heroPageSlider.title")}</h1>
-                          <h1>00:00:00</h1>
-                          <Link
-                            onClick={scrollTop}
-                            to={`${process.env.PUBLIC_URL}/courses`}
-                            className="about-btn"
-                          >
-                            {t("heroPageSlider.forMore")}
-                          </Link>
-                          {/* <Link
-                            onClick={scrollTop}
-                            to={`${process.env.PUBLIC_URL}/project-details`}
-                            className="work-btn"
-                          >
-                            How we work
-                          </Link> */}
-                          {/* <div className="slider-num">
-                            <span>02</span>
-                          </div> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide className="swiper-slide">
-              <div className="container-fluid">
-                <div className="row">
-                  <div className="col-12">
-                    <div className="hero-content-wrapper">
-                      <div className="hero-content-wrap">
-                        <div className="hero-content-img">
-                          <img
-                            src={
-                              process.env.PUBLIC_URL +
-                              "/images/swiper/hero_slider_3.jpg"
-                            }
-                            alt="images"
-                          />
-                        </div>
-                        <div className="hero-content">
-                          {/* <h2>Creative</h2> */}
-                          <h1>{t("heroPageSlider.title")}</h1>
-                          <h1>00:00:00</h1>
-                          <Link
-                            onClick={scrollTop}
-                            to={`${process.env.PUBLIC_URL}/courses  `}
-                            className="about-btn"
-                          >
-                            {t("heroPageSlider.forMore")}
-                          </Link>
-                          {/* <Link
-                            onClick={scrollTop}
-                            to={`${process.env.PUBLIC_URL}/project-details`}
-                            className="work-btn"
-                          >
-                            How we work
-                          </Link> */}
-                          {/* <div className="slider-num">
-                            <span>03</span>
-                          </div> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          </Swiper>
-          <div className="swiper-pagination" />
+    <section className="hero-section">
+      <div className="container">
+        <div className="hero-section-wrapper">
+          <div className="hero-section-info">
+            <h2>Course Info</h2>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum
+              quasi praesentium eius dolorum officia nisi earum repellendus
+              laboriosam aut alias excepturi magnam, facilis repellat similique
+              quia distinctio pariatur minus veniam.
+            </p>
+          </div>
+          <section className="carousel-3D-swiper-section">
+            <div className="carousel-3D-swiper">
+              <Swiper
+                loop={"true"}
+                effect={"coverflow"}
+                centeredSlides={true}
+                slidesPerView={2.34}
+                slideToClickedSlide={"true"}
+                coverflowEffect={{
+                  rotate: 0,
+                  stretch: 0,
+                  depth: 340,
+                  modifier: 1,
+                  slideShadows: true,
+                }}
+                pagination={{
+                  el: ".swiper-pagination",
+                }}
+                navigation={{
+                  nextEl: ".swiper-button-next",
+                  prevEl: ".swiper-button-prev",
+                }}
+                autoplay={{
+                  delay: 3000,
+                }}
+                class="swiper-wrapper"
+                style={{ maxWidth: "900px" }}
+              >
+                {CONFIG.allCoursesSilderConfig.map((course, idx) => {
+                  const Icon = icons[idx];
+                  return (
+                    <SwiperSlide className="hero-slide">
+                      <Link
+                        to={course.link}
+                        onClick={scrollTop}
+                        className="hero-slide-wrapper"
+                      >
+                        <Icon className="hero-slider-icon" />
+                        <p>{course.title}</p>
+                      </Link>
+                    </SwiperSlide>
+                  );
+                })}
+                <div class="swiper-button-prev hero-sevtion-prev"></div>
+                <div class="swiper-button-next hero-sevtion-next"></div>
+              </Swiper>
+            </div>
+          </section>
         </div>
-        <div className="social-media">
-          <ul className="social-list">
-            <li>
-              <a rel="noopener noreferrer" href="https://www.facebook.com/">
-                Facebook
-              </a>
-            </li>
-            <li>
-              <a rel="noopener noreferrer" href="https://www.instagram.com/">
-                instagram
-              </a>
-            </li>
-            <li>
-              <a rel="noopener noreferrer" href="https://www.linkedin.com/">
-                Linked in
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
-}
+};
 
 export default HeroArea;

@@ -12,15 +12,18 @@ import WhyChooseUsArea from "../../common/WhyChooseUsArea";
 function HomePage() {
   return (
     <>
+      <section className="single-course-header">
+        <img src="/images/test-img.jpg" alt="test" />
+      </section>
       <HeroArea />
-      <ServiceArea />
+      {/* <ServiceArea />
       <AboutArea black="black" light="dark" />
       <OurPartnerArea />
       <PortfolioArea black="black" />
       <WhyChooseUsArea black="black" lable="" />
       <TestimonialArea />
       <NewsLatterArea black="black" />
-      <LetsTalkArea />
+      <LetsTalkArea /> */}
     </>
   );
 }
