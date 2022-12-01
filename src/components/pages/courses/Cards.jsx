@@ -37,7 +37,7 @@ const Cards = ({ open, setOpen }) => {
                 <Link
                   onClick={scrollTop}
                   to="/courses/html-css-course"
-                  className="col-sm-6 col-md-6 col-lg-6 col-xl-6 flip-card"
+                  className=" flip-card"
                 >
                   <div className="single-service">
                     <div className="single-service-front">
@@ -70,7 +70,7 @@ const Cards = ({ open, setOpen }) => {
                     <Link
                       to={item.link}
                       onClick={scrollTop}
-                      className="col-sm-6 col-md-6 col-lg-6 col-xl-6 flip-card"
+                      className=" flip-card"
                     >
                       <div className="single-service">
                         <div className="single-service-front">

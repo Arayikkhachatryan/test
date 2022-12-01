@@ -8,17 +8,22 @@ import OurPartnerArea from "./OurPartnerArea";
 import PortfolioArea from "./PortfolioArea";
 import ServiceArea from "./ServiceArea";
 import WhyChooseUsArea from "../../common/WhyChooseUsArea";
-
+import VideoArea from "./VideoArea";
+import ServicesArea from "./ServicesArea";
 function HomePage() {
   return (
     <>
       <section className="single-course-header">
         <img src="/images/test-img.jpg" alt="test" />
       </section>
+
       <HeroArea />
+      <VideoArea />
+      <ServicesArea />
+      {/* <OurPartnerArea /> */}
+
       {/* <ServiceArea />
       <AboutArea black="black" light="dark" />
-      <OurPartnerArea />
       <PortfolioArea black="black" />
       <WhyChooseUsArea black="black" lable="" />
       <TestimonialArea />

@@ -368,6 +368,14 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   .sticky {
     padding: 20px 0;
   }
+
+
+  .all-courses {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
 }
 
 @media (max-width: 767px) {
@@ -466,7 +474,7 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
 }
 
 .cmn-btn button {
-  width: 260px;
+  width: 225px;
   height: 80px;
   border-radius: 35px;
 
@@ -1730,9 +1738,16 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 
 .all-courses {
   display: grid;
-  grid-template-columns: 420px 420px;
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 30px;
   row-gap: 30px;
+  padding-left: 50px;
+}
+
+@media(max-width: 768px) {
+  .all-courses {
+    grid-template-columns: 1fr;
+  }
 }
 
 .team,
@@ -1781,14 +1796,27 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   .all-courses {
     padding: 80px 10px;
   }
+
+  .all-courses {
+    flex-direction: column;
+  }
+
+  .courses-cards-body-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .courses-cards-body-bg img {
+    height: 1280px;
+    top: 838px;
+  }
+
 }
+
 
 @media (max-width: 1199px) {
 
-  .team,
-  .all-courses {
-    padding: 80px 10px;
-  }
+
 
   .team-container-single-item {
     width: 48%;
@@ -1797,14 +1825,14 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 
 @media (max-width: 1399px) {
 
-  .team,
-  .all-courses {
+  .team {
     padding: 80px 0;
   }
 
   .team-container-single-item {
     width: 48%;
   }
+
 }
 
 .team-container-items {
@@ -1926,7 +1954,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   backface-visibility: hidden;
   -moz-backface-visibility: hidden;
-  height: 218px;
+  height: 245px;
 
 }
 
@@ -7174,11 +7202,6 @@ only screen and (min-width: 1200px) and (max-width: 1399px) {
     margin-bottom: -1px;
   }
 
-  .team,
-  .all-courses,
-  .courses-cards {
-    padding: 80px 0;
-  }
 
   .team-container-single-item {
     width: 48%;
@@ -7300,5 +7323,20 @@ only screen and (min-width: 1200px) and (max-width: 1399px) {
   -webkit-text-fill-color: transparent;
 }
 
+.main-video {
+  position: absolute;
+  z-index: -1;
+  object-fit: cover;
+  width: 100%;
+  height: inherit;
+}
+
+.video-div {
+  height: 500px;
+}
+
+.services-section {
+  height: 100vh;
+}
 
 /*# sourceMappingURL=style.css.map */

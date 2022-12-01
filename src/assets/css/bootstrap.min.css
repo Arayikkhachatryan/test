@@ -688,6 +688,16 @@ progress {
     .container-sm {
         max-width: 720px
     }
+
+    .all-courses {
+        display: flex;
+        width: 100%;
+    }
+
+    .courses-cards-body-bg img {
+        height: 2020px;
+    }
+
 }
 
 @media (min-width:992px) {
@@ -2207,6 +2217,8 @@ progress {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch
     }
+
+
 }
 
 @media (max-width:991.98px) {
