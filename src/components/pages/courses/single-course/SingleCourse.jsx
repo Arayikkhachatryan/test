@@ -59,12 +59,11 @@ const SingleCourse = () => {
           </div>
           <div className="team-container">
             <div className="team-container-items">
-              {data.map((item) => (
+              {CONFIG.trainersConfig.map((trainer) => (
                 <div className="team-container-single-item">
-                  <img src={item.image} alt="" />
-                  <h3>{item.title}</h3>
-                  <p>{item.heading}</p>
-                  <p>{item.category}</p>
+                  <img src={trainer.image} alt="" />
+                  <h3>{trainer.name}</h3>
+                  <p>{trainer.workplace}</p>
                 </div>
               ))}
             </div>

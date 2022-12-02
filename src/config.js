@@ -92,6 +92,45 @@ export const CONFIG = {
             link: "/courses/ui-ux-course",
             className: 'ui-ux-icon',
         }
+    ],
+
+    trainersConfig: [
+        {
+            image: "/images/smbat.png",
+            name: "Smbat",
+            workplace: "Software Engineer at Tumo Center for Creative Technologies",
+            course: ""
+        },
+        {
+            image: "/images/david.png",
+            name: "David",
+            workplace: "Software Engineer at Relum",
+            course: ""
+        },
+        {
+            image: "/images/arsen.png",
+            name: "Arsen",
+            workplace: "Frontend Developer at Tmarket",
+            course: ""
+        },
+        {
+            image: "/images/tigran.png",
+            name: "Tigran",
+            workplace: "Frontend Web Developer at Direlli LLC",
+            course: ""
+        },
+        {
+            image: "/images/sona.png",
+            name: "Sona",
+            workplace: "QA engineer at DataArt",
+            course: ""
+        },
+        {
+            image: "/images/vahan.png",
+            name: "Vahan",
+            workplace: "CEO at BSTRACT LLC",
+            course: ""
+        }
     ]
 
 
