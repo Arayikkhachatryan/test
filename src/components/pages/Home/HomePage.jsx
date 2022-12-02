@@ -17,13 +17,15 @@ function HomePage() {
         <img src="/images/test-img.jpg" alt="test" />
       </section>
 
+      <AboutArea black="black" light="dark" />
+      <VideoArea />
       <HeroArea />
       <VideoArea />
       <ServicesArea />
       {/* <OurPartnerArea /> */}
 
       {/* <ServiceArea />
-      <AboutArea black="black" light="dark" />
+      
       <PortfolioArea black="black" />
       <WhyChooseUsArea black="black" lable="" />
       <TestimonialArea />

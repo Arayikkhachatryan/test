@@ -7342,7 +7342,8 @@ textarea {
   background: linear-gradient(#f9f5ef, #f9f5ef) padding-box,
     linear-gradient(45deg, #d41f3e, #51266b) border-box;
   border: 2px solid transparent;
-  width: 350px;
+  width: 100%;
+  height: 240px;
   padding: 10px 0;
 }
 .services-section-single-card svg {
@@ -7353,14 +7354,31 @@ textarea {
 .services-section-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  column-gap: 50px;
-  row-gap: 50px;
+  column-gap: 3%;
+  row-gap: 3%;
 }
+
+@media (max-width:768px) {
+  .services-section-cards{
+  grid-template-columns:  1fr;
+
+  }
+
+}
+
+
 
 .services-section-wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
+}
+
+@media (max-width:768px) {
+  .services-section-wrapper{
+  grid-template-columns:1fr;
+   
+  }
 }
 
 .services-section {
@@ -7379,5 +7397,11 @@ textarea {
 
 .services-section-text {
   padding-right: 120px;
+}
+
+@media (max-width:768px){
+  .services-section-text {
+    padding-right: 0;
+  }
 }
 /*# sourceMappingURL=style.css.map */

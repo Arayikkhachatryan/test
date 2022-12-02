@@ -103,7 +103,7 @@ function AboutArea() {
               </div>
             </div>
           </div>
-          <div className="features-count">
+          {/* <div className="features-count">
             <div className="row">
               <div className="col-sm-6 col-md-3 col-lg-3 col-xl-3">
                 <div className="single-count">
@@ -162,7 +162,7 @@ function AboutArea() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </>
