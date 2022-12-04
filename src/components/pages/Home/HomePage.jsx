@@ -1,7 +1,7 @@
 import React from "react";
 import TestimonialArea from "../../common/TestimonialArea";
 import AboutArea from "./AboutArea";
-import HeroArea from "./HeroArea";
+import CoursesArea from "./CoursesArea";
 import LetsTalkArea from "../../common/LetsTalkArea";
 import NewsLatterArea from "./NewsLatterArea";
 import OurPartnerArea from "./OurPartnerArea";
@@ -10,6 +10,7 @@ import ServiceArea from "./ServiceArea";
 import WhyChooseUsArea from "../../common/WhyChooseUsArea";
 import VideoArea from "./VideoArea";
 import ServicesArea from "./ServicesArea";
+import FirstVideo from "../../../assets/video2.mp4";
 function HomePage() {
   return (
     <>
@@ -17,9 +18,19 @@ function HomePage() {
         <img src="/images/test-img.jpg" alt="test" />
       </section>
 
-      <AboutArea black="black" light="dark" />
-      <VideoArea />
-      <HeroArea />
+      <AboutArea />
+      <section className="video-div">
+        <video
+          className="main-video"
+          autoPlay={true}
+          muted={true}
+          loop={true}
+          preload="auto"
+        >
+          <source src={FirstVideo} type="video/mp4" />
+        </video>
+      </section>
+      <CoursesArea />
       <VideoArea />
       <ServicesArea />
       {/* <OurPartnerArea /> */}

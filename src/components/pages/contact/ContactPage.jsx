@@ -11,8 +11,10 @@ function ContactPage() {
         <img src="/images/test-img.jpg" alt="test" />
       </section>
       <section className="contact-area sec-mar">
-        <ContactUsArea />
-        <ContactForm />
+        <div className="container">
+          <ContactUsArea />
+          <ContactForm />
+        </div>
       </section>
     </>
   );

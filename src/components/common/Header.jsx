@@ -8,25 +8,25 @@ import { CONFIG } from "../../config";
 import { v4 as uuidv4 } from "uuid";
 
 /*---------Using reducer mange the active or inactive menu----------*/
-const initialState = { activeMenu: "" };
+// const initialState = { activeMenu: "" };
 
-function reducer(state, action) {
-  switch (action.type) {
-    case "homeOne":
-      return { activeMenu: "homeOne" };
-    case "service":
-      return { activeMenu: "service" };
-    case "projects":
-      return { activeMenu: "projects" };
-    case "blogs":
-      return { activeMenu: "blogs" };
-    default:
-      throw new Error();
-  }
-}
+// function reducer(state, action) {
+//   switch (action.type) {
+//     case "homeOne":
+//       return { activeMenu: "homeOne" };
+//     case "service":
+//       return { activeMenu: "service" };
+//     case "projects":
+//       return { activeMenu: "projects" };
+//     case "blogs":
+//       return { activeMenu: "blogs" };
+//     default:
+//       throw new Error();
+//   }
+// }
 
 function Header() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  // const [state, dispatch] = useReducer(reducer, initialState);
   const [headerColor, setHeaderColor] = useState(true);
   const [openFlag, setOpenFlag] = useState(false);
 
@@ -307,25 +307,55 @@ function Header() {
                       {t("header.contactUs")}
                     </NavLink>
                 </li> */}
+                    <div className="col-12 col-sm-4 col-md-3 col-lg-3 col-xl-2 text-end header-end">
+                      <div className="get-quate">
+                        <div
+                          className={
+                            !openFlag
+                              ? "selected-lng"
+                              : "selected-lng open-flag"
+                          }
+                          onClick={() => setOpenFlag((prev) => !prev)}
+                        >
+                          {languageFlags.map((selected) => (
+                            <>
+                              {i18n.language === selected.locale ? (
+                                <img
+                                  src={selected.src}
+                                  alt=""
+                                  className="flag-img"
+                                />
+                              ) : null}
+                            </>
+                          ))}
+                        </div>
+                        <div
+                          className={
+                            !openFlag ? "lng-flags" : "lng-flags open-flag"
+                          }
+                        >
+                          {languageFlags.map((flag) => (
+                            <>
+                              {openFlag && i18n.language !== flag.locale && (
+                                <button
+                                  onClick={() => changeLanguage(flag.locale)}
+                                  className="flag-btn"
+                                  key={uuidv4()}
+                                >
+                                  <img
+                                    onClick={() => setOpenFlag((prev) => !prev)}
+                                    src={flag.src}
+                                    alt={flag.alt}
+                                    className="flag-img"
+                                  />
+                                </button>
+                              )}
+                            </>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </ul>
-                  {/* <div className="get-quate dn">
-                  <div className="lng-flags">
-                  {languageFlags.map((flag) => (
-                    <>
-                      <button
-                        onClick={() => changeLanguage(flag.locale)}
-                        className="flag-btn"
-                      >
-                        <img
-                          src={flag.src}
-                          alt={flag.alt}
-                          className="flag-img"
-                        />
-                      </button>
-                    </>
-                  ))}
-                  </div>
-                </div> */}
                 </nav>
                 <div className="mobile-menu">
                   <div
@@ -337,46 +367,6 @@ function Header() {
                     <span className="cross-top" />
                     <span className="cross-middle" />
                     <span className="cross-bottom" />
-                  </div>
-                </div>
-              </div>
-              <div className="col-12 col-sm-4 col-md-3 col-lg-3 col-xl-2 text-end header-end">
-                <div className="get-quate">
-                  <div
-                    className={
-                      !openFlag ? "selected-lng" : "selected-lng open-flag"
-                    }
-                    onClick={() => setOpenFlag((prev) => !prev)}
-                  >
-                    {languageFlags.map((selected) => (
-                      <>
-                        {i18n.language === selected.locale ? (
-                          <img src={selected.src} alt="" className="flag-img" />
-                        ) : null}
-                      </>
-                    ))}
-                  </div>
-                  <div
-                    className={!openFlag ? "lng-flags" : "lng-flags open-flag"}
-                  >
-                    {languageFlags.map((flag) => (
-                      <>
-                        {openFlag && i18n.language !== flag.locale && (
-                          <button
-                            onClick={() => changeLanguage(flag.locale)}
-                            className="flag-btn"
-                            key={uuidv4()}
-                          >
-                            <img
-                              onClick={() => setOpenFlag((prev) => !prev)}
-                              src={flag.src}
-                              alt={flag.alt}
-                              className="flag-img"
-                            />
-                          </button>
-                        )}
-                      </>
-                    ))}
                   </div>
                 </div>
               </div>

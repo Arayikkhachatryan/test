@@ -12,7 +12,7 @@ import About2Area from "./About2Area";
 function HomePage2(props) {
   return (
     <>
-      <HeroArea />
+      {/* <HeroArea /> */}
       <ServiceArea />
       <About2Area />
       <OurPartnerArea />

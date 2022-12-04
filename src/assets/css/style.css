@@ -5119,11 +5119,12 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
   border: 2px solid #d90a2c;
 }
 
+/* 
 .google-map {
   position: absolute;
   right: 0;
   top: 0;
-}
+} */
 
 @media only screen and (min-width: 768px) and (max-width: 991px),
 (max-width: 767px) {
@@ -5133,7 +5134,7 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
 }
 
 .google-map iframe {
-  width: 850px;
+  width: 680px;
   height: 570px;
 }
 

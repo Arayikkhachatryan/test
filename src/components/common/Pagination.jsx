@@ -5,7 +5,7 @@ function Pagination() {
   return (
     <>
       <nav>
-        <ul className="pagination">
+        {/* <ul className="pagination">
           <li>
             <Link to={"/"}>
               <i className="bi bi-arrow-left-short"></i>
@@ -25,7 +25,7 @@ function Pagination() {
               <i className="bi bi-arrow-right-short"></i>
             </Link>
           </li>
-        </ul>
+        </ul> */}
       </nav>
     </>
   );

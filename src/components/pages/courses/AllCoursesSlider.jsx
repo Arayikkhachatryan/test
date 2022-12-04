@@ -40,7 +40,6 @@ function AllCoursesSlider(props) {
   const allCourses = {
     slidesPerView: 3,
     spaceBetween: 0,
-
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
@@ -53,27 +52,27 @@ function AllCoursesSlider(props) {
       // when window width is >= 320px
       320: {
         slidesPerView: 1,
-        spaceBetween: 20,
+        spaceBetween: 0,
       },
       // when window width is >= 480px
       480: {
-        slidesPerView: 2,
-        spaceBetween: 30,
+        slidesPerView: 1.7,
+        spaceBetween: 0,
       },
 
       // when window width is >= 640px
       768: {
-        slidesPerView: 3,
+        slidesPerView: 2.8,
         spaceBetween: 0,
       },
       // when window width is >= 992px
       992: {
-        slidesPerView: 3,
+        slidesPerView: 2.8,
         spaceBetween: 0,
       },
       // when window width is >= 1400px
       1400: {
-        slidesPerView: 3,
+        slidesPerView: 2.8,
         spaceBetween: 0,
       },
     },

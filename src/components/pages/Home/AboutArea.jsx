@@ -32,7 +32,7 @@ function AboutArea() {
                   felis non aliquam.Integer purus odio.
                 </p>
                 <div className="our-mission">
-                  <div className="msn-icon">
+                  {/* <div className="msn-icon">
                     <i>
                       <img
                         src={
@@ -42,7 +42,7 @@ function AboutArea() {
                         alt="images"
                       />
                     </i>
-                  </div>
+                  </div> */}
                   <div className="msn-content">
                     <h5>Our Mission</h5>
                     <p>
@@ -50,15 +50,20 @@ function AboutArea() {
                       and video.
                     </p>
                   </div>
-                  <div className="cto">
+                  {/* <div className="cto">
                     <img
                       src={process.env.PUBLIC_URL + "/images/ctoFounder.png"}
                       alt="imgs"
                     />
-                  </div>
+                  </div> */}
                 </div>
                 <div className="cmn-btn">
-                  <Link onClick={scrollTop} to={`${process.env.PUBLIC_URL}/about`}>About more</Link>
+                  <Link
+                    onClick={scrollTop}
+                    to={`${process.env.PUBLIC_URL}/about`}
+                  >
+                    About more
+                  </Link>
                 </div>
               </div>
             </div>
@@ -66,16 +71,18 @@ function AboutArea() {
               <div className="about-right">
                 <div className="group-images">
                   <img
-                    src={process.env.PUBLIC_URL + "/images/about-bottom.jpg"}
+                    src={process.env.PUBLIC_URL + "/images/about-us-test.jpg"}
                     alt="images"
                   />
                   <div className="about-top">
                     <img
-                      src={process.env.PUBLIC_URL + "/images/about-top.png"}
+                      src={
+                        process.env.PUBLIC_URL + "/images/about-us-test2.jpg"
+                      }
                       alt="images"
                     />
                   </div>
-                  <div className="about-skills">
+                  {/* <div className="about-skills">
                     <div className="signle-skill">
                       <CircularProgressbar
                         value={Singlepercentage}
@@ -98,7 +105,7 @@ function AboutArea() {
                         <p>Developing</p>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
