@@ -2,6 +2,9 @@ import React, { useState, memo } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { t } from "i18next";
+import {ReactComponent as PhoneIcon} from '../../assets/icons/phone-icon.svg'
+import {ReactComponent as MailIcon} from '../../assets/icons/mail-icon.svg'
+import {ReactComponent as LocationIcon} from '../../assets/icons/location-icon.svg'
 
 function Footer() {
   const scrollTop = () => {
@@ -32,10 +35,6 @@ function Footer() {
                     <img src="/images/logo-black.png" alt="img" />
                   </Link>
                 </div>
-                <address>
-                  <h4>{t("footer.office")}</h4>
-                  <p>{t("address")}</p>
-                </address>
                 <ul className="social-media-icons">
                   <li>
                     <a
@@ -163,7 +162,7 @@ function Footer() {
                   <li>
                     <Link
                       onClick={scrollTop}
-                      to={`${process.env.PUBLIC_URL}/contact`}
+                      to={`${process.env.PUBLIC_URL}/courses`}
                     >
                       {t("footer.company.courses")}
                     </Link>
@@ -176,7 +175,7 @@ function Footer() {
                 <h4>{t("footer.contacts")}</h4>
                 <div className="number">
                   <div className="num-icon">
-                    <i className="fas fa-phone-alt" />
+                    <PhoneIcon/>
                   </div>
                   <div className="phone">
                     <a rel="noopener noreferrer" href="tel:37493787855">
@@ -186,7 +185,7 @@ function Footer() {
                 </div>
                 <div className="office-mail">
                   <div className="mail-icon">
-                    <i className="far fa-envelope" />
+                    <MailIcon />
                   </div>
                   <div className="email">
                     <a rel="noopener noreferrer" href="mailto:info@example.com">
@@ -196,9 +195,9 @@ function Footer() {
                 </div>
                 <div className="address">
                   <div className="address-icon">
-                    <i className="fas fa-map-marker-alt" />
+                    <LocationIcon />
                   </div>
-                  <p>{t("address")}</p>
+                  <a href="https://www.google.com/maps/place/40%C2%B010'52.0%22N+44%C2%B031'22.9%22E/@40.181118,44.523028,17z/data=!4m5!3m4!1s0x0:0xcbacf9f80d3e660e!8m2!3d40.181118!4d44.523028?hl=ru-RU" target="_blank">{t("address")}</a>
                 </div>
               </div>
             </div>

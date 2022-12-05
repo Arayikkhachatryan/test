@@ -24,29 +24,39 @@ function ContactForm() {
                         type="text"
                         name="name"
                         placeholder={t("contactUsForm.name")}
+                        className="name-input"
                       />
                     </div>
-                    <div className="col-xl-6">
-                      <input
-                        type="email"
-                        name="email"
-                        placeholder={t("contactUsForm.email")}
-                      />
+                    <div className="mail-subject-div">
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder={t("contactUsForm.email")}
+                          className="mail-input"
+                        />
+                        <input
+                          type="text"
+                          name="subject"
+                          placeholder={t("contactUsForm.subject")}
+                          className="subject-input"
+                        />
+
                     </div>
-                    <div className="col-xl-6">
-                      <input type="text" name="subject" placeholder={t("contactUsForm.subject")} />
-                    </div>
-                    <div className="col-12">
+
+                    <div className="col-12 textarea-div">
                       <textarea
                         name="message"
                         cols={30}
                         rows={10}
                         placeholder={t("contactUsForm.message")}
                         defaultValue={""}
+                        className="textarea-input"
                       />
                     </div>
                     <div className="col-12">
-                      <input type="submit" value={t("contactUsForm.submit")} />
+                      <button className="contact-us-submit">
+                        {t("contactUsForm.submit")}{" "}
+                      </button>
                     </div>
                   </div>
                 </form>
