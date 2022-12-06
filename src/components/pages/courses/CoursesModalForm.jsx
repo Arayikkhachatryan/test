@@ -72,55 +72,63 @@ const CoursesModalForm = ({ open, onClose }) => {
                 <AiOutlineClose />
               </div>
               <form onSubmit={sendEmail}>
-                <h3>Some Text!</h3>
-                <InputField
-                  label="name"
-                  name="user_name"
-                  type="text"
-                  updateForm={updateForm}
-                />
-                <InputField
-                  label="email"
-                  name="user_email"
-                  type="email"
-                  updateForm={updateForm}
-                />
-                <InputField
-                  label="phone"
-                  name="user_phone"
-                  type="text"
-                  updateForm={updateForm}
-                />
-                <div>
-                  <label htmlFor="user_course">course</label>
-                  <select
-                    onChange={updateForm}
-                    defaultValue="user_course"
-                    name="user_course"
-                  >
-                    <option value="user_course" disabled>
-                      Choose course
-                    </option>
-                    <option value="html">html</option>
-                    <option value="js">js</option>
-                    <option value="react">react</option>
-                  </select>
+                <h3>Join Our Coruse!</h3>
+                <div className="modal-form-name">
+                  <InputField
+                    placeholder="Name"
+                    name="user_name"
+                    type="text"
+                    updateForm={updateForm}
+                    className="modal-name"
+                  />
                 </div>
-                <div>
-                  <label htmlFor="user_course">course</label>
-                  <select
-                    onChange={updateForm}
-                    defaultValue="user_time"
-                    name="user_time"
-                  >
-                    <option value="user_course" disabled>
-                      Choose course
-                    </option>
-                    <option value="a">a</option>
-                    <option value="b">b</option>
-                    <option value="c">c</option>
-                  </select>
+                <div className="modal-form-email-phone">
+                  <InputField
+                    placeholder="Email"
+                    name="user_email"
+                    type="email"
+                    updateForm={updateForm}
+                    className="modal-email"
+                  />
+                  <InputField
+                    placeholder="Phone number"
+                    name="user_phone"
+                    type="text"
+                    updateForm={updateForm}
+                    className="modal-phone"
+                  />
                 </div>
+                <div className="modal-select">
+                  <div className="modal-course">
+                    <select
+                      onChange={updateForm}
+                      defaultValue="user_course"
+                      name="user_course"
+                    >
+                      <option value="user_course" disabled>
+                        Choose course
+                      </option>
+                      <option value="html">html</option>
+                      <option value="js">js</option>
+                      <option value="react">react</option>
+                    </select>
+                  </div>
+                  <div className="modal-time">
+                    <select
+                      onChange={updateForm}
+                      defaultValue="user_time"
+                      name="user_time"
+                    >
+                      <option value="user_course" disabled>
+                        Choose course
+                      </option>
+                      <option value="a">Choose Time</option>
+                      <option value="b">b</option>
+                      <option value="c">c</option>
+                    </select>
+                  </div>
+                </div>
+
                 <button type="submit">{t("register")}</button>
               </form>
             </div>
