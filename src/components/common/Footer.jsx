@@ -2,9 +2,9 @@ import React, { useState, memo } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { t } from "i18next";
-import {ReactComponent as PhoneIcon} from '../../assets/icons/phone-icon.svg'
-import {ReactComponent as MailIcon} from '../../assets/icons/mail-icon.svg'
-import {ReactComponent as LocationIcon} from '../../assets/icons/location-icon.svg'
+import { ReactComponent as PhoneIcon } from "../../assets/icons/phone-icon.svg";
+import { ReactComponent as MailIcon } from "../../assets/icons/mail-icon.svg";
+import { ReactComponent as LocationIcon } from "../../assets/icons/location-icon.svg";
 
 function Footer() {
   const scrollTop = () => {
@@ -175,7 +175,7 @@ function Footer() {
                 <h4>{t("footer.contacts")}</h4>
                 <div className="number">
                   <div className="num-icon">
-                    <PhoneIcon/>
+                    <PhoneIcon />
                   </div>
                   <div className="phone">
                     <a rel="noopener noreferrer" href="tel:37493787855">
@@ -197,7 +197,12 @@ function Footer() {
                   <div className="address-icon">
                     <LocationIcon />
                   </div>
-                  <a href="https://www.google.com/maps/place/40%C2%B010'52.0%22N+44%C2%B031'22.9%22E/@40.181118,44.523028,17z/data=!4m5!3m4!1s0x0:0xcbacf9f80d3e660e!8m2!3d40.181118!4d44.523028?hl=ru-RU" target="_blank">{t("address")}</a>
+                  <a
+                    href="https://www.google.com/maps/place/40%C2%B010'52.0%22N+44%C2%B031'22.9%22E/@40.181118,44.523028,17z/data=!4m5!3m4!1s0x0:0xcbacf9f80d3e660e!8m2!3d40.181118!4d44.523028?hl=ru-RU"
+                    target="_blank"
+                  >
+                    {t("address")}
+                  </a>
                 </div>
               </div>
             </div>

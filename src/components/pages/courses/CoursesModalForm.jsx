@@ -67,6 +67,9 @@ const CoursesModalForm = ({ open, onClose }) => {
       <div className="overlay-bg" onClick={onClose}>
         <div className="modal-overlay">
           <div className="modal-wrapper" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-bg">
+              <img src="./images/modal-bg.png" alt="modal-bg" />
+            </div>
             <div className="modal-wrapper-content">
               <div className="modal-close" onClick={onClose}>
                 <AiOutlineClose />
