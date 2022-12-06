@@ -7564,4 +7564,126 @@ only screen and (min-width: 1200px) and (max-width: 1399px) {
   border: 1px solid transparent;
 }
 
+
+.login-page,
+.sign-up-page {
+  background: #f2f2f2;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box,
+.sign-up-box {
+  width: 390px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 77px 55px 33px;
+}
+
+.login-form,
+.sign-up-form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-form span,
+.sign-up-form span {
+  font-size: 30px;
+  color: #333;
+  line-height: 1.2;
+  text-align: center;
+  padding-bottom: 26px;
+}
+
+.login-form svg {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 48px;
+}
+
+.login-field,
+.sign-up-field {
+  width: 100%;
+  border-bottom: 2px solid #adadad;
+  margin-bottom: 37px;
+}
+
+.login-field input,
+.sign-up-field input {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.2;
+  display: block;
+  width: 100%;
+  height: 45px;
+  background: 0 0;
+  padding: 0 5px;
+  outline: none;
+  border: none;
+}
+
+.login-btn,
+.sign-up-btn {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 1;
+  border-radius: 25px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.login-btn button,
+.sign-up-btn button {
+  font-size: 15px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 50px;
+  border: none;
+  background: 0 0;
+}
+
+.sign-up-btn div,
+.login-btn div {
+  position: absolute;
+  z-index: -1;
+  width: 300%;
+  height: 100%;
+  background: #a64bf4;
+  background: -webkit-linear-gradient(right, #21d4fd, #b721ff, #21d4fd, #b721ff);
+  top: 0;
+  left: -100%;
+  transition: all .4s;
+}
+
+.login-btn:hover .login-bg-btn,
+.sign-up-btn:hover .sign-up-bg-btn {
+  left: 0;
+}
+
+.sign-up-text {
+  padding-top: 115px
+}
+
+.sign-up-text span,
+.sign-up-text a {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
+
+
 /*# sourceMappingURL=style.css.map */

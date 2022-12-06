@@ -24,6 +24,8 @@ import CoursesPage from "./components/pages/courses/CoursesPage";
 // all css import
 import "./index.css";
 import SingleCourse from "./components/pages/courses/single-course/SingleCourse";
+import LoginPage from "./components/pages/admin-panel/LoginPage";
+import SignUpPage from "./components/pages/admin-panel/SignUpPage";
 
 //Default Warniing Error Hide
 console.log = console.warn = console.error = () => { };
@@ -40,19 +42,22 @@ function Root() {
     <>
       <BrowserRouter basename="/">
         <Switch>
-          <Route
+          {/* <Route
             exact
             path={`${process.env.PUBLIC_URL}/commingsoon`}
             component={CommingSoonPage}
-          />
+          /> */}
           <Route exact path="/" component={MainLayout} />
-          <Route exact path="/home2" component={SecoundLayout} />
+          <Route path={`${process.env.PUBLIC_URL}/login`} component={LoginPage} />
+          <Route path={`${process.env.PUBLIC_URL}/signup`} component={SignUpPage} />
+
+          {/* <Route exact path="/home2" component={SecoundLayout} /> */}
           <Layout>
-            <Route
+            {/* <Route
               exact
               path={`${process.env.PUBLIC_URL}/home2`}
               component={HomePage2}
-            />
+            /> */}
             <Route
               exact
               path={`${process.env.PUBLIC_URL}/about`}
@@ -78,7 +83,7 @@ function Root() {
               path={`${process.env.PUBLIC_URL}/project-details`}
               component={ProjectDetailsPage}
             />
-            <Route
+            {/* <Route
               exact
               path={`${process.env.PUBLIC_URL}/blog`}
               component={BlogPage}
@@ -92,7 +97,7 @@ function Root() {
               exact
               path={`${process.env.PUBLIC_URL}/Blog-details`}
               component={BlogDetailsPage}
-            />
+            /> */}
             <Route
               exact
               path={`${process.env.PUBLIC_URL}/error`}
@@ -132,7 +137,6 @@ function Root() {
               path={`${process.env.PUBLIC_URL}/courses/ui-ux-course`}
               component={SingleCourse}
             />
-
           </Layout>
         </Switch>
       </BrowserRouter>
