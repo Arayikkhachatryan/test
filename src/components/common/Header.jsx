@@ -126,235 +126,79 @@ function Header() {
                         </NavLink>
                       </li>
                     ))}
-                    {/* <li className="has-child active" onClick={() => dispatch({type: 'homeOne'})}>
-                    <Link to={"#"} className={state.activeMenu ==='homeOne'?'active':''}>{t("home")}</Link>
-                    <i className="bi bi-chevron-down" />
-                    <ul
-                      className={
-                        state.activeMenu ==='homeOne'
-                          ? "sub-menu d-block"
-                          : "sub-menu d-none"
-                      }
-                    >
-                      <li>
-                        <Link onClick={scrollTop} to={"/"} className={state.activeMenu ==='homeOne'?'active':''}>
-                          Home 01
-                        </Link>
-                      </li>
-                      <li>
-                        <NavLink
-                          onClick={scrollTop}
-                          to={`${process.env.PUBLIC_URL}/home2`}
-                        >
-                          Home 02
-                        </NavLink>
-                      </li>
-                    </ul>
-                  </li> */}
-                    {/* <li>
-                    <NavLink
-                      onClick={scrollTop}
-                      to={`${process.env.PUBLIC_URL}/about`}
-                    >
-                      {t("header.aboutUs")}
-                    </NavLink>
-                  </li>
-                  <li
-                    className="has-child"
-                    onClick={() => dispatch({ type: "service" })}
-                  >
-                    <NavLink
-                      onClick={scrollTop}
-                      to={`${process.env.PUBLIC_URL}/service`}
-                    >
-                      {t("header.services")}
-                    </NavLink>
-                    </li> */}
-                    {/* <i className="bi bi-chevron-down" /> */}
-                    {/* <ul
-                      className={
-                        state.activeMenu === "service"
-                          ? "sub-menu d-block"
-                          : "sub-menu d-none"
-                      }
-                    >
-                      <li>
-                        <NavLink
-                          onClick={scrollTop}
-                          to={`${process.env.PUBLIC_URL}/service`}
-                        >
-                          Service
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          onClick={scrollTop}
-                          to={`${process.env.PUBLIC_URL}/service-details`}
-                        >
-                          Service Details
-                        </NavLink>
-                      </li>
-                    </ul> */}
-                    {/* </li>
-                  <li
-                    className="has-child"
-                    onClick={() => dispatch({ type: "projects" })}
-                  >
-                    <NavLink
-                      onClick={scrollTop}
-                      to={`${process.env.PUBLIC_URL}/project`}
-                    >
-                      {t("header.projects")}
-                    </NavLink> */}
-                    {/* <i className="bi bi-chevron-down" />
-                    <ul
-                      className={
-                        state.activeMenu === "projects"
-                          ? "sub-menu d-block"
-                          : "sub-menu d-none"
-                      }
-                    >
-                      <li>
-                        <NavLink
-                          onClick={scrollTop}
-                          to={`${process.env.PUBLIC_URL}/project`}
-                        >
-                          Project
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          onClick={scrollTop}
-                          to={`${process.env.PUBLIC_URL}/project-details`}
-                        >
-                          Project Details
-                        </NavLink>
-                      </li>
-                    </ul> */}
-                    {/* </li>
-                  <li
-                    className="has-child"
-                    onClick={() => dispatch({ type: "blogs" })}
-                  >
-                    <Link to={"#"}>{t("header.courses")}</Link> */}
-                    {/* <i className="bi bi-chevron-down" />
-                    <ul
-                      className={
-                        state.activeMenu ==='blogs'
-                          ? "sub-menu d-block"
-                          : "sub-menu d-none"
-                      }
-                    >
-                      <li>
-                        <NavLink
-                          onClick={scrollTop}
-                          to={`${process.env.PUBLIC_URL}/blog`}
-                        >
-                          Blog
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          onClick={scrollTop}
-                          to={`${process.env.PUBLIC_URL}/blog-standard`}
-                        >
-                          Blog standard
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          onClick={scrollTop}
-                          to={`${process.env.PUBLIC_URL}/blog-details`}
-                        >
-                          Blog Details
-                        </NavLink>
-                      </li> */}
-                    {/* </ul> */}
-                    {/* </li> */}
-                    {/* <li className="has-child" onClick={() => dispatch({type: 'pages'})}>
-                    <Link to={"#"}>Pages</Link>
-                    <i className="bi bi-chevron-down" />
-                    <ul
-                      className={
-                        state.activeMenu ==='pages'
-                          ? "sub-menu d-block"
-                          : "sub-menu d-none"
-                      }
-                    >
-                      <li>
-                        <NavLink
-                          onClick={scrollTop}
-                          to={`${process.env.PUBLIC_URL}/commingsoon`}
-                        >
-                          Comming soon
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          onClick={scrollTop}
-                          to={`${process.env.PUBLIC_URL}/error`}
-                        >
-                          Error 404
-                        </NavLink>
-                      </li>
-                    </ul>
-                  </li> */}
-                    {/* <li>
-                    <NavLink
-                      onClick={scrollTop}
-                      to={`${process.env.PUBLIC_URL}/contact`}
-                    >
-                      {t("header.contactUs")}
-                    </NavLink>
-                </li> */}
-                    <div className="col-12 col-sm-4 col-md-3 col-lg-3 col-xl-2 text-end header-end">
-                      <div className="get-quate">
-                        <div
-                          className={
-                            !openFlag
-                              ? "selected-lng"
-                              : "selected-lng open-flag"
-                          }
-                          onClick={() => setOpenFlag((prev) => !prev)}
-                        >
-                          {languageFlags.map((selected) => (
-                            <>
-                              {i18n.language === selected.locale ? (
-                                <img
-                                  src={selected.src}
-                                  alt=""
-                                  className="flag-img"
-                                />
-                              ) : null}
-                            </>
-                          ))}
-                        </div>
-                        <div
-                          className={
-                            !openFlag ? "lng-flags" : "lng-flags open-flag"
-                          }
-                        >
+                    {sidebar ? (
+                      <div className="sidebar-lng">
+                        <div>
                           {languageFlags.map((flag) => (
                             <>
-                              {openFlag && i18n.language !== flag.locale && (
-                                <button
-                                  onClick={() => changeLanguage(flag.locale)}
-                                  className="flag-btn"
-                                  key={uuidv4()}
-                                >
-                                  <img
-                                    onClick={() => setOpenFlag((prev) => !prev)}
-                                    src={flag.src}
-                                    alt={flag.alt}
-                                    className="flag-img"
-                                  />
-                                </button>
-                              )}
+                              <button
+                                onClick={() => changeLanguage(flag.locale)}
+                                className="flag-btn"
+                                key={uuidv4()}
+                              >
+                                <img
+                                  onClick={() => setOpenFlag((prev) => !prev)}
+                                  src={flag.src}
+                                  alt={flag.alt}
+                                  className="flag-img"
+                                />
+                              </button>
                             </>
                           ))}
                         </div>
                       </div>
-                    </div>
+                    ) : (
+                      <div className="col-12 col-sm-4 col-md-3 col-lg-3 col-xl-2 text-end header-end">
+                        <div className="get-quate">
+                          <div
+                            className={
+                              !openFlag
+                                ? "selected-lng"
+                                : "selected-lng open-flag"
+                            }
+                            onClick={() => setOpenFlag((prev) => !prev)}
+                          >
+                            {languageFlags.map((selected) => (
+                              <>
+                                {i18n.language === selected.locale ? (
+                                  <img
+                                    src={selected.src}
+                                    alt=""
+                                    className="flag-img"
+                                  />
+                                ) : null}
+                              </>
+                            ))}
+                          </div>
+                          <div
+                            className={
+                              !openFlag ? "lng-flags" : "lng-flags open-flag"
+                            }
+                          >
+                            {languageFlags.map((flag) => (
+                              <>
+                                {openFlag && i18n.language !== flag.locale && (
+                                  <button
+                                    onClick={() => changeLanguage(flag.locale)}
+                                    className="flag-btn"
+                                    key={uuidv4()}
+                                  >
+                                    <img
+                                      onClick={() =>
+                                        setOpenFlag((prev) => !prev)
+                                      }
+                                      src={flag.src}
+                                      alt={flag.alt}
+                                      className="flag-img"
+                                    />
+                                  </button>
+                                )}
+                              </>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </ul>
                 </nav>
                 <div className="mobile-menu">
