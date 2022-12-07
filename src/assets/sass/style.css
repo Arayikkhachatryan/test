@@ -7684,6 +7684,45 @@ only screen and (min-width: 1200px) and (max-width: 1399px) {
   line-height: 1.5;
 }
 
+.admin-panel-wrapper{
+  display: flex;
+}
+
+aside{
+  width: 20%;
+  height: 100vh;
+  border: solid black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #1d1d41;
+}
+
+.aside-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  padding: 30px;
+  transition: ease-in-out 0.5s;
+  cursor: pointer;
+}
+
+.aside-container:focus{
+  background-color: #26264f;
+}
 
 
+
+aside div p {
+  margin-bottom: 0;
+  color: #a6a8c0;
+}
+
+aside div svg {
+  width: 32px;
+  height: 32px;
+  color: #a6a8c0;
+
+}
 /*# sourceMappingURL=style.css.map */

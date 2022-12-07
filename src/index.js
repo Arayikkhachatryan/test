@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import './i18n';
+import "./i18n";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SimpleReactLightbox from "simple-react-lightbox";
 import Layout from "./components/App";
@@ -25,10 +25,11 @@ import CoursesPage from "./components/pages/courses/CoursesPage";
 import "./index.css";
 import SingleCourse from "./components/pages/courses/single-course/SingleCourse";
 import LoginPage from "./components/pages/admin-panel/LoginPage";
-import SignUpPage from "./components/pages/admin-panel/SignUpPage";
+import AdminPanelPage from "./components/pages/admin-panel/AdminPanelPage";
+import AdminPanelAside from "./components/pages/admin-panel/admin-panel-sections/AdminPanelAside";
 
 //Default Warniing Error Hide
-console.log = console.warn = console.error = () => { };
+// console.log = console.warn = console.error = () => { };
 
 /*
 =>version : 0.1
@@ -48,9 +49,15 @@ function Root() {
             component={CommingSoonPage}
           /> */}
           <Route exact path="/" component={MainLayout} />
-          <Route path={`${process.env.PUBLIC_URL}/login`} component={LoginPage} />
-          <Route path={`${process.env.PUBLIC_URL}/signup`} component={SignUpPage} />
-
+          <Route
+            path={`${process.env.PUBLIC_URL}/login`}
+            component={LoginPage}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL}/admin-panel`}
+            component={AdminPanelPage}
+          />
+        
           {/* <Route exact path="/home2" component={SecoundLayout} /> */}
           <Layout>
             {/* <Route

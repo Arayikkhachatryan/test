@@ -131,6 +131,25 @@ export const CONFIG = {
             workplace: "CEO at BSTRACT LLC",
             course: ""
         }
+    ],
+
+    adminPanelAside:[
+        {
+            name: "Coruse Cards",
+            id: 0,
+        },
+        {
+            name: "Trainers",
+            id: 1,
+        },
+        {
+            name: "Services",
+            id: 2,
+        },
+        {
+            name: "Portfolio",
+            id: 3,
+        }
     ]
 
 
