@@ -1,12 +1,15 @@
 import React from "react";
+import Layout from "../../App";
 import Breadcrumb from "../../common/Breadcrumb";
 import ServiceDetailsWrapper from "./ServiceDetailsWrapper";
 
 function ServiceDetails() {
   return (
     <>
-      <Breadcrumb pageName="Service Details" />
-      <ServiceDetailsWrapper />
+      <Layout>
+        <Breadcrumb pageName="Service Details" />
+        <ServiceDetailsWrapper />
+      </Layout>
     </>
   );
 }

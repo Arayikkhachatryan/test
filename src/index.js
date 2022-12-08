@@ -42,11 +42,6 @@ function Root() {
     <>
       <BrowserRouter basename="/">
         <Switch>
-          {/* <Route
-            exact
-            path={`${process.env.PUBLIC_URL}/commingsoon`}
-            component={CommingSoonPage}
-          /> */}
           <Route exact path="/" component={MainLayout} />
           <Route
             exact
@@ -59,74 +54,76 @@ function Root() {
             component={AdminPanelPage}
           />
 
-          {/* <Route path={`${process.env.PUBLIC_URL}*`} component={ErrorPage} /> */}
-
+          <Route
+            path={`${process.env.PUBLIC_URL}/about`}
+            component={AboutPage}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL}/service`}
+            component={ServicesPage}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/service-details`}
+            component={ServiceDetails}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/project`}
+            component={ProjectsPage}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/project-details`}
+            component={ProjectDetailsPage}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/contact`}
+            component={ContactPage}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL}/courses`}
+            exact
+            component={CoursesPage}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL}/courses/html-css-course`}
+            component={SingleCourse}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL}/courses/js-course`}
+            component={SingleCourse}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL}/courses/react-js-course`}
+            component={SingleCourse}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL}/courses/node-js-course`}
+            component={SingleCourse}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL}/courses/qa-course`}
+            component={SingleCourse}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL}/courses/ui-ux-course`}
+            component={SingleCourse}
+          />
+          <Route path="*" component={ErrorPage} />
+          {/* <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/commingsoon`}
+            component={CommingSoonPage}
+          /> */}
           {/* <Route exact path="/home2" component={SecoundLayout} /> */}
-          <Layout>
-            {/* <Route
+          {/* <Route
               exact
               path={`${process.env.PUBLIC_URL}/home2`}
               component={HomePage2}
             /> */}
-            <Route
-              path={`${process.env.PUBLIC_URL}/about`}
-              component={AboutPage}
-            />
-            <Route
-              path={`${process.env.PUBLIC_URL}/service`}
-              component={ServicesPage}
-            />
-            <Route
-              exact
-              path={`${process.env.PUBLIC_URL}/service-details`}
-              component={ServiceDetails}
-            />
-            <Route
-              exact
-              path={`${process.env.PUBLIC_URL}/project`}
-              component={ProjectsPage}
-            />
-            <Route
-              exact
-              path={`${process.env.PUBLIC_URL}/project-details`}
-              component={ProjectDetailsPage}
-            />
-            <Route
-              exact
-              path={`${process.env.PUBLIC_URL}/contact`}
-              component={ContactPage}
-            />
-            <Route
-              path={`${process.env.PUBLIC_URL}/courses`}
-              exact
-              component={CoursesPage}
-            />
-            <Route
-              path={`${process.env.PUBLIC_URL}/courses/html-css-course`}
-              component={SingleCourse}
-            />
-            <Route
-              path={`${process.env.PUBLIC_URL}/courses/js-course`}
-              component={SingleCourse}
-            />
-            <Route
-              path={`${process.env.PUBLIC_URL}/courses/react-js-course`}
-              component={SingleCourse}
-            />
-            <Route
-              path={`${process.env.PUBLIC_URL}/courses/node-js-course`}
-              component={SingleCourse}
-            />
-            <Route
-              path={`${process.env.PUBLIC_URL}/courses/qa-course`}
-              component={SingleCourse}
-            />
-            <Route
-              path={`${process.env.PUBLIC_URL}/courses/ui-ux-course`}
-              component={SingleCourse}
-            />
-
-            {/* <Route
+          {/* <Route
               exact
               path={`${process.env.PUBLIC_URL}/blog`}
               component={BlogPage}
@@ -141,10 +138,6 @@ function Root() {
               path={`${process.env.PUBLIC_URL}/Blog-details`}
               component={BlogDetailsPage}
             /> */}
-
-            {/* <Redirect to={`${process.env.PUBLIC_URL}/404`} /> */}
-            {/* <Route path="*" component={ErrorPage} /> */}
-          </Layout>
         </Switch>
       </BrowserRouter>
     </>

@@ -5,17 +5,20 @@ import HowWeWorkArea from "./HowWeWorkArea";
 import ServicePrice from "./ServicePrice";
 import WhatWeDoArea from "./WhatWeDoArea";
 import { useTranslation } from "react-i18next";
+import Layout from "../../App";
 
 function ServicesPage() {
   const { t } = useTranslation();
 
   return (
     <>
-      <Breadcrumb pageName={t("breadCrumbs.services")} />
-      <WhatWeDoArea />
-      <HowWeWorkArea />
-      <ServicePrice />
-      <LetsTalkArea />
+      <Layout>
+        <Breadcrumb pageName={t("breadCrumbs.services")} />
+        <WhatWeDoArea />
+        <HowWeWorkArea />
+        <ServicePrice />
+        <LetsTalkArea />
+      </Layout>
     </>
   );
 }

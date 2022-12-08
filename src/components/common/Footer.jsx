@@ -5,7 +5,7 @@ import { t } from "i18next";
 import { ReactComponent as PhoneIcon } from "../../assets/icons/phone-icon.svg";
 import { ReactComponent as MailIcon } from "../../assets/icons/mail-icon.svg";
 import { ReactComponent as LocationIcon } from "../../assets/icons/location-icon.svg";
-
+import FooterBackground from "../../assets/images/footer-bg.png"
 function Footer() {
   const scrollTop = () => {
     window.scrollTo({
@@ -21,7 +21,7 @@ function Footer() {
       <footer>
         <div className="background-footer">
           <img
-            src="./images/footer-bgh.png"
+            src={FooterBackground}
             alt="footer bg"
             className="background-footer-img"
           />

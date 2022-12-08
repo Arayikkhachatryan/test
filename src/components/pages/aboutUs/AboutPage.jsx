@@ -7,27 +7,22 @@ import AboutArea from "../Home/AboutArea";
 import InsideStoryArea from "./InsideStoryArea";
 import LatesNewsArea from "./LatesNewsArea";
 import { useTranslation } from "react-i18next";
-
+import Layout from "../../App";
 
 function AboutPage() {
-  const scrollTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   const { t } = useTranslation();
-  
+
   return (
     <>
-      <Breadcrumb pageName={t("breadCrumbs.aboutUs")} />
-      <InsideStoryArea />
-      <AboutArea />
-      <TestimonialArea />
-      <WhyChooseUsArea black="black" lable="" />
-      <LatesNewsArea />
-      <LetsTalkArea />
+      <Layout>
+        <Breadcrumb pageName={t("breadCrumbs.aboutUs")} />
+        <InsideStoryArea />
+        <AboutArea />
+        <TestimonialArea />
+        <WhyChooseUsArea black="black" lable="" />
+        <LatesNewsArea />
+        <LetsTalkArea />
+      </Layout>
     </>
   );
 }
