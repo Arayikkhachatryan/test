@@ -10,25 +10,26 @@ const AdminPanelAside = ({ children, setActive, active }) => {
   return (
     <>
       <aside>
-        {CONFIG.adminPanelAside.map((item, idx) => {
-          const Icons = icons[idx];
-          return (
-            <div
-              key={idx}
-              className="aside-container"
-              onClick={() => setActive(item.id)}
-              style={{ backgroundColor: item.id === active ? "#26264f" : "" }}
-            >
-              <div>
-
-              <Icons />
-              <p>{item.name}</p>
+        <div className="aside-fixed">
+          {CONFIG.adminPanelAside.map((item, idx) => {
+            const Icons = icons[idx];
+            return (
+              <div
+                key={idx}
+                className="aside-container"
+                onClick={() => setActive(item.id)}
+                style={{ backgroundColor: item.id === active ? "#26264f" : "" }}
+              >
+                <div>
+                  <Icons />
+                  <p>{item.name}</p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </aside>
-      {children}
+      <div className="admin-panel-content">{children}</div>
     </>
   );
 };
