@@ -1,32 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./i18n";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import SimpleReactLightbox from "simple-react-lightbox";
 import Layout from "./components/App";
 import MainLayout from "./components/layout/MainLayout";
-import SecoundLayout from "./components/layout/SecoundLayout";
+// import SecoundLayout from "./components/layout/SecoundLayout";
 import AboutPage from "./components/pages/aboutUs/AboutPage";
-import BlogPage from "./components/pages/blog/BlogPage";
-import BlogDetailsPage from "./components/pages/blogDetails/BlogDetailsPage";
-import BlogStandardPage from "./components/pages/blogStandard/BlogStandardPage";
-import CommingSoonPage from "./components/pages/commingSoon/CommingSoonPage";
+// import BlogPage from "./components/pages/blog/BlogPage";
+// import BlogDetailsPage from "./components/pages/blogDetails/BlogDetailsPage";
+// import BlogStandardPage from "./components/pages/blogStandard/BlogStandardPage";
+// import CommingSoonPage from "./components/pages/commingSoon/CommingSoonPage";
 import ContactPage from "./components/pages/contact/ContactPage";
 import ErrorPage from "./components/pages/Error/ErrorPage";
-import HomePage2 from "./components/pages/Home2/HomePage2";
+// import HomePage2 from "./components/pages/Home2/HomePage2";
 import ProjectDetailsPage from "./components/pages/projectDetails/ProjectDetailsPage";
 import ProjectsPage from "./components/pages/projects/ProjectsPage";
 import ServicesPage from "./components/pages/service/Serevices";
 // import ServicesPage from "./components/pages/service/ServicesPage";
 import ServiceDetails from "./components/pages/ServiceDetails/ServiceDetails";
 import CoursesPage from "./components/pages/courses/CoursesPage";
-
-// all css import
-import "./index.css";
 import SingleCourse from "./components/pages/courses/single-course/SingleCourse";
 import LoginPage from "./components/pages/admin-panel/LoginPage";
 import AdminPanelPage from "./components/pages/admin-panel/AdminPanelPage";
-import AdminPanelAside from "./components/pages/admin-panel/admin-panel-sections/AdminPanelAside";
+
+// all css import
+import "./index.css";
 
 //Default Warniing Error Hide
 // console.log = console.warn = console.error = () => { };
@@ -50,14 +49,18 @@ function Root() {
           /> */}
           <Route exact path="/" component={MainLayout} />
           <Route
+            exact
             path={`${process.env.PUBLIC_URL}/login`}
             component={LoginPage}
           />
           <Route
+            exact
             path={`${process.env.PUBLIC_URL}/admin-panel`}
             component={AdminPanelPage}
           />
-        
+
+          {/* <Route path={`${process.env.PUBLIC_URL}*`} component={ErrorPage} /> */}
+
           {/* <Route exact path="/home2" component={SecoundLayout} /> */}
           <Layout>
             {/* <Route
@@ -66,12 +69,10 @@ function Root() {
               component={HomePage2}
             /> */}
             <Route
-              exact
               path={`${process.env.PUBLIC_URL}/about`}
               component={AboutPage}
             />
             <Route
-              exact
               path={`${process.env.PUBLIC_URL}/service`}
               component={ServicesPage}
             />
@@ -89,26 +90,6 @@ function Root() {
               exact
               path={`${process.env.PUBLIC_URL}/project-details`}
               component={ProjectDetailsPage}
-            />
-            {/* <Route
-              exact
-              path={`${process.env.PUBLIC_URL}/blog`}
-              component={BlogPage}
-            />
-            <Route
-              exact
-              path={`${process.env.PUBLIC_URL}/Blog-standard`}
-              component={BlogStandardPage}
-            />
-            <Route
-              exact
-              path={`${process.env.PUBLIC_URL}/Blog-details`}
-              component={BlogDetailsPage}
-            /> */}
-            <Route
-              exact
-              path={`${process.env.PUBLIC_URL}/error`}
-              component={ErrorPage}
             />
             <Route
               exact
@@ -144,6 +125,25 @@ function Root() {
               path={`${process.env.PUBLIC_URL}/courses/ui-ux-course`}
               component={SingleCourse}
             />
+
+            {/* <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/blog`}
+              component={BlogPage}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/Blog-standard`}
+              component={BlogStandardPage}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/Blog-details`}
+              component={BlogDetailsPage}
+            /> */}
+
+            {/* <Redirect to={`${process.env.PUBLIC_URL}/404`} /> */}
+            {/* <Route path="*" component={ErrorPage} /> */}
           </Layout>
         </Switch>
       </BrowserRouter>

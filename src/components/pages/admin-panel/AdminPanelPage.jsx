@@ -17,7 +17,7 @@ const AdminPanelPage = () => {
   ];
   return (
     <section className="admin-panel-wrapper">
-      <AdminPanelAside setActive={setActive}>
+      <AdminPanelAside setActive={setActive} active={active}>
          {CONFIG.adminPanelAside.map((item,idx) => {
           const Component = adminPanelComponents[idx];
           if (item.id === active) return <Component key={idx} />;

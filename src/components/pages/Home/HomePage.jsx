@@ -25,6 +25,7 @@ function HomePage() {
           autoPlay={true}
           muted={true}
           loop={true}
+          playsinline
           preload="auto"
         >
           <source src={FirstVideo} type="video/mp4" />

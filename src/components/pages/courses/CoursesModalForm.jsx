@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import InputField from "../../common/InputField";
 import emailjs from "emailjs-com";
-
+import ModalBg from "../../../assets/images/modal-bg.png"
 const CoursesModalForm = ({ open, onClose }) => {
   const { t } = useTranslation();
   const [values, setValues] = useState({
@@ -68,7 +68,7 @@ const CoursesModalForm = ({ open, onClose }) => {
         <div className="modal-overlay">
           <div className="modal-wrapper" onClick={(e) => e.stopPropagation()}>
             <div className="modal-bg">
-              <img src="./images/modal-bg.png" alt="modal-bg" />
+              <img src={ModalBg} alt="modal-bg" />
             </div>
             <div className="modal-wrapper-content">
               <div className="modal-close" onClick={onClose}>

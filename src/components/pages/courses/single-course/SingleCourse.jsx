@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import data from "../../../data/Data";
 import CoursesModalForm from "../CoursesModalForm";
 import AllCoursesSlider from "../AllCoursesSlider";
 import { useRouteMatch } from "react-router-dom";
