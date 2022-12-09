@@ -197,78 +197,76 @@ video {
 
 /* Preloader css */
 .sk-cube-grid {
-  width: 80px;
-  height: 80px;
-  margin: 100px auto;
+	width: 200px;
+	height: 200px; 
+  
 }
 
 .sk-cube-grid .sk-cube {
-  width: 33%;
-  height: 33%;
-  background-color: #d90a2c;
-  float: left;
-  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
-  animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+	width: 33%; 
+	height: 33%; 
+	background-color: #ff96ca; 
+	float: left; 
+	-webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
+	animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
 }
-
 .sk-cube-grid .sk-cube1 {
-  -webkit-animation-delay: 0.2s;
-  animation-delay: 0.2s;
-}
-
+	-webkit-animation-delay: 0.2s; 
+	animation-delay: 0.2s; }
 .sk-cube-grid .sk-cube2 {
-  -webkit-animation-delay: 0.3s;
-  animation-delay: 0.3s;
+	-webkit-animation-delay: 0.3s; 
+	animation-delay: 0.3s; 
 }
-
 .sk-cube-grid .sk-cube3 {
-  -webkit-animation-delay: 0.4s;
-  animation-delay: 0.4s;
+	-webkit-animation-delay: 0.4s; 
+	animation-delay: 0.4s; 
 }
-
 .sk-cube-grid .sk-cube4 {
-  -webkit-animation-delay: 0.1s;
-  animation-delay: 0.1s;
+	-webkit-animation-delay: 0.1s; 
+	animation-delay: 0.1s; 
 }
-
 .sk-cube-grid .sk-cube5 {
-  -webkit-animation-delay: 0.2s;
-  animation-delay: 0.2s;
+	-webkit-animation-delay: 0.2s; 
+	animation-delay: 0.2s; 
 }
-
 .sk-cube-grid .sk-cube6 {
-  -webkit-animation-delay: 0.3s;
-  animation-delay: 0.3s;
+	-webkit-animation-delay: 0.3s; 
+	animation-delay: 0.3s; 
 }
-
 .sk-cube-grid .sk-cube7 {
-  -webkit-animation-delay: 0s;
-  animation-delay: 0s;
+	-webkit-animation-delay: 0s; 
+	animation-delay: 0s; 
 }
-
 .sk-cube-grid .sk-cube8 {
-  -webkit-animation-delay: 0.1s;
-  animation-delay: 0.1s;
+	-webkit-animation-delay: 0.1s; 
+	animation-delay: 0.1s; 
 }
-
 .sk-cube-grid .sk-cube9 {
-  -webkit-animation-delay: 0.2s;
-  animation-delay: 0.2s;
+	-webkit-animation-delay: 0.2s; 
+	animation-delay: 0.2s; 
 }
 
 @-webkit-keyframes sk-cubeGridScaleDelay {
-  0%,
-  70%,
-  100% {
-    -webkit-transform: scale3D(1, 1, 1);
-    transform: scale3D(1, 1, 1);
-  }
-
-  35% {
-    -webkit-transform: scale3D(0, 0, 1);
-    transform: scale3D(0, 0, 1);
-  }
+	0%, 70%, 100% {
+		-webkit-transform: scale3D(1, 1, 1); 
+		transform: scale3D(1, 1, 1); 
+	} 35% {
+		-webkit-transform: scale3D(0, 0, 1); 
+		transform: scale3D(0, 0, 1); 
+	}
 }
+
+@keyframes sk-cubeGridScaleDelay {
+	0%, 70%, 100% {
+		-webkit-transform: scale3D(1, 1, 1); 
+		transform: scale3D(1, 1, 1);
+	} 35% {
+		-webkit-transform: scale3D(0, 0, 1); 
+		transform: scale3D(0, 0, 1); 
+	}
+}
+
+		
 
 /* customize preloader */
 @-webkit-keyframes hover {
@@ -336,10 +334,10 @@ video {
 }
 
 .preloader_area_wrap .sk-cube-grid {
-  left: 50%;
-  margin: -20px 0 0 -20px;
   position: absolute;
+  left: 50%;
   top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .sticky {
@@ -7728,10 +7726,6 @@ aside {
   background-color: #1d1d41;
 }
 
-.aside-fixed {
-  position: fixed;
-  width: -webkit-fill-available;
-}
 
 .aside-container {
   display: flex;
@@ -7760,6 +7754,10 @@ aside div svg {
   color: #a6a8c0;
 }
 
+.course-img-selection{
+  padding-bottom: 60px;
+}
+
 .admin-panel-content {
   width: 100%;
   display: flex;
@@ -7773,8 +7771,16 @@ aside div svg {
   resize: none;
 }
 
+.admin-panel-course form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .admin-panel-course-card,
-.admin-panel-course-info {
+.admin-panel-course-info,
+.admin-panel-trainers {
   padding: 80px;
 }
+
 /*# sourceMappingURL=style.css.map */
