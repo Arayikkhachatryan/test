@@ -1,28 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./i18n";
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SimpleReactLightbox from "simple-react-lightbox";
-import Layout from "./components/App";
 import MainLayout from "./components/layout/MainLayout";
-// import SecoundLayout from "./components/layout/SecoundLayout";
 import AboutPage from "./components/pages/aboutUs/AboutPage";
-// import BlogPage from "./components/pages/blog/BlogPage";
-// import BlogDetailsPage from "./components/pages/blogDetails/BlogDetailsPage";
-// import BlogStandardPage from "./components/pages/blogStandard/BlogStandardPage";
-// import CommingSoonPage from "./components/pages/commingSoon/CommingSoonPage";
 import ContactPage from "./components/pages/contact/ContactPage";
 import ErrorPage from "./components/pages/Error/ErrorPage";
-// import HomePage2 from "./components/pages/Home2/HomePage2";
 import ProjectDetailsPage from "./components/pages/projectDetails/ProjectDetailsPage";
 import ProjectsPage from "./components/pages/projects/ProjectsPage";
 import ServicesPage from "./components/pages/service/Serevices";
-// import ServicesPage from "./components/pages/service/ServicesPage";
 import ServiceDetails from "./components/pages/ServiceDetails/ServiceDetails";
 import CoursesPage from "./components/pages/courses/CoursesPage";
 import SingleCourse from "./components/pages/courses/single-course/SingleCourse";
 import LoginPage from "./components/pages/admin-panel/LoginPage";
 import AdminPanelPage from "./components/pages/admin-panel/AdminPanelPage";
+// import Layout from "./components/App";
+// import SecoundLayout from "./components/layout/SecoundLayout";
+// import BlogPage from "./components/pages/blog/BlogPage";
+// import BlogDetailsPage from "./components/pages/blogDetails/BlogDetailsPage";
+// import BlogStandardPage from "./components/pages/blogStandard/BlogStandardPage";
+// import CommingSoonPage from "./components/pages/commingSoon/CommingSoonPage";
+// import HomePage2 from "./components/pages/Home2/HomePage2";
+// import ServicesPage from "./components/pages/service/ServicesPage";
 
 // all css import
 import "./index.css";
