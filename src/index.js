@@ -13,8 +13,8 @@ import ServicesPage from "./components/pages/service/Serevices";
 import ServiceDetails from "./components/pages/ServiceDetails/ServiceDetails";
 import CoursesPage from "./components/pages/courses/CoursesPage";
 import SingleCourse from "./components/pages/courses/single-course/SingleCourse";
-import LoginPage from "./components/pages/admin-panel/LoginPage";
 import AdminPanelPage from "./components/pages/admin-panel/AdminPanelPage";
+// import LoginPage from "./components/pages/admin-panel/LoginPage";
 // import Layout from "./components/App";
 // import SecoundLayout from "./components/layout/SecoundLayout";
 // import BlogPage from "./components/pages/blog/BlogPage";
@@ -23,6 +23,8 @@ import AdminPanelPage from "./components/pages/admin-panel/AdminPanelPage";
 // import CommingSoonPage from "./components/pages/commingSoon/CommingSoonPage";
 // import HomePage2 from "./components/pages/Home2/HomePage2";
 // import ServicesPage from "./components/pages/service/ServicesPage";
+
+import { AuthProvider } from "./context/AuthProvider";
 
 // all css import
 import "./index.css";
@@ -43,11 +45,11 @@ function Root() {
       <BrowserRouter basename="/">
         <Switch>
           <Route exact path="/" component={MainLayout} />
-          <Route
+          {/* <Route
             exact
             path={`${process.env.PUBLIC_URL}/login`}
             component={LoginPage}
-          />
+          /> */}
           <Route
             exact
             path={`${process.env.PUBLIC_URL}/admin-panel`}
@@ -149,7 +151,9 @@ export default Root;
 ReactDOM.render(
   <React.StrictMode>
     <SimpleReactLightbox>
-      <Root />
+      <AuthProvider>
+        <Root />
+      </AuthProvider>
     </SimpleReactLightbox>
   </React.StrictMode>,
   document.getElementById("root")

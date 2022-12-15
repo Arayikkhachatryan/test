@@ -1,27 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { Link, Redirect } from "react-router-dom";
-import InputField from "../../common/InputField";
-import AdminPanelPage from "./AdminPanelPage";
 import axios from "../../../api/axios";
-import { useEffect } from "react";
+import AuthContext from "../../../context/AuthProvider";
 const LOGIN_URL = "/login";
 
 const LoginPage = () => {
+  const { setAuth } = useContext(AuthContext);
   const [email, setEmail] = useState("");
+  // const [succes, setSucces] = useState(false);
   const [password, setPassword] = useState("");
-  const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
-
-  useEffect(() => {
-    setErrMsg("");
-  }, [email, password]);
-
-  // useEffect(() => {
-  //   // console.log("email", email);
-  //   // console.log("password", password);
-  //   console.log("errMsg", errMsg);
-  // });
 
   const loginSubmit = async (e) => {
     e.preventDefault();
@@ -29,27 +16,14 @@ const LoginPage = () => {
     await axios
       .post(LOGIN_URL, JSON.stringify({ email, password }))
       .then((res) => {
-        console.log(res.data);
+        const token = res?.data?.token;
+
+        setAuth({ token });
+        console.log(res.data.token);
       })
       .catch((err) => {
         console.log(err);
       });
-    // });
-    //   try {
-    //     const response = await axios.post(LOGIN_URL, {
-    //       email: email,
-    //       password: password,
-    //     });
-    //     // console.log(JSON.stringify(response?.data));
-    //     console.log(response.data);
-    //     setEmail("");
-    //     setPassword("");
-    //     setSuccess(true);
-    //   } catch (err) {
-    //     if (!err?.response) {
-    //       setErrMsg("Serveric cha Response");
-    //     }
-    //   }
   };
 
   return (
@@ -58,48 +32,34 @@ const LoginPage = () => {
         <form className="login-form" onSubmit={loginSubmit}>
           <span>Welcome</span>
           <FaUserCircle />
-          <input
-            type="email"
-            placeholder="Email"
-            className="login-field"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {/* <InputField /> */}
-          <input
-            type="password"
-            placeholder="Password"
-            className="login-field"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {/* <InputField /> */}
+          <div className="login-field">
+            <input
+              type="email"
+              placeholder="Email"
+              className="login-field"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <div className="login-field">
+            <input
+              type="password"
+              placeholder="Password"
+              className="login-field"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
           <div className="login-btn">
             <div className="login-bg-btn"></div>
             <button>Login</button>
           </div>
-          {/* <div className="sign-up-text">
-            <span>Don’t have an account?</span>
-            <Link to={"/signup"}>Sign Up</Link>
-          </div> */}
         </form>
       </div>
-
-      {/* <div className="preloader_area_wrap">
-        <div className="sk-cube-grid">
-          <div className="sk-cube sk-cube1"></div>
-          <div className="sk-cube sk-cube2"></div>
-          <div className="sk-cube sk-cube3"></div>
-          <div className="sk-cube sk-cube4"></div>
-          <div className="sk-cube sk-cube5"></div>
-          <div className="sk-cube sk-cube6"></div>
-          <div className="sk-cube sk-cube7"></div>
-          <div className="sk-cube sk-cube8"></div>
-          <div className="sk-cube sk-cube9"></div>
-        </div>
-      </div> */}
     </div>
   );
 };

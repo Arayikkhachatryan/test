@@ -7,8 +7,15 @@ const AdminPanelTrainers = () => {
       <form action="">
         <h1>Create Course Card</h1>
         <div className="card-img-selection">
-          <p>Trainer image</p>
-          <InputField type="file" accept=".svg" />
+          <div className="file-input">
+            <p>Trainer image</p>
+            <InputField type="file" accept=".svg" />
+          </div>
+
+          <div className="login-btn">
+            <div className="login-bg-btn"></div>
+            <button>Add image</button>
+          </div>
         </div>
         <div className="card-name">
           <InputField placeholder="Trainer Name" className="login-field" />
