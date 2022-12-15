@@ -7,7 +7,6 @@ const LOGIN_URL = "/login";
 const LoginPage = () => {
   const { setAuth } = useContext(AuthContext);
   const [email, setEmail] = useState("");
-  // const [succes, setSucces] = useState(false);
   const [password, setPassword] = useState("");
 
   const loginSubmit = async (e) => {
@@ -17,9 +16,9 @@ const LoginPage = () => {
       .post(LOGIN_URL, JSON.stringify({ email, password }))
       .then((res) => {
         const token = res?.data?.token;
-
+        localStorage.setItem("accessToken", token);
         setAuth({ token });
-        console.log(res.data.token);
+        // console.log(res.data.token);
       })
       .catch((err) => {
         console.log(err);
