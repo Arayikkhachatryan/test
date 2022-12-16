@@ -1,7 +1,22 @@
 import React from "react";
+import { useState } from "react";
+import axios from "../../../../api/axios";
 import InputField from "../../../common/InputField";
-
+import AdminPanelCardTable from "./AdminPanelCardTable";
+const ADD_CARD = "/cards/upload/:id";
 const AdminPanelCoruseCards = () => {
+  const [selectedImg, setSelectedImg] = useState(null);
+  const addCardsImg = async (e) => {
+    e.preventDefault();
+
+    await axios
+      .post(ADD_CARD)
+      .then((res) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="admin-panel-course">
       <form action="">
@@ -10,7 +25,7 @@ const AdminPanelCoruseCards = () => {
           <div className="card-img-selection">
             <div className="file-input">
               <p>Course Card image</p>
-              <InputField type="file" accept=".svg" />
+              <InputField type="file" accept=".svg" onChange={addCardsImg} />
             </div>
 
             <div className="login-btn">
@@ -29,10 +44,10 @@ const AdminPanelCoruseCards = () => {
               rows="10"
               className="admin-panel-textarea"
               placeholder="Course Card description..."
-            ></textarea>
+            />
           </div>
         </div>
-        <div className="admin-panel-course-info">
+        {/* <div className="admin-panel-course-info">
           <h1>Create Course Information</h1>
           <div className="card-img-selection">
             <div className="file-input">
@@ -61,8 +76,9 @@ const AdminPanelCoruseCards = () => {
               <button>Create Card and Course</button>
             </div>
           </div>
-        </div>
+        </div> */}
       </form>
+      <AdminPanelCardTable />
     </div>
   );
 };

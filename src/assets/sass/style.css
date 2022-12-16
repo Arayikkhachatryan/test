@@ -7778,8 +7778,11 @@ aside div svg {
 }
 
 .admin-panel-course form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr); */
 }
 
 @media (max-width: 1024px) {
@@ -7787,10 +7790,10 @@ aside div svg {
     grid-template-columns: 1fr;
   }
 
-  .admin-panel-course-card,
+  /* .admin-panel-course-card,
   .admin-panel-course-info {
     width: 70%;
-  }
+  } */
 }
 
 .admin-panel-course-card,
@@ -7808,5 +7811,69 @@ aside div svg {
 .file-input {
   width: 75%;
 }
+
+.column1 {
+  width: 260px;
+  padding-left: 40px;
+}
+
+.column2 {
+  width: 160px;
+}
+
+.column3 {
+  width: 245px;
+}
+
+.column4 {
+  width: 450px;
+}
+
+.column5 {
+  width: 170px;
+}
+
+
+.cards-table-wrapper table {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.cards-table-wrapper table thead tr {
+  height: 60px;
+  background: #36304a;
+}
+
+.cards-table-wrapper table thead tr th {
+  color: #fff;
+}
+
+.cards-table-wrapper table tbody tr td {
+  padding: 20px;
+}
+
+.cards-table-wrapper table tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+.cards-table-wrapper table tbody tr td:first-child {
+  padding-left: 40px;
+}
+
+.cards-table-wrapper table tbody tr td:last-child {
+  text-align: center;
+}
+
+.cards-table-wrapper table tbody tr td svg {
+  width: 24px;
+  height: 24px;
+}
+
 
 /*# sourceMappingURL=style.css.map */

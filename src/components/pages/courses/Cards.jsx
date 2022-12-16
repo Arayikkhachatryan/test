@@ -14,6 +14,7 @@ const Cards = ({ open, setOpen }) => {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const { t } = useTranslation();
   const icons = [JsIcon, ReactIcon, NodeJsIcon, QaIcon, UiUxIcon];
+
   return (
     <section className="courses-cards">
       <div className="courses-cards-wrapper">
