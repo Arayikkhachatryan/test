@@ -5,7 +5,7 @@ const AdminPanelTrainers = () => {
   return (
     <div className="admin-panel-trainers">
       <form action="">
-        <h1>Create Course Card</h1>
+        <h1>Add Trainer</h1>
         <div className="card-img-selection">
           <div className="file-input">
             <p>Trainer image</p>
