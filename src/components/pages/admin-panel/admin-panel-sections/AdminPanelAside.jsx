@@ -7,9 +7,11 @@ import { MdOutlineWork } from "react-icons/md";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsJournalBookmarkFill } from "react-icons/bs";
+import { BiLogOut } from "react-icons/bi";
 
 const AdminPanelAside = ({ children, setActive, active }) => {
   const [isOpen, setIsOpen] = useState(false);
+
   const icons = [
     BsCardText,
     BsJournalBookmarkFill,
@@ -17,6 +19,12 @@ const AdminPanelAside = ({ children, setActive, active }) => {
     MdMiscellaneousServices,
     MdOutlineWork,
   ];
+
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.reload(true);
+  };
+
   return (
     <>
       <aside style={{ width: isOpen ? "400px" : "120px" }}>
@@ -42,6 +50,19 @@ const AdminPanelAside = ({ children, setActive, active }) => {
               </div>
             );
           })}
+
+          <div className="aside-logout" onClick={handleLogout}>
+            <div>
+              <BiLogOut />
+              <p
+                style={{
+                  display: isOpen ? "block" : "none",
+                }}
+              >
+                LogOut
+              </p>
+            </div>
+          </div>
         </div>
       </aside>
       <div className="admin-panel-content">{children}</div>
