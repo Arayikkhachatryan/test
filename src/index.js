@@ -24,7 +24,6 @@ import AdminPanelPage from "./components/pages/admin-panel/AdminPanelPage";
 // import HomePage2 from "./components/pages/Home2/HomePage2";
 // import ServicesPage from "./components/pages/service/ServicesPage";
 
-import { AuthProvider } from "./context/AuthProvider";
 
 // all css import
 import "./index.css";
@@ -151,9 +150,9 @@ export default Root;
 ReactDOM.render(
   <React.StrictMode>
     <SimpleReactLightbox>
-      <AuthProvider>
-        <Root />
-      </AuthProvider>
+
+      <Root />
+
     </SimpleReactLightbox>
   </React.StrictMode>,
   document.getElementById("root")

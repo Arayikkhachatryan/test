@@ -8,8 +8,9 @@ import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsJournalBookmarkFill } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
+import axios from "../../../../api/axios";
 
-const AdminPanelAside = ({ children, setActive, active }) => {
+const AdminPanelAside = ({ children, setActive, active, handleGetCard }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const icons = [
@@ -41,7 +42,7 @@ const AdminPanelAside = ({ children, setActive, active }) => {
                   backgroundColor: item.id === active ? "#26264f" : "",
                 }}
               >
-                <div>
+                <div onClick={handleGetCard}>
                   <Icons />
                   <p style={{ display: isOpen ? "block" : "none" }}>
                     {item.name}

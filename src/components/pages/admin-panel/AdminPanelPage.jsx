@@ -1,20 +1,10 @@
-import React, { useContext } from "react";
-import AuthContext from "../../../context/AuthProvider";
+import React from "react";
+
 import AdminPanel from "./AdminPanel";
 import LoginPage from "./LoginPage";
-
 const AdminPanelPage = () => {
-  const { auth } = useContext(AuthContext);
-
-  return (
-    <>
-      {localStorage.getItem("accessToken") && auth ? (
-        <AdminPanel />
-      ) : (
-        <LoginPage />
-      )}
-    </>
-  );
+  let token = localStorage.getItem("accessToken");
+  return <>{token ? <AdminPanel /> : <LoginPage />}</>;
 };
 
 export default AdminPanelPage;

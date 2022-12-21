@@ -1,11 +1,9 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import axios from "../../../api/axios";
-import AuthContext from "../../../context/AuthProvider";
 const LOGIN_URL = "/login";
 
 const LoginPage = () => {
-  const { setAuth } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
@@ -23,7 +21,6 @@ const LoginPage = () => {
       localStorage.setItem("accessToken", token);
       setEmail("");
       setPassword("");
-      setAuth({ token });
     } catch (err) {
       if (err?.res) {
         setErrMsg("No Server Response");
