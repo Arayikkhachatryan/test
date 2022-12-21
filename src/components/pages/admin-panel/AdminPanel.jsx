@@ -10,7 +10,6 @@ import AdminPanelTrainers from "./admin-panel-sections/AdminPanelTrainers";
 
 const AdminPanel = () => {
   const [active, setActive] = useState();
-  // const [getCards, setGetCards] = useState({});
 
   const adminPanelComponents = [
     AdminPanelCoruseCards,

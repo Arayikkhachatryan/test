@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import axios from "../../../../api/axios";
 import { CONFIG } from "../../../../config";
 import { BsCardText } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
@@ -8,11 +9,10 @@ import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsJournalBookmarkFill } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
-import axios from "../../../../api/axios";
+import { DataContext } from "../../../../context/DataContext";
 
-const AdminPanelAside = ({ children, setActive, active, handleGetCard }) => {
+const AdminPanelAside = ({ children, setActive, active }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const icons = [
     BsCardText,
     BsJournalBookmarkFill,
@@ -20,10 +20,22 @@ const AdminPanelAside = ({ children, setActive, active, handleGetCard }) => {
     MdMiscellaneousServices,
     MdOutlineWork,
   ];
+  const { setGetCards, setIsLoading } = useContext(DataContext);
 
   const handleLogout = () => {
     localStorage.clear();
     window.location.reload(true);
+  };
+
+  const handleGetCard = async () => {
+    try {
+      const res = await axios.get("/cards");
+      setGetCards(res.data);
+      setIsLoading(true)
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -33,23 +45,49 @@ const AdminPanelAside = ({ children, setActive, active, handleGetCard }) => {
           <GiHamburgerMenu onClick={() => setIsOpen((prev) => !prev)} />
           {CONFIG.adminPanelAside.map((item, idx) => {
             const Icons = icons[idx];
-            return (
-              <div
-                key={idx}
-                className="aside-container"
-                onClick={() => setActive(item.id)}
-                style={{
-                  backgroundColor: item.id === active ? "#26264f" : "",
-                }}
-              >
-                <div onClick={handleGetCard}>
-                  <Icons />
-                  <p style={{ display: isOpen ? "block" : "none" }}>
-                    {item.name}
-                  </p>
+
+            if (idx === 0)
+              return (
+                <div
+                  key={idx}
+                  className="aside-container"
+                  onClick={() => {
+                    handleGetCard()
+                    setActive(item.id);
+                  }}
+                  style={{
+                    backgroundColor: item.id === active ? "#26264f" : "",
+                  }}
+                >
+                  <div onClick={handleGetCard}>
+                    <Icons />
+                    <p style={{ display: isOpen ? "block" : "none" }}>
+                      {item.name}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            );
+              );
+            else
+              return (
+                <div
+                  key={idx}
+                  className="aside-container"
+                  onClick={() => {
+                    console.log(idx);
+                    setActive(item.id);
+                  }}
+                  style={{
+                    backgroundColor: item.id === active ? "#26264f" : "",
+                  }}
+                >
+                  <div >
+                    <Icons />
+                    <p style={{ display: isOpen ? "block" : "none" }}>
+                      {item.name}
+                    </p>
+                  </div>
+                </div>
+              );
           })}
 
           <div className="aside-logout" onClick={handleLogout}>

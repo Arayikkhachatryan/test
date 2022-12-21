@@ -1,14 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import axios from "../../../../api/axios";
 import AdminPanelCardTable from "./AdminPanelCardTable";
+import { DataContext } from "../../../../context/DataContext";
+import Loader from "../../../common/Loader";
 const ADD_CARD = "/cards/upload/:1";
 
-const AdminPanelCoruseCards = ({ getCards }) => {
+const AdminPanelCoruseCards = () => {
   const [file, setFile] = useState("");
   const [cardInfo, setCardInfo] = useState({
     card_name: "",
     card_description: "",
   });
+  const { isLoading } = useContext(DataContext);
 
   const filePicer = useRef(null);
 
@@ -38,10 +41,6 @@ const AdminPanelCoruseCards = ({ getCards }) => {
     console.log(formData);
   };
 
-  useEffect(() => {
-    console.log(getCards);
-  }, [getCards]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -55,64 +54,75 @@ const AdminPanelCoruseCards = ({ getCards }) => {
 
   return (
     <div className="admin-panel-course">
-      <form onSubmit={handleSubmit}>
-        <div className="admin-panel-course-card">
-          <h1>Add Course Card</h1>
-          <div className="card-img-selection">
-            <div className="file-input">
-              <p>Course Card image</p>
-              <button onClick={handleClick}>file</button>
-              <input
-                className="hidden"
-                ref={filePicer}
-                type="file"
-                name="image"
-                onChange={handleChange}
-              />
+      {!isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <form onSubmit={handleSubmit}>
+            <div className="admin-panel-course-card">
+              <h1>Add Course Card</h1>
+              <div className="card-img-selection">
+                <div className="file-input">
+                  <p>Course Card image</p>
+                  <button onClick={handleClick}>file</button>
+                  <input
+                    className="hidden"
+                    ref={filePicer}
+                    type="file"
+                    name="image"
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="card-submit">
+                  <div className="login-btn">
+                    <div className="login-bg-btn"></div>
+                    <button onClick={handleUpload}>
+                      Create Card and Course
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="card-name">
+                <div className="login-field">
+                  <input
+                    type="text"
+                    placeholder="Card Name"
+                    className="login-field"
+                    name="card_name"
+                    value={cardInfo.card_name}
+                    onChange={(e) =>
+                      setCardInfo({ ...cardInfo, card_name: e.target.value })
+                    }
+                  />
+                </div>
+              </div>
+              <div className="card-description">
+                <textarea
+                  name="card_description"
+                  cols="50"
+                  rows="10"
+                  className="admin-panel-textarea"
+                  placeholder="Course Card description..."
+                  value={cardInfo.card_description}
+                  onChange={(e) =>
+                    setCardInfo({
+                      ...cardInfo,
+                      card_description: e.target.value,
+                    })
+                  }
+                />
+              </div>
             </div>
             <div className="card-submit">
               <div className="login-btn">
                 <div className="login-bg-btn"></div>
-                <button onClick={handleUpload}>Create Card and Course</button>
+                <button>Create Card and Course</button>
               </div>
             </div>
-          </div>
-          <div className="card-name">
-            <div className="login-field">
-              <input
-                type="text"
-                placeholder="Card Name"
-                className="login-field"
-                name="card_name"
-                value={cardInfo.card_name}
-                onChange={(e) =>
-                  setCardInfo({ ...cardInfo, card_name: e.target.value })
-                }
-              />
-            </div>
-          </div>
-          <div className="card-description">
-            <textarea
-              name="card_description"
-              cols="50"
-              rows="10"
-              className="admin-panel-textarea"
-              placeholder="Course Card description..."
-              value={cardInfo.card_description}
-              onChange={(e) =>
-                setCardInfo({ ...cardInfo, card_description: e.target.value })
-              }
-            />
-          </div>
-        </div>
-        <div className="card-submit">
-          <div className="login-btn">
-            <div className="login-bg-btn"></div>
-            <button>Create Card and Course</button>
-          </div>
-        </div>
-      </form>
-      <AdminPanelCardTable />
+          </form>
+          <AdminPanelCardTable />
+        </>
+      )}
     </div>
   );
 };

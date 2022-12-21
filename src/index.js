@@ -24,9 +24,9 @@ import AdminPanelPage from "./components/pages/admin-panel/AdminPanelPage";
 // import HomePage2 from "./components/pages/Home2/HomePage2";
 // import ServicesPage from "./components/pages/service/ServicesPage";
 
-
 // all css import
 import "./index.css";
+import { DataProvider } from "./context/DataContext";
 
 //Default Warniing Error Hide
 // console.log = console.warn = console.error = () => { };
@@ -150,9 +150,9 @@ export default Root;
 ReactDOM.render(
   <React.StrictMode>
     <SimpleReactLightbox>
-
-      <Root />
-
+      <DataProvider>
+        <Root />
+      </DataProvider>
     </SimpleReactLightbox>
   </React.StrictMode>,
   document.getElementById("root")
