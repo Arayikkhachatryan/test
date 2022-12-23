@@ -44,17 +44,11 @@ function Root() {
       <BrowserRouter basename="/">
         <Switch>
           <Route exact path="/" component={MainLayout} />
-          {/* <Route
-            exact
-            path={`${process.env.PUBLIC_URL}/login`}
-            component={LoginPage}
-          /> */}
           <Route
             exact
             path={`${process.env.PUBLIC_URL}/admin-panel`}
             component={AdminPanelPage}
           />
-
           <Route
             path={`${process.env.PUBLIC_URL}/about`}
             component={AboutPage}

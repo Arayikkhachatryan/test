@@ -4,19 +4,35 @@ import { AiFillDelete } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
 import { DataContext } from "../../../../context/DataContext";
 import { useEffect } from "react";
-const AdminPanelCardTable = () => {
+
+const AdminPanelCardTable = ({ setCardInfo }) => {
   const [isEdit, setIsEdit] = useState(false);
-  const [cardName, setCardName] = useState("");
-  const [cardDesc, setCardDesc] = useState("");
+  // const [cardData, setCardData] = useState({
+  //   card_name: "",
+  //   card_description: ""
+  // });
   const { getCards } = useContext(DataContext);
 
-  const handleEdit = () => {
+  const handleEdit = (card) => {
     setIsEdit((prev) => !prev);
+    setCardInfo((prev) => {
+      return {
+        card_name:card.card_name,
+        card_description: card.card_description,
+        card_id: card._id
+      };
+    });
+    window.scrollTo({top:0, behavior:"smooth"})
+    console.log(card);
   };
 
-  useEffect(() => {
-    console.log(getCards);
-  }, []);
+  // useEffect(() => {
+  //   console.log(cardData);
+  // },[cardData]);
+
+  // useEffect(() => {
+  //   console.log(getCards);
+  // }, []);
 
   return (
     <div className="cards-table-wrapper">
@@ -31,33 +47,26 @@ const AdminPanelCardTable = () => {
           </tr>
         </thead>
         <tbody>
-          {getCards.map((el,idx) => (
+          {getCards.map((el, idx) => (
             <tr key={idx}>
               <td>{el._id}</td>
               <td>img</td>
               <td>
-                <input
-                  name="cardName"
-                  type="text"
-                  readOnly={isEdit ? false : true}
-                  style={{ border: isEdit ? "1px solid black" : "none" }}
-                  value={el.card_name}
-                  onChange={(e) => setCardName(e.target.value)}
-                />
+                {el.card_name}
               </td>
               <td>
-                <textarea type="text"
-                    readOnly={isEdit ? false : true}
-                    style={{ border: isEdit ? "1px solid black" : "none" }}
-                    value={el.card_description}
-                    onChange={(e) => setCardDesc(e.target.value)}/>
+                {el.card_description}
               </td>
               <td>
-                  <button onClick={handleEdit}>
-                    {isEdit ? <MdDone /> : <TbEdit />}
-                  </button>
-                  <AiFillDelete />
-                </td>
+                <button
+                  onClick={() => {
+                    handleEdit(el);
+                  }}
+                >
+                   <TbEdit />
+                </button>
+                <AiFillDelete />
+              </td>
             </tr>
           ))}
           {/* {getCards &&

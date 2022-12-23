@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import axios from "../../../api/axios";
+import { api } from "../../../api/api";
 const LOGIN_URL = "/login";
 
 const LoginPage = () => {
@@ -13,12 +13,13 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        LOGIN_URL,
-        JSON.stringify({ email, password })
-      );
+      const res = await api.post(LOGIN_URL, { email, password });
       const token = res?.data?.token;
+
       localStorage.setItem("accessToken", token);
+      window.location.reload(true);
+      console.log(res);
+
       setEmail("");
       setPassword("");
     } catch (err) {
@@ -33,17 +34,6 @@ const LoginPage = () => {
       }
       errRef.current.focus();
     }
-    // await axios
-    //   .post(LOGIN_URL, JSON.stringify({ email, password }))
-    //   .then((res) => {
-    //     const token = res?.data?.token;
-    //     localStorage.setItem("accessToken", token);
-    //     setAuth({ token });
-    //     // console.log(res.data.token);
-    //   })
-    //   .catch((err) => {
-    //     // if (!err?.response) console.log(err);
-    //   });
   };
 
   return (

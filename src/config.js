@@ -1,3 +1,14 @@
+import AdminPanelCoruseCards from "./components/pages/admin-panel/admin-panel-sections/AdminPanelCoruseCards";
+import AdminPanelCourse from "./components/pages/admin-panel/admin-panel-sections/AdminPanelCourse";
+import AdminPanelPortfolio from "./components/pages/admin-panel/admin-panel-sections/AdminPanelPortfolio";
+import AdminPanelServices from "./components/pages/admin-panel/admin-panel-sections/AdminPanelServices";
+import AdminPanelTrainers from "./components/pages/admin-panel/admin-panel-sections/AdminPanelTrainers";
+import { BsCardText } from "react-icons/bs";
+import { FaUsers } from "react-icons/fa";
+import { MdMiscellaneousServices } from "react-icons/md";
+import { MdOutlineWork } from "react-icons/md";
+import { BsJournalBookmarkFill } from "react-icons/bs";
+
 export const CONFIG = {
   headerConfig: [
     {
@@ -135,22 +146,32 @@ export const CONFIG = {
     {
       name: "Coruse Cards",
       id: 0,
+      component: <AdminPanelCoruseCards />,
+      icon: <BsCardText />,
     },
     {
       name: "Coruse Info",
       id: 1,
+      component: <AdminPanelCourse />,
+      icon: <BsJournalBookmarkFill />,
     },
     {
       name: "Trainers",
       id: 2,
+      component: <AdminPanelTrainers />,
+      icon: <FaUsers />,
     },
     {
       name: "Services",
       id: 3,
+      component: <AdminPanelServices />,
+      icon: <MdMiscellaneousServices />,
     },
     {
       name: "Portfolio",
       id: 4,
+      component: <AdminPanelPortfolio />,
+      icon: <MdOutlineWork />,
     },
   ],
 };

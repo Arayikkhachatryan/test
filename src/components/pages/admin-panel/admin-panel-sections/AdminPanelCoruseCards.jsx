@@ -1,60 +1,120 @@
-import React, { useContext, useRef, useState } from "react";
-import axios from "../../../../api/axios";
+import React, { useContext, useState, useEffect } from "react";
+// import axios from "../../../../api/axios";
 import AdminPanelCardTable from "./AdminPanelCardTable";
 import { DataContext } from "../../../../context/DataContext";
 import Loader from "../../../common/Loader";
-const ADD_CARD = "/cards/upload/:1";
+import { addCardImage, api } from "../../../../api/api";
 
 const AdminPanelCoruseCards = () => {
   const [file, setFile] = useState("");
   const [cardInfo, setCardInfo] = useState({
     card_name: "",
     card_description: "",
+    card_id: "",
   });
-  const { isLoading } = useContext(DataContext);
+  const { isLoading, setGetCards, setIsLoading } = useContext(DataContext);
 
-  const filePicer = useRef(null);
+  // const filePicer = useRef(null);
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    filePicer.current.click();
-  };
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  //   filePicer.current.click();
+  // };
 
   const handleChange = (e) => {
     setFile(e.target.files[0]);
     console.log(e.target.files[0]);
   };
 
-  const handleUpload = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("images", file);
+  // const handleUpload = async (e) => {
+  //   e.preventDefault();
 
-    try {
-      const res = await axios.post(ADD_CARD, formData);
+  //   try {
+  //     // const formData = new FormData();
+  //     // formData.append("images", file);
+  //     // const { data } = await addCardImage(id, formData, {
+  //     //   headers: { "Content-Type": "multipart/form-data" },
+  //     // });
+  //   } catch (err) {
+  //     throw new Error(err.message);
+  //   }
+  // };
+  useEffect(() => {
+    console.log(cardInfo);
+  }, [cardInfo]);
 
-      console.log(res);
-    } catch (error) {
-      console.log(error);
+  useEffect(() => {
+    async function getPageData() {
+      setIsLoading(true);
+      try {
+        const data = await api.get("/cards");
+        setGetCards(data.data);
+      } catch (error) {
+        console.log(error);
+      }
+      setIsLoading(false);
     }
-    console.log(file);
-    console.log(formData);
-  };
+    getPageData();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("/cards", cardInfo);
-      console.log(res);
+      const res = await api.post("/cards", {
+        card_name: cardInfo.card_name,
+        card_description: cardInfo.card_description,
+      });
+      const data = await api.get("/cards");
+      setGetCards(data.data);
+      //
+      // const formData = new FormData();
+      // formData.append("images", file);
+      console.log(res.data._id);
+      // let imageResp;
+      // function postImage(){
+      //   return new Promise((resolve, reject) => {
+      //     setTimeout(async () => {
+      //       resolve(
+      //           imageResp = await addCardImage(res.data._id, formData, {
+      //         headers: { "Content-Type": "multipart/form-data" },
+      //       })
+      //         )
+      //       //  imageResp = await addCardImage(res.data._id, formData, {
+      //       //   headers: { "Content-Type": "multipart/form-data" },
+      //       // });
+      //     },1000)
+      //   });
+      // }
+
+      //  await postImage();
+      // console.log(imageResp);
+      console.log("gnac erkusne");
+      // console.log('imageResp', imageResp)
     } catch (error) {
       console.log(error);
     }
   };
 
+  const asd = async (e) => {
+    e.preventDefault();
+
+    try {
+      const formData = new FormData();
+      formData.append("images", file);
+      const { data } = await addCardImage(
+        "63a5bd15d7f1e16861f8587a",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+    } catch (error) {}
+  };
+
   return (
     <div className="admin-panel-course">
-      {!isLoading ? (
+      {isLoading ? (
         <Loader />
       ) : (
         <>
@@ -64,22 +124,22 @@ const AdminPanelCoruseCards = () => {
               <div className="card-img-selection">
                 <div className="file-input">
                   <p>Course Card image</p>
-                  <button onClick={handleClick}>file</button>
+                  {/* <button onClick={handleClick}>file</button> */}
                   <input
-                    className="hidden"
-                    ref={filePicer}
+                    // ref={filePicer}
                     type="file"
                     name="image"
                     onChange={handleChange}
                   />
+                  <button onClick={asd}>add card</button>
                 </div>
                 <div className="card-submit">
-                  <div className="login-btn">
+                  {/* <div className="login-btn">
                     <div className="login-bg-btn"></div>
                     <button onClick={handleUpload}>
                       Create Card and Course
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="card-name">
@@ -91,7 +151,12 @@ const AdminPanelCoruseCards = () => {
                     name="card_name"
                     value={cardInfo.card_name}
                     onChange={(e) =>
-                      setCardInfo({ ...cardInfo, card_name: e.target.value })
+                      setCardInfo((prev) => {
+                        return {
+                          ...prev,
+                          card_name: e.target.value,
+                        };
+                      })
                     }
                   />
                 </div>
@@ -105,9 +170,11 @@ const AdminPanelCoruseCards = () => {
                   placeholder="Course Card description..."
                   value={cardInfo.card_description}
                   onChange={(e) =>
-                    setCardInfo({
-                      ...cardInfo,
-                      card_description: e.target.value,
+                    setCardInfo((prev) => {
+                      return {
+                        ...prev,
+                        card_description: e.target.value,
+                      };
                     })
                   }
                 />
@@ -120,7 +187,7 @@ const AdminPanelCoruseCards = () => {
               </div>
             </div>
           </form>
-          <AdminPanelCardTable />
+          <AdminPanelCardTable setCardInfo={setCardInfo} />
         </>
       )}
     </div>
