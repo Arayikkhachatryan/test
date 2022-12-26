@@ -15,7 +15,7 @@ const CoursesModalForm = ({ open, onClose }) => {
     user_course: "",
     user_time: "",
   });
-  console.log(values);
+
 
   const updateForm = (e) => {
     setValues({

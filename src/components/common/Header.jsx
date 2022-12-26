@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState, useReducer, memo } from "react";
+import React, { useEffect, useState, useReducer, memo, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -129,21 +129,19 @@ function Header() {
                     {sidebar ? (
                       <div className="sidebar-lng">
                         <div>
-                          {languageFlags.map((flag) => (
-                            <>
-                              <button
-                                onClick={() => changeLanguage(flag.locale)}
-                                className="flag-btn"
-                                key={uuidv4()}
-                              >
-                                <img
-                                  onClick={() => setOpenFlag((prev) => !prev)}
-                                  src={flag.src}
-                                  alt={flag.alt}
-                                  className="flag-img"
-                                />
-                              </button>
-                            </>
+                          {languageFlags.map((flag, idx) => (
+                            <button
+                              onClick={() => changeLanguage(flag.locale)}
+                              className="flag-btn"
+                              key={uuidv4()}
+                            >
+                              <img
+                                onClick={() => setOpenFlag((prev) => !prev)}
+                                src={flag.src}
+                                alt={flag.alt}
+                                className="flag-img"
+                              />
+                            </button>
                           ))}
                         </div>
                       </div>
@@ -159,15 +157,16 @@ function Header() {
                             onClick={() => setOpenFlag((prev) => !prev)}
                           >
                             {languageFlags.map((selected) => (
-                              <>
+                              <Fragment key={uuidv4()}>
                                 {i18n.language === selected.locale ? (
                                   <img
                                     src={selected.src}
                                     alt=""
                                     className="flag-img"
+                                    key={uuidv4()}
                                   />
                                 ) : null}
-                              </>
+                              </Fragment>
                             ))}
                           </div>
                           <div
@@ -176,12 +175,11 @@ function Header() {
                             }
                           >
                             {languageFlags.map((flag) => (
-                              <>
+                              <Fragment key={uuidv4()}>
                                 {openFlag && i18n.language !== flag.locale && (
                                   <button
                                     onClick={() => changeLanguage(flag.locale)}
                                     className="flag-btn"
-                                    key={uuidv4()}
                                   >
                                     <img
                                       onClick={() =>
@@ -193,7 +191,7 @@ function Header() {
                                     />
                                   </button>
                                 )}
-                              </>
+                              </Fragment>
                             ))}
                           </div>
                         </div>
