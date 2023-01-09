@@ -83,7 +83,7 @@ function Root() {
             component={CoursesPage}
           />
           <Route
-            path={`${process.env.PUBLIC_URL}/courses/html-css-course`}
+            path={`${process.env.PUBLIC_URL}/courses/:card_name`}
             component={SingleCourse}
           />
           <Route

@@ -5,12 +5,26 @@ export const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
   const [getCards, setGetCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(false)
-
+  const [getCourse, setGetCourse] = useState([]);
+  const [getTrainers, setGetTrainers] = useState([]);
+  const [coruseName, setCoruseName] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   return (
-    <DataContext.Provider value={{ getCards, setGetCards, setIsLoading, isLoading }}>
+    <DataContext.Provider
+      value={{
+        getCards,
+        setGetCards,
+        isLoading,
+        setIsLoading,
+        getCourse,
+        setGetCourse,
+        coruseName,
+        setCoruseName,
+        getTrainers,
+        setGetTrainers,
+      }}
+    >
       {children}
     </DataContext.Provider>
   );
 };
-

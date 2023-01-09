@@ -1,24 +1,16 @@
 import React, { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { CONFIG } from "../../../config";
-import { ReactComponent as HtmlIcon } from "../../../assets/images/html-icon.svg";
-import { ReactComponent as CssIcon } from "../../../assets/images/css-icon.svg";
-import { ReactComponent as JsIcon } from "../../../assets/images/js-icon.svg";
-import { ReactComponent as ReactIcon } from "../../../assets/images/react-icon.svg";
-import { ReactComponent as NodeJsIcon } from "../../../assets/images/node-js-icon.svg";
-import { ReactComponent as QaIcon } from "../../../assets/images/qa-icon.svg";
-import { ReactComponent as UiUxIcon } from "../../../assets/images/ui-ux-icon.svg";
 import { DataContext } from "../../../context/DataContext";
-import { api, getCardsData } from "../../../api/api";
-import { useState } from "react";
+import { getCardsData } from "../../../api/api";
 import Loader from "../../common/Loader";
+import { v4 as uuidv4 } from "uuid";
+import { BASE_URL } from "../../../enum";
 
-const Cards = ({ open, setOpen }) => {
-  const [imgData, setImgData] = useState();
+const Cards = ({ open, setOpen, match }) => {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const { t } = useTranslation();
-  const icons = [JsIcon, ReactIcon, NodeJsIcon, QaIcon, UiUxIcon];
+  // const icons = [JsIcon, ReactIcon, NodeJsIcon, QaIcon, UiUxIcon];
   const { isLoading, setGetCards, setIsLoading, getCards } =
     useContext(DataContext);
 
@@ -27,11 +19,7 @@ const Cards = ({ open, setOpen }) => {
       setIsLoading(true);
       try {
         const data = await getCardsData();
-        const kart = await api.get("/cards/upload/1671802424578.png");
-        const hhhhhhhhh = await api.delete("/example")
-        console.log(hhhhhhhhh);
-        console.log(kart.data);
-        setImgData(kart.data);
+
         setGetCards(data.data);
       } catch (error) {
         console.log(error);
@@ -40,8 +28,6 @@ const Cards = ({ open, setOpen }) => {
     }
     getPageData();
   }, []);
-
-  
 
   return (
     <>
@@ -67,7 +53,7 @@ const Cards = ({ open, setOpen }) => {
                     </div>
                   </div>
                   <div className="all-courses">
-                    <Link
+                    {/* <Link
                       onClick={scrollTop}
                       to="/courses/html-css-course"
                       className=" flip-card"
@@ -96,31 +82,37 @@ const Cards = ({ open, setOpen }) => {
                           </p>
                         </div>
                       </div>
-                    </Link>
-
+                    </Link> */}
                     {getCards.map((item) => (
                       <Link
-                        to={item.link}
+                        to={`courses/${item.card_name
+                          .replace(/\s/g, "")
+                          .toLowerCase()}`}
                         onClick={scrollTop}
+                        key={uuidv4()}
                         className=" flip-card"
                       >
                         <div className="single-service">
                           <div className="single-service-front">
                             <div className="service-icon-card">
                               <div className="service-icon">
-                                <img src={imgData} alt="" />
+                                <img
+                                  src={`${BASE_URL}/cards/upload/${item.card_image}`}
+                                  alt="a"
+                                />
                               </div>
                             </div>
                             <div className="service-content courses-cards-content">
-                              <h4>{item.title}</h4>
+                              <h4>{item.card_name}</h4>
                             </div>
                           </div>
                           <div className="single-service-back">
-                            <p>{item.text}</p>
+                            <p>{item.card_description}</p>
                           </div>
                         </div>
                       </Link>
                     ))}
+
                     {/* {CONFIG.coursesCardsConfig.map((item, idx) => {
                 const Icon = icons[idx];
                 return (

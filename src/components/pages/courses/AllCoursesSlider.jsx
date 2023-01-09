@@ -10,7 +10,7 @@ import { ReactComponent as JsIcon } from "../../../assets/images/js-icon.svg";
 import { ReactComponent as ReactIcon } from "../../../assets/images/react-icon.svg";
 import { ReactComponent as NodeJsIcon } from "../../../assets/images/node-js-icon.svg";
 import { ReactComponent as UiUxIcon } from "../../../assets/images/ui-ux-icon.svg";
-
+import { v4 as uuidv4 } from "uuid";
 import CoursesModalForm from "./CoursesModalForm";
 import { useTranslation } from "react-i18next";
 
@@ -100,7 +100,7 @@ function AllCoursesSlider(props) {
                 const Icon = icons[idx];
                 if (url !== item.link) {
                   return (
-                    <SwiperSlide className="swiper-slide">
+                    <SwiperSlide className="swiper-slide" key={uuidv4()}>
                       <div className="single-course-card">
                         <Link
                           to={item.link}

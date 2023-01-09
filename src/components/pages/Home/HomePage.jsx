@@ -24,7 +24,7 @@ function HomePage() {
           className="main-video"
           autoPlay={true}
           muted={true}
-          playsinline
+          playsInline={true}
           loop={true}
         >
           <source src={FirstVideo} type="video/mp4" />

@@ -3,7 +3,7 @@ import React, { useContext, useState, useEffect } from "react";
 import AdminPanelCardTable from "./AdminPanelCardTable";
 import { DataContext } from "../../../../context/DataContext";
 import Loader from "../../../common/Loader";
-import { addCardImage, api } from "../../../../api/api";
+import { addCardImage, api, getCardsData } from "../../../../api/api";
 
 const AdminPanelCoruseCards = () => {
   const [file, setFile] = useState("");
@@ -16,7 +16,6 @@ const AdminPanelCoruseCards = () => {
 
   const handleChange = (e) => {
     setFile(e.target.files[0]);
-    console.log(e.target.files[0]);
   };
 
   useEffect(() => {
@@ -34,33 +33,36 @@ const AdminPanelCoruseCards = () => {
     getPageData();
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    setIsLoading(true);
 
     try {
       const res = await api.post("/cards", {
         card_name: cardInfo.card_name,
         card_description: cardInfo.card_description,
       });
-      const data = await api.get("/cards");
+      const data = await getCardsData();
       setGetCards(data.data);
     } catch (error) {
       console.log(error);
     }
+    setIsLoading(false);
   };
 
   const handleUpload = async (id) => {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
       const formData = new FormData();
       formData.append("image", file);
-      const { data } = await addCardImage(id, formData, {
+      const res = await addCardImage(id, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
+      const data = await getCardsData();
+      setGetCards(data.data);
     } catch (error) {
       console.log(error);
     }
-    setIsLoading(false)
+    setIsLoading(false);
   };
 
   return (
@@ -148,6 +150,7 @@ const AdminPanelCoruseCards = () => {
               </div>
             </div>
           </form>
+
           <AdminPanelCardTable setCardInfo={setCardInfo} />
         </>
       )}

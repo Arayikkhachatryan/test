@@ -15,6 +15,7 @@ import SwiperCore, {
   Pagination,
   Autoplay,
 } from "swiper";
+import { v4 as uuidv4 } from "uuid";
 
 SwiperCore.use([EffectCoverflow, Pagination, Navigation, Autoplay]);
 
@@ -74,7 +75,7 @@ const CoursesArea = () => {
                 {CONFIG.allCoursesSilderConfig.map((course, idx) => {
                   const Icon = icons[idx];
                   return (
-                    <SwiperSlide className="hero-slide">
+                    <SwiperSlide className="hero-slide" key={uuidv4()}>
                       <Link
                         to={course.link}
                         onClick={scrollTop}

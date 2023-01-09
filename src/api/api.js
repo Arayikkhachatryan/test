@@ -19,6 +19,23 @@ export const addCardImage = async (id, sendData, headers) => {
   }
 };
 
+export const addTrainerImage = async (id, sendData, headers) => {
+  try {
+    return await api.post(`/trainers/upload/${id}`, sendData, headers);
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
+export const deleteCardImage = async (id, imgName) => {
+  try {
+    return await api.delete(`/cards/upload/${id}/${imgName}`)
+  } catch (err) {
+    throw new Error(err.message);
+
+  }
+}
+
 export const cardSubmit = async (cardInfo) => {
   try {
     return await api.post("/cards", cardInfo);
@@ -35,6 +52,22 @@ export const deleteCard = async (id) => {
   }
 };
 
+export const deleteTrainerCard = async (id) => {
+  try {
+    return await api.delete(`/trainers/${id}`);
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
+export const deleteCoruse = async (id) => {
+  try {
+    return await api.delete(`/courses/${id}`);
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
 export const getCardsData = async () => {
   try {
     return await api.get("/cards");
@@ -42,3 +75,28 @@ export const getCardsData = async () => {
     throw new Error(err.message);
   }
 };
+
+export const getCourseData = async () => {
+  try {
+    return await api.get("/courses");
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
+export const getTrainersData = async () => {
+  try {
+    return await api.get("/trainers");
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
+export const addCourseDescription = async (description, cardId) => {
+  try {
+    return await api.post(`/courses/${cardId}`, description);
+  } catch (err) {
+    throw new Error(err.message);
+  }
+
+}
