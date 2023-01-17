@@ -2,33 +2,21 @@ import React, { Fragment, useContext } from "react";
 import { useState } from "react";
 import CoursesModalForm from "../CoursesModalForm";
 import AllCoursesSlider from "../AllCoursesSlider";
-import { Redirect, useParams, useRouteMatch } from "react-router-dom";
-import HtmlCssCourse from "../all-courses/HtmlCssCourse";
-import JsCourse from "../all-courses/JsCourse";
-import ReactCourse from "../all-courses/ReactCourse";
-import NodeCourse from "../all-courses/NodeCourse";
-import QaCourse from "../all-courses/QaCourse";
-import UiUxCourse from "../all-courses/UiUxCourse";
-import { CONFIG } from "../../../../config";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Layout from "../../../App";
 import { v4 as uuidv4 } from "uuid";
 import { DataContext } from "../../../../context/DataContext";
 import {
-  api,
   getCardsData,
   getCourseData,
   getTrainersData,
 } from "../../../../api/api";
 import { BASE_URL } from "../../../../enum";
+import CoruseDescription from "./CoruseDescription";
 
-const SingleCourse = ({ match }) => {
+const SingleCourse = () => {
   const [open, setOpen] = useState(false);
-  const [id, setId] = useState({
-    cardId: "",
-    courseId: "",
-  });
   const { t } = useTranslation();
   const {
     isLoading,
@@ -52,14 +40,6 @@ const SingleCourse = ({ match }) => {
     };
   }, [open]);
 
-  // const courseComponent = [
-  //   HtmlCssCourse,
-  //   JsCourse,
-  //   ReactCourse,
-  //   NodeCourse,
-  //   QaCourse,
-  //   UiUxCourse,
-  // ];
   useEffect(() => {
     async function getPageData() {
       setIsLoading(true);
@@ -73,18 +53,13 @@ const SingleCourse = ({ match }) => {
         const trainer = await getTrainersData();
         setGetTrainers(trainer.data);
       } catch (error) {
-        console.log(error);
+        // history.push("/about");
+        console.log(error, "errorrrrerr");
       }
       setIsLoading(false);
     }
     getPageData();
   }, []);
-
-  // useEffect(() => {
-  //   console.log(url.slice(9));
-  //   console.log(match.params.card_name.replace(/\s/g, ""));
-  //   console.log(params);
-  // }, []);
 
   return (
     <>
@@ -92,29 +67,8 @@ const SingleCourse = ({ match }) => {
         <section className="single-course-header">
           <img src="/images/test-img.jpg" alt="test" />
         </section>
+        <CoruseDescription />
 
-        {/* {getCards.map((item) => {
-          console.log(url.slice(9));
-          console.log(item.card_name.toLowerCase().replace(/\s/g, ""));
-          if (
-            url.slice(9) === item.card_name.toLowerCase().replace(/\s/g, "")
-          ) {
-            return (
-              <Fragment key={uuidv4()}>
-                <div>{item.card_name}</div>
-              </Fragment>
-            );
-          } else {
-            <Redirect to={"/"} />;
-          }
-        })} */}
-
-        {/* {CONFIG.allCoursesSilderConfig.map((course, idx) => {
-          const CourseComponent = courseComponent[idx];
-          if (path === course.link) {
-            return <CourseComponent setOpen={setOpen} />;
-          }
-        })} */}
         <section className="team">
           <div className="container">
             <div className="team-header">
@@ -133,13 +87,6 @@ const SingleCourse = ({ match }) => {
                     <p>{trainer.trainer_workplace}</p>
                   </div>
                 ))}
-                {/* {CONFIG.trainersConfig.map((trainer) => (
-                  <div className="team-container-single-item" key={uuidv4()}>
-                    <img src={trainer.image} alt="" />
-                    <h3>{trainer.name}</h3>
-                    <p>{trainer.workplace}</p>
-                  </div>
-                ))} */}
               </div>
             </div>
             <div className="single-course-cmn-btn">

@@ -1,26 +1,47 @@
 import React, { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { DataContext } from "../../../context/DataContext";
-import { getCardsData } from "../../../api/api";
+import { getCardsData, getCourseData } from "../../../api/api";
 import Loader from "../../common/Loader";
 import { v4 as uuidv4 } from "uuid";
 import { BASE_URL } from "../../../enum";
+import { useCallback } from "react";
+import ErrorPage from "../Error/ErrorPage";
 
 const Cards = ({ open, setOpen, match }) => {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const { t } = useTranslation();
   // const icons = [JsIcon, ReactIcon, NodeJsIcon, QaIcon, UiUxIcon];
-  const { isLoading, setGetCards, setIsLoading, getCards } =
-    useContext(DataContext);
+  const {
+    isLoading,
+    setGetCards,
+    setIsLoading,
+    getCards,
+    getCourse,
+    setGetCourse,
+  } = useContext(DataContext);
+
+  const filterCourses = useCallback(
+    (cardId) => {
+      // console.log(cardId);
+      const [course] = getCourse.filter((item) => {
+        return item.card_id === cardId;
+      });
+      return course;
+    },
+    [getCourse]
+  );
 
   useEffect(() => {
     async function getPageData() {
       setIsLoading(true);
       try {
         const data = await getCardsData();
-
         setGetCards(data.data);
+
+        const course = await getCourseData();
+        setGetCourse(course.data);
       } catch (error) {
         console.log(error);
       }
@@ -40,9 +61,9 @@ const Cards = ({ open, setOpen, match }) => {
               <img src="./images/test-img.jpg" alt="" />
             </div>
             <div className="courses-cards-body">
-              <div className="courses-cards-body-bg">
+              {/* <div className="courses-cards-body-bg">
                 <img src="/images/background_circuts.png" alt="bg" />
-              </div>
+              </div> */}
               <div className="container">
                 <div className="courses-cards-body-wrapper">
                   <div className="register-button">
@@ -83,35 +104,37 @@ const Cards = ({ open, setOpen, match }) => {
                         </div>
                       </div>
                     </Link> */}
-                    {getCards.map((item) => (
-                      <Link
-                        to={`courses/${item.card_name
-                          .replace(/\s/g, "")
-                          .toLowerCase()}`}
-                        onClick={scrollTop}
-                        key={uuidv4()}
-                        className=" flip-card"
-                      >
-                        <div className="single-service">
-                          <div className="single-service-front">
-                            <div className="service-icon-card">
-                              <div className="service-icon">
-                                <img
-                                  src={`${BASE_URL}/cards/upload/${item.card_image}`}
-                                  alt="a"
-                                />
+                    {getCards.map((item) => {
+                      const course = filterCourses(item._id);
+
+                      return (
+                        <Link
+                          to={`courses/${course?._id}`}
+                          onClick={scrollTop}
+                          key={uuidv4()}
+                          className=" flip-card"
+                        >
+                          <div className="single-service">
+                            <div className="single-service-front">
+                              <div className="service-icon-card">
+                                <div className="service-icon">
+                                  <img
+                                    src={`https://innova-api.onrender.com/api/cards/upload/${item.card_image}`}
+                                    alt="a"
+                                  />
+                                </div>
+                              </div>
+                              <div className="service-content courses-cards-content">
+                                <h4>{item.card_name}</h4>
                               </div>
                             </div>
-                            <div className="service-content courses-cards-content">
-                              <h4>{item.card_name}</h4>
+                            <div className="single-service-back">
+                              <p>{item.card_description}</p>
                             </div>
                           </div>
-                          <div className="single-service-back">
-                            <p>{item.card_description}</p>
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
+                        </Link>
+                      );
+                    })}
 
                     {/* {CONFIG.coursesCardsConfig.map((item, idx) => {
                 const Icon = icons[idx];

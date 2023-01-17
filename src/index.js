@@ -77,16 +77,20 @@ function Root() {
             path={`${process.env.PUBLIC_URL}/contact`}
             component={ContactPage}
           />
+
           <Route
             path={`${process.env.PUBLIC_URL}/courses`}
             exact
             component={CoursesPage}
           />
+
           <Route
-            path={`${process.env.PUBLIC_URL}/courses/:card_name`}
+            path={`${process.env.PUBLIC_URL}/courses/:_id`}
             component={SingleCourse}
           />
-          <Route
+          <Route path="*" component={ErrorPage} />
+
+          {/* <Route
             path={`${process.env.PUBLIC_URL}/courses/js-course`}
             component={SingleCourse}
           />
@@ -105,8 +109,7 @@ function Root() {
           <Route
             path={`${process.env.PUBLIC_URL}/courses/ui-ux-course`}
             component={SingleCourse}
-          />
-          <Route path="*" component={ErrorPage} />
+          /> */}
           {/* <Route
             exact
             path={`${process.env.PUBLIC_URL}/commingsoon`}
