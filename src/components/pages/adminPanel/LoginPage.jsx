@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { api } from "../../../api/api";
-const LOGIN_URL = "/login";
+import { api, loginReq } from "../../../api/api";
+import { LOGIN_URL } from "../../../enum";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -11,14 +11,12 @@ const LoginPage = () => {
 
   const loginSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const res = await api.post(LOGIN_URL, { email, password });
+      const res = await loginReq(email, password);
       const token = res?.data?.token;
 
       localStorage.setItem("accessToken", token);
       window.location.reload(true);
-      console.log(res);
 
       setEmail("");
       setPassword("");

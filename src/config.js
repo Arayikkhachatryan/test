@@ -1,12 +1,11 @@
-import AdminPanelCoruseCards from "./components/pages/admin-panel/admin-panel-sections/AdminPanelCoruseCards";
-import AdminPanelCourse from "./components/pages/admin-panel/admin-panel-sections/AdminPanelCourse";
-import AdminPanelPortfolio from "./components/pages/admin-panel/admin-panel-sections/AdminPanelPortfolio";
-import AdminPanelServices from "./components/pages/admin-panel/admin-panel-sections/AdminPanelServices";
-import AdminPanelTrainers from "./components/pages/admin-panel/admin-panel-sections/AdminPanelTrainers";
+import AdminPanelCoruseCards from "./components/pages/adminPanel/adminPanelSections/AdminPanelCoruseCards";
+import AdminPanelCourse from "./components/pages/adminPanel/adminPanelSections/AdminPanelCourse";
+import AdminPanelPortfolio from "./components/pages/adminPanel/adminPanelSections/AdminPanelPortfolio";
+import AdminPanelServices from "./components/pages/adminPanel/adminPanelSections/AdminPanelServices";
+import AdminPanelTrainers from "./components/pages/adminPanel/adminPanelSections/AdminPanelTrainers";
 import { BsCardText } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
-import { MdMiscellaneousServices } from "react-icons/md";
-import { MdOutlineWork } from "react-icons/md";
+import { MdMiscellaneousServices, MdOutlineWork } from "react-icons/md";
 import { BsJournalBookmarkFill } from "react-icons/bs";
 
 export const CONFIG = {

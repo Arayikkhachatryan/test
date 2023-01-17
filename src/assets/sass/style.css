@@ -111,6 +111,11 @@ a:hover {
   text-decoration: none;
 }
 
+button {
+  background: none;
+  border: none;
+}
+
 input,
 select,
 audio,
@@ -7797,20 +7802,47 @@ aside div svg {
   margin: 30px 0;
 }
 
-.admin-panel-course-card,
-.admin-panel-course-info,
 .admin-panel-trainers {
-  padding: 50px 50px 0;
+  text-align: center;
+}
+
+.admin-panel-trainers form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-panel-trainers form:nth-child(2n) {
+  padding: 80px 0;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.admin-panel-course {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.card-name {
+  width: 100%;
 }
 
 .card-img-selection {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 24px 0;
+  /* padding: 24px 0; */
 }
 
-.file-input {
-  width: 75%;
+.card-img-selection div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.file-input p {
+  text-align: start;
 }
 
 .column1 {
@@ -7941,4 +7973,73 @@ aside div svg {
   display: flex;
 }
 
-/*# sourceMappingURL=style.css.map */ 
+.choose-course {
+  text-align: center;
+  width: 200px;
+  margin-left: 50px;
+  border: 1px solid #adadad;
+  border-radius: 30px;
+  height: fit-content;
+
+}
+
+.choose-trainer {
+  text-align: center;
+  border: 1px solid #adadad;
+  border-radius: 30px;
+  height: fit-content;
+}
+
+.choose-trainer div:first-child p {
+  color: black;
+  border-bottom: 1px solid #adadad;
+}
+
+.choose-course div:first-child p {
+  color: black;
+  border-bottom: 1px solid #adadad;
+}
+
+.trainers-upload div {
+  display: flex;
+  flex-direction: column;
+}
+
+.trainers-upload {
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.choose-card {
+  text-align: center;
+  border: 1px solid #adadad;
+  border-radius: 30px;
+}
+
+.choose-card div:first-child p {
+  color: black;
+  border-bottom: 1px solid #adadad;
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.choose-card div p {
+  padding-left: 20px;
+}
+
+.choose-trainer div p,
+.choose-card div p,
+.choose-course div p {
+  margin-bottom: 0;
+
+}
+
+
+.choose-card div:last-child p,
+.choose-course div:last-child p,
+.choose-trainer div:last-child p {
+  border-radius: 0 0 30px 30px;
+}
+
+/*# sourceMappingURL=style.css.map */

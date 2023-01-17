@@ -6,6 +6,7 @@ import {
   deleteCard,
   deleteCardImage,
   deleteCoruse,
+  deleteCourseImage,
   getCardsData,
   getCourseData,
 } from "../../../../api/api";
@@ -32,37 +33,40 @@ const AdminPanelCourseTable = ({ setCardInfo }) => {
 
   const handleEdit = (card) => {
     setIsEdit((prev) => !prev);
-    // setCardInfo((prev) => {
-    //   return {
-    //     card_name: card.card_name,
-    //     card_description: card.card_description,
-    //     card_id: card._id,
-    //   };
-    // });
     window.scrollTo({ top: 0, behavior: "smooth" });
     console.log(card);
+  };
+
+  const imgDelete = async (id, imageName) => {
+    setIsLoading(true);
+    try {
+      const res = await deleteCourseImage(id, imageName);
+      const { data } = await getCardsData();
+      setGetCourse(data);
+    } catch (error) {}
+    setIsLoading(false);
   };
 
   const handleDelete = async (courseId) => {
     setIsLoading(true);
     try {
       const res = await deleteCoruse(courseId);
-      const data = await getCourseData();
-      setGetCourse(data.data);
+      const { data } = await getCourseData();
+      setGetCourse(data);
     } catch (error) {
       console.log(error);
     }
     setIsLoading(false);
   };
 
-  useEffect(() => {
-    getCards.forEach((element) => {
-      console.log(element);
-      setCardName();
+  // useEffect(() => {
+  //   getCards.forEach((element) => {
+  //     console.log(element);
+  //     setCardName();
 
-      console.log(cardName);
-    });
-  }, []);
+  //     console.log(cardName);
+  //   });
+  // }, []);
 
   // useEffect(() => {
   //   console.log(getCards);
@@ -99,9 +103,9 @@ const AdminPanelCourseTable = ({ setCardInfo }) => {
               <tr>
                 <th className="column1">ID</th>
                 <th className="column2">Course Name</th>
+                <th className="column1">Course Img</th>
                 <th className="column3">Course Description</th>
                 <th className="column4">Edit</th>
-                {/* <th className="column1">Course Img</th> */}
                 {/* <th className="column5"></th>
                 <th className="column5"></th> */}
               </tr>
@@ -109,15 +113,32 @@ const AdminPanelCourseTable = ({ setCardInfo }) => {
             <tbody>
               {getCourse.map((el) => (
                 <tr key={uuidv4()}>
-                  <td>{el.card_id}</td>
-                  <td>{cardName.cardName}</td>
-                  <td>{el.course_description}</td>
-                  {/* <td style={{ display: "flex" }}>
+                  <td>{el._id}</td>
+                  {getCards.map((item) => {
+                    if (item._id === el.card_id) {
+                      return <td>{item.card_name}</td>;
+                    }
+                  })}
+                  <td
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
                     {el.course_image}
-                    <button>
-                      <AiFillDelete />
-                    </button>
-                  </td> */}
+                    {el.course_image === null ? (
+                      <></>
+                    ) : (
+                      <>
+                        <button
+                          onClick={() => {
+                            imgDelete(el._id, el.card_image);
+                          }}
+                        >
+                          <AiFillDelete />
+                        </button>
+                      </>
+                    )}
+                  </td>
+                  <td>{el.course_description}</td>
+
                   <td>
                     <button>
                       <TbEdit />

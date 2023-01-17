@@ -13,7 +13,7 @@ import ServicesPage from "./components/pages/service/Serevices";
 import ServiceDetails from "./components/pages/ServiceDetails/ServiceDetails";
 import CoursesPage from "./components/pages/courses/CoursesPage";
 import SingleCourse from "./components/pages/courses/single-course/SingleCourse";
-import AdminPanelPage from "./components/pages/admin-panel/AdminPanelPage";
+import AdminPanelPage from "./components/pages/adminPanel/AdminPanelPage";
 // import LoginPage from "./components/pages/admin-panel/LoginPage";
 // import Layout from "./components/App";
 // import SecoundLayout from "./components/layout/SecoundLayout";

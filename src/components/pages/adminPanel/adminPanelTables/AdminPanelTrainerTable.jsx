@@ -5,7 +5,11 @@ import { v4 as uuidv4 } from "uuid";
 import { AiFillDelete } from "react-icons/ai";
 import { TbEdit } from "react-icons/tb";
 import Loader from "../../../common/Loader";
-import { deleteTrainerCard, getTrainersData } from "../../../../api/api";
+import {
+  deleteTrainerCard,
+  deleteTrainerImage,
+  getTrainersData,
+} from "../../../../api/api";
 
 const AdminPanelTrainerTable = () => {
   const { getTrainers, setGetTrainers, isLoading, setIsLoading } =
@@ -15,12 +19,24 @@ const AdminPanelTrainerTable = () => {
     setIsLoading(true);
     try {
       const res = await deleteTrainerCard(id);
-      const data = await getTrainersData();
-      setGetTrainers(data.data);
+      const { data } = await getTrainersData();
+      setGetTrainers(data);
     } catch (error) {
       console.log(error);
     }
 
+    setIsLoading(false);
+  };
+
+  const trainerImgDelete = async (id, imageName) => {
+    setIsLoading(true);
+    try {
+      const res = await deleteTrainerImage(id, imageName);
+      const { data } = await getTrainersData();
+      setGetTrainers(data);
+    } catch (error) {
+      console.log(error);
+    }
     setIsLoading(false);
   };
 
@@ -46,9 +62,19 @@ const AdminPanelTrainerTable = () => {
                   <td>{el._id}</td>
                   <td style={{ display: "flex" }}>
                     {el.trainer_image}
-                    <button>
-                      <AiFillDelete />
-                    </button>
+                    {el.trainer_image === null ? (
+                      <></>
+                    ) : (
+                      <>
+                        <button
+                          onClick={() => {
+                            trainerImgDelete(el._id, el.trainer_image);
+                          }}
+                        >
+                          <AiFillDelete />
+                        </button>
+                      </>
+                    )}
                   </td>
                   <td>{el.trainer_name}</td>
                   <td>{el.trainer_workplace}</td>

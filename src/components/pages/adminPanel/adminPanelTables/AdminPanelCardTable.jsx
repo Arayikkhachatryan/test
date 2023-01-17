@@ -40,20 +40,25 @@ const AdminPanelCardTable = ({ setCardInfo }) => {
     setIsLoading(true);
     try {
       const res = await deleteCard(id);
-      const data = await getCardsData();
-      setGetCards(data.data);
+      const { data } = await getCardsData();
+      setGetCards(data);
     } catch (error) {
       console.log(error);
     }
     setIsLoading(false);
   };
 
-  const imgDelete = async (id, cardImage) => {
+  const imgDelete = async (id, imageName) => {
+    setIsLoading(true);
     try {
-      const res = await deleteCardImage(id, cardImage);
+      const res = await deleteCardImage(id, imageName);
+      const { data } = await getCardsData();
+      setGetCards(data);
     } catch (err) {
       console.log(err);
     }
+
+    setIsLoading(false);
   };
 
   return (
@@ -76,15 +81,24 @@ const AdminPanelCardTable = ({ setCardInfo }) => {
               {getCards.map((el, idx) => (
                 <tr key={uuidv4()}>
                   <td>{el._id}</td>
-                  <td style={{ display: "flex" }}>
-                    {el.card_image}{" "}
-                    <button
-                      onClick={() => {
-                        imgDelete(el._id, el.card_image);
-                      }}
-                    >
-                      <AiFillDelete />
-                    </button>
+
+                  <td
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    {el.card_image}
+                    {el.card_image === null ? (
+                      <></>
+                    ) : (
+                      <>
+                        <button
+                          onClick={() => {
+                            imgDelete(el._id, el.card_image);
+                          }}
+                        >
+                          <AiFillDelete />
+                        </button>
+                      </>
+                    )}
                   </td>
                   <td>{el.card_name}</td>
                   <td>{el.card_description}</td>
