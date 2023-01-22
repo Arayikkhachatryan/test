@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { SRLWrapper } from "simple-react-lightbox";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Navigation } from "swiper";
-import { CONFIG } from "../../../config";
-import { ReactComponent as QaIcon } from "../../../assets/images/qa-icon.svg";
-import { ReactComponent as HtmlCssIcon } from "../../../assets/icons/html-css-icon.svg";
-import { ReactComponent as JsIcon } from "../../../assets/images/js-icon.svg";
-import { ReactComponent as ReactIcon } from "../../../assets/images/react-icon.svg";
-import { ReactComponent as NodeJsIcon } from "../../../assets/images/node-js-icon.svg";
-import { ReactComponent as UiUxIcon } from "../../../assets/images/ui-ux-icon.svg";
 import { v4 as uuidv4 } from "uuid";
 import CoursesModalForm from "./CoursesModalForm";
 import { useTranslation } from "react-i18next";
+import { useContext } from "react";
+import { DataContext } from "../../../context/DataContext";
+import { api, getCardsData } from "../../../api/api";
+import { useCallback } from "react";
+import Loader from "../../common/Loader";
 
 SwiperCore.use([Navigation, Autoplay]);
 
 function AllCoursesSlider(props) {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
+  const {
+    isLoading,
+    setIsLoading,
+    getCards,
+    setGetCards,
+    getCourse,
+    setCoursDesc,
+  } = useContext(DataContext);
 
   useEffect(() => {
     if (open) {
@@ -31,11 +37,43 @@ function AllCoursesSlider(props) {
     };
   }, [open]);
 
-  const icons = [HtmlCssIcon, JsIcon, ReactIcon, NodeJsIcon, QaIcon, UiUxIcon];
+  useEffect(() => {
+    async function getPageData() {
+      setIsLoading(true);
+      try {
+        const { data } = await getCardsData();
+        setGetCards(data);
+      } catch (error) {
+        console.log(error);
+      }
+      setIsLoading(false);
+    }
+    getPageData();
+  }, []);
 
-  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const filterCourses = useCallback(
+    (cardId) => {
+      const [course] = getCourse.filter((item) => {
+        return item.card_id === cardId;
+      });
+      return course;
+    },
+    [getCourse]
+  );
 
-  const { url } = useRouteMatch();
+  const scrollTop = async (courseId) => {
+    setIsLoading(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    try {
+      const course = await api.get(`/courses/${courseId}`);
+      setCoursDesc(course.data);
+    } catch (error) {
+      console.log(error);
+    }
+
+    setIsLoading(false);
+  };
 
   const allCourses = {
     slidesPerView: 3,
@@ -80,23 +118,52 @@ function AllCoursesSlider(props) {
 
   return (
     <section className="all-courses-slider">
-      <div className="courses-introduction">
-        <h2>{t("singleCoursePage.slider.title")}</h2>
-        <h4>{t("singleCoursePage.slider.about")}</h4>
-      </div>
-      <SRLWrapper>
-        <div className="portfolio-area sec-mar-top all-courses-area">
-          <div className="swiper portfolio-slider single-course-slider">
-            <Swiper
-              {...allCourses}
-              pagination={{
-                type: "bullets",
-                clickable: true,
-                // el: ".swiper-pagination",
-              }}
-              className="swiper-wrapper"
-            >
-              {CONFIG.allCoursesSilderConfig.map((item, idx) => {
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="courses-introduction">
+            <h2>{t("singleCoursePage.slider.title")}</h2>
+            <h4>{t("singleCoursePage.slider.about")}</h4>
+          </div>
+          <SRLWrapper>
+            <div className="portfolio-area sec-mar-top all-courses-area">
+              <div className="swiper portfolio-slider single-course-slider">
+                <Swiper
+                  {...allCourses}
+                  pagination={{
+                    type: "bullets",
+                    clickable: true,
+                    // el: ".swiper-pagination",
+                  }}
+                  className="swiper-wrapper"
+                >
+                  {getCards.map((el) => {
+                    const course = filterCourses(el._id);
+                    return (
+                      <SwiperSlide className="swiper-slide" key={uuidv4()}>
+                        <div className="single-course-card">
+                          <Link
+                            to={`${course?._id}`}
+                            onClick={() => {
+                              scrollTop(course?._id);
+                            }}
+                            className="single-course-card-content"
+                          >
+                            <img
+                              src={`https://innova-api.onrender.com/api/cards/upload/${el.card_image}`}
+                              alt="CourseImage"
+                            />
+                            <div className="single-course-card-title">
+                              <span>{el.card_name}</span>
+                              <h4>Դասնթաց</h4>
+                            </div>
+                          </Link>
+                        </div>
+                      </SwiperSlide>
+                    );
+                  })}
+                  {/* {CONFIG.allCoursesSilderConfig.map((item, idx) => {
                 const Icon = icons[idx];
                 if (url !== item.link) {
                   return (
@@ -117,229 +184,22 @@ function AllCoursesSlider(props) {
                     </SwiperSlide>
                   );
                 }
-              })}
-
-              {/* <SwiperSlide className="swiper-slide">
-                <div className="single-portfolio">
-                  <div className="portfolio-data">
-                    <a href="#s">
-                      <img
-                        src={
-                          process.env.PUBLIC_URL +
-                          "/images/portfolio/portfolio-2.jpg"
-                        }
-                        alt="images"
-                      />
-                    </a>
-                  </div>
-                  <div className="portfolio-inner">
-                    <span>UI Kit</span>
-                    <h4>E-Shop Ecommerce</h4>
-                    <div className="portfolio-hover">
-                      <Link
-                        onClick={scrollTop}
-                        to={`${process.env.PUBLIC_URL}/project-details`}
-                        className="case-btn"
-                      >
-                        Case Study
-                      </Link>
-                      <a
-                        data-lightbox="image1"
-                        href={
-                          process.env.PUBLIC_URL +
-                          "/images/portfolio/portfolio-2.jpg"
-                        }
-                      >
-                        <img
-                          alt="images"
-                          src={
-                            process.env.PUBLIC_URL +
-                            "/images/portfolio/search-2.svg"
-                          }
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="swiper-slide">
-                <div className="single-portfolio">
-                  <div className="portfolio-data">
-                    <a href="#s">
-                      <img
-                        src={
-                          process.env.PUBLIC_URL +
-                          "/images/portfolio/portfolio-3.jpg"
-                        }
-                        alt="images"
-                      />
-                    </a>
-                  </div>
-                  <div className="portfolio-inner">
-                    <span>Software</span>
-                    <h4>Desktop Mockup</h4>
-                    <div className="portfolio-hover">
-                      <Link
-                        onClick={scrollTop}
-                        to={`${process.env.PUBLIC_URL}/project-details`}
-                        className="case-btn"
-                      >
-                        Case Study
-                      </Link>
-                      <a
-                        data-lightbox="image1"
-                        href={
-                          process.env.PUBLIC_URL +
-                          "/images/portfolio/portfolio-3.jpg"
-                        }
-                      >
-                        <img
-                          alt="images"
-                          src={
-                            process.env.PUBLIC_URL +
-                            "/images/portfolio/search-2.svg"
-                          }
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="swiper-slide">
-                <div className="single-portfolio">
-                  <div className="portfolio-data">
-                    <a href="#s">
-                      <img
-                        src={
-                          process.env.PUBLIC_URL +
-                          "/images/portfolio/portfolio-4.jpg"
-                        }
-                        alt="images"
-                      />
-                    </a>
-                  </div>
-                  <div className="portfolio-inner">
-                    <span>Graphic</span>
-                    <h4>Art Deco Cocktails</h4>
-                    <div className="portfolio-hover">
-                      <Link
-                        onClick={scrollTop}
-                        to={`${process.env.PUBLIC_URL}/project-details`}
-                        className="case-btn"
-                      >
-                        Case Study
-                      </Link>
-                      <a
-                        data-lightbox="image1"
-                        href={
-                          process.env.PUBLIC_URL +
-                          "/images/portfolio/portfolio-4.jpg"
-                        }
-                      >
-                        <img
-                          alt="images"
-                          src={
-                            process.env.PUBLIC_URL +
-                            "/images/portfolio/search-2.svg"
-                          }
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="swiper-slide">
-                <div className="single-portfolio">
-                  <div className="portfolio-data">
-                    <a href="#s">
-                      <img
-                        src={
-                          process.env.PUBLIC_URL +
-                          "/images/portfolio/portfolio-5.jpg"
-                        }
-                        alt="images"
-                      />
-                    </a>
-                  </div>
-                  <div className="portfolio-inner">
-                    <span>App</span>
-                    <h4>Mobile Crypto Wallet</h4>
-                    <div className="portfolio-hover">
-                      <Link
-                        onClick={scrollTop}
-                        to={`${process.env.PUBLIC_URL}/project-details`}
-                        className="case-btn"
-                      >
-                        Case Study
-                      </Link>
-                      <a
-                        data-lightbox="image1"
-                        href={
-                          process.env.PUBLIC_URL +
-                          "/images/portfolio/portfolio-5.jpg"
-                        }
-                      >
-                        <img
-                          alt="images"
-                          src={
-                            process.env.PUBLIC_URL +
-                            "/images/portfolio/search-2.svg"
-                          }
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-              <SwiperSlide className="swiper-slide">
-                <div className="single-portfolio">
-                  <div className="portfolio-data">
-                    <a href="#s">
-                      <img
-                        src={
-                          process.env.PUBLIC_URL +
-                          "/images/portfolio/portfolio-3.jpg"
-                        }
-                        alt="images"
-                      />
-                    </a>
-                  </div>
-                  <div className="portfolio-inner">
-                    <span>Template</span>
-                    <h4>Creative Agency</h4>
-                    <div className="portfolio-hover">
-                      <Link
-                        onClick={scrollTop}
-                        to={`${process.env.PUBLIC_URL}/project-details`}
-                        className="case-btn"
-                      >
-                        Case Study
-                      </Link>
-                      <a
-                        data-lightbox="image1"
-                        href={
-                          process.env.PUBLIC_URL +
-                          "/images/portfolio/portfolio-3.jpg"
-                        }
-                      >
-                        <i className="fas fa-search" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide> */}
-            </Swiper>
-            <div className="swiper-pagination" />
-            {/* <div className="swiper-button-next" />
+              })} */}
+                </Swiper>
+                <div className="swiper-pagination" />
+                {/* <div className="swiper-button-next" />
             <div className="swiper-button-prev" /> */}
+              </div>
+            </div>
+          </SRLWrapper>
+          <div className="single-course-cmn-btn">
+            <button onClick={() => setOpen((prev) => !prev)}>
+              {t("register")}
+            </button>
           </div>
-        </div>
-      </SRLWrapper>
-      <div className="single-course-cmn-btn">
-        <button onClick={() => setOpen((prev) => !prev)}>
-          {t("register")}
-        </button>
-      </div>
+        </>
+      )}
+
       <CoursesModalForm open={open} onClose={() => setOpen(false)} />
     </section>
   );

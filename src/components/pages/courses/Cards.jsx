@@ -24,7 +24,6 @@ const Cards = ({ open, setOpen, match }) => {
 
   const filterCourses = useCallback(
     (cardId) => {
-      // console.log(cardId);
       const [course] = getCourse.filter((item) => {
         return item.card_id === cardId;
       });

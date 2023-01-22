@@ -2064,10 +2064,12 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   margin-left: 5px;
 }
 
-.service-icon svg {
+.service-icon svg,
+.service-icon img {
   width: 130px;
   height: 130px;
 }
+
 
 .html-icon {
   margin-right: 50px;

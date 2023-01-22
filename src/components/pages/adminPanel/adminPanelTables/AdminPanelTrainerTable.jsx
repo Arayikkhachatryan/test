@@ -50,10 +50,10 @@ const AdminPanelTrainerTable = () => {
             <thead>
               <tr>
                 <th className="column1">ID</th>
-                <th className="column1">Trainer Img</th>
-                <th className="column2">Trainer Name</th>
+                <th className="column4">Trainer Img</th>
+                <th className="column4">Trainer Name</th>
                 <th className="column4">Trainer Workplace</th>
-                <th className="column5"></th>
+                <th className="column5">Edit</th>
               </tr>
             </thead>
             <tbody>

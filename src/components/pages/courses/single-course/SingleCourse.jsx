@@ -14,6 +14,7 @@ import {
 } from "../../../../api/api";
 import { BASE_URL } from "../../../../enum";
 import CoruseDescription from "./CoruseDescription";
+import TrainerSection from "./TrainerSection";
 
 const SingleCourse = () => {
   const [open, setOpen] = useState(false);
@@ -49,9 +50,6 @@ const SingleCourse = () => {
 
         const card = await getCardsData();
         setGetCards(card.data);
-
-        const trainer = await getTrainersData();
-        setGetTrainers(trainer.data);
       } catch (error) {
         // history.push("/about");
         console.log(error, "errorrrrerr");
@@ -67,35 +65,9 @@ const SingleCourse = () => {
         <section className="single-course-header">
           <img src="/images/test-img.jpg" alt="test" />
         </section>
-        <CoruseDescription />
 
-        <section className="team">
-          <div className="container">
-            <div className="team-header">
-              <h2>{t("singleCoursePage.trainers.title")}</h2>
-              <p>{t("singleCoursePage.trainers.about")}</p>
-            </div>
-            <div className="team-container">
-              <div className="team-container-items">
-                {getTrainers.map((trainer) => (
-                  <div className="team-container-single-item" key={uuidv4()}>
-                    <img
-                      src={`${BASE_URL}/trainers/upload/${trainer.trainer_image}`}
-                      alt="TrainerPhoto"
-                    />
-                    <h3>{trainer.trainer_name}</h3>
-                    <p>{trainer.trainer_workplace}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="single-course-cmn-btn">
-              <button onClick={() => setOpen((prev) => !prev)}>
-                {t("register")}
-              </button>
-            </div>
-          </div>
-        </section>
+        <CoruseDescription open={open} onClose={() => setOpen(false)} />
+        <TrainerSection open={open} onClose={() => setOpen(false)} />
         <AllCoursesSlider open={open} onClose={() => setOpen(false)} />
         <CoursesModalForm open={open} onClose={() => setOpen(false)} />
       </Layout>

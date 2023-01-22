@@ -8,6 +8,8 @@ export const DataProvider = ({ children }) => {
   const [getCourse, setGetCourse] = useState([]);
   const [getTrainers, setGetTrainers] = useState([]);
   const [coruseName, setCoruseName] = useState([]);
+  const [coursDesc, setCoursDesc] = useState([]);
+
   const [isLoading, setIsLoading] = useState(false);
   return (
     <DataContext.Provider
@@ -22,6 +24,8 @@ export const DataProvider = ({ children }) => {
         setCoruseName,
         getTrainers,
         setGetTrainers,
+        coursDesc,
+        setCoursDesc,
       }}
     >
       {children}

@@ -152,7 +152,12 @@ const AdminPanelCourse = () => {
           </div>
         </div>
       </form>
-      <form onSubmit={courseFormSubmit}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          courseFormSubmit();
+        }}
+      >
         <h1>Add Course Description</h1>
         <div className="admin-panel-course-info">
           <div className="card-description">
