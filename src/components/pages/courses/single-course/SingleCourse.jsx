@@ -20,14 +20,12 @@ const SingleCourse = () => {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
   const {
-    isLoading,
+
     setIsLoading,
-    getCards,
-    getCourse,
+
     setGetCourse,
     setGetCards,
-    getTrainers,
-    setGetTrainers,
+
   } = useContext(DataContext);
 
   useEffect(() => {

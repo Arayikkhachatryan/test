@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useLocation, useParams, useRouteMatch } from "react-router-dom";
 import { SRLWrapper } from "simple-react-lightbox";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Navigation } from "swiper";
@@ -17,6 +17,7 @@ SwiperCore.use([Navigation, Autoplay]);
 function AllCoursesSlider(props) {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
+  const params = useParams()
   const {
     isLoading,
     setIsLoading,
@@ -25,7 +26,7 @@ function AllCoursesSlider(props) {
     getCourse,
     setCoursDesc,
   } = useContext(DataContext);
-
+  
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -140,28 +141,30 @@ function AllCoursesSlider(props) {
                 >
                   {getCards.map((el) => {
                     const course = filterCourses(el._id);
-                    return (
-                      <SwiperSlide className="swiper-slide" key={uuidv4()}>
-                        <div className="single-course-card">
-                          <Link
-                            to={`${course?._id}`}
-                            onClick={() => {
-                              scrollTop(course?._id);
-                            }}
-                            className="single-course-card-content"
-                          >
-                            <img
-                              src={`https://innova-api.onrender.com/api/cards/upload/${el.card_image}`}
-                              alt="CourseImage"
-                            />
-                            <div className="single-course-card-title">
-                              <span>{el.card_name}</span>
-                              <h4>Դասնթաց</h4>
-                            </div>
-                          </Link>
-                        </div>
-                      </SwiperSlide>
-                    );
+                    if (params._id !== course?._id) {
+                      return (
+                        <SwiperSlide className="swiper-slide" key={uuidv4()}>
+                          <div className="single-course-card">
+                            <Link
+                              to={`${course?._id}`}
+                              onClick={() => {
+                                scrollTop(course?._id);
+                              }}
+                              className="single-course-card-content"
+                            >
+                              <img
+                                src={`https://innova-api.onrender.com/api/cards/upload/${el.card_image}`}
+                                alt="CourseImage"
+                              />
+                              <div className="single-course-card-title">
+                                <span>{el.card_name}</span>
+                                <h4>Դասնթաց</h4>
+                              </div>
+                            </Link>
+                          </div>
+                        </SwiperSlide>
+                      );
+                    }
                   })}
                   {/* {CONFIG.allCoursesSilderConfig.map((item, idx) => {
                 const Icon = icons[idx];
