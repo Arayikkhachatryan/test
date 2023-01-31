@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { addCourseDescription, addCourseImage } from "../../../../api/api";
 import { DataContext } from "../../../../context/DataContext";
 import { v4 as uuidv4 } from "uuid";
@@ -75,6 +75,16 @@ const AdminPanelCourse = () => {
     setIsLoading(false);
   };
 
+  const filterCourses = useCallback(
+    (cardId) => {
+      const [course] = getCards.filter((item) => {
+        return item._id === cardId;
+      });
+      return course;
+    },
+    [getCards]
+  );
+
   return (
     <div className="admin-panel-course">
       <h1>Add Course Information</h1>
@@ -87,63 +97,45 @@ const AdminPanelCourse = () => {
         <div className="card-img-selection">
           <div className="file-input">
             <p>Course Description image</p>
-            {/* <div className="choose-card">
+
+            <div className="choose-card">
               <div>
                 <p>Choose Card</p>
               </div>
-              {getCards.map((item) => {
-                getCourse.map((el) => {
-                  console.log(item._id === el.card_id);
-                  if (item._id === el.card_id) {
-                    return (
-                      <div
-                        style={{
-                          cursor: "pointer",
-                        }}
-                        key={uuidv4()}
-                        onClick={() => {
-                          setIsChoosen(true);
-                          setCourseDesc((prev) => {
-                            if (item._id === el.card_id)
-                              return {
-                                course_id: el._id,
-                              };
-                          });
-                        }}
-                      >
-                        <p
-                          style={{
-                            backgroundColor:
-                              item._id === courseDesc.course_id && isChoosen
-                                ? "#cccccc"
-                                : "",
-                          }}
-                        >
-                          {item._id === el.card_id ? item.card_name : null}
-                        </p>
-                      </div>
-                    );
-                  }
-                });
+              {getCourse.map((item) => {
+                const course = filterCourses(item.card_id);
+                console.log(course.card_image);
+                return (
+                  <div
+                    style={{
+                      cursor: "pointer",
+                    }}
+                    key={uuidv4()}
+                    onClick={() => {
+                      setIsChoosen(true);
+                      setCourseDesc((prev) => {
+                        return {
+                          course_id: item._id,
+                        };
+                      });
+                    }}
+                  >
+                    <p
+                      style={{
+                        backgroundColor:
+                          item._id === courseDesc.course_id && isChoosen
+                            ? "#cccccc"
+                            : "",
+                      }}
+                    >
+                      {course.card_name}
+                    </p>
+                  </div>
+                );
               })}
-            </div> */}
-            <div className="login-field">
-              <input
-                type="text"
-                className="login-field"
-                placeholder="Coruse ID"
-                value={courseDesc.course_id}
-                onChange={(e) =>
-                  setCourseDesc((prev) => {
-                    return {
-                      course_id: e.target.value,
-                    };
-                  })
-                }
-              />
             </div>
+            <input type="file" name="image" onChange={handleChange} />
           </div>
-          <input type="file" name="image" onChange={handleChange} />
         </div>
         <div className="card-submit">
           <div className="login-btn">
