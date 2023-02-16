@@ -1,45 +1,45 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useCallback, useEffect } from "react";
 import { TbEdit } from "react-icons/tb";
 import { AiFillDelete } from "react-icons/ai";
 import { DataContext } from "../../../../context/DataContext";
-import { deleteCard, deleteCardImage, getCardsData } from "../../../../api/api";
+import {
+  deleteCard,
+  deleteCardImage,
+  deleteCoruse,
+  getCardsData,
+} from "../../../../api/api";
 import { v4 as uuidv4 } from "uuid";
 import Loader from "../../../common/Loader";
 
 const AdminPanelCardTable = ({ setCardInfo }) => {
-  const [isEdit, setIsEdit] = useState(false);
-  // const [cardData, setCardData] = useState({
-  //   card_name: "",
-  //   card_description: ""
-  // });
-  const { getCards, isLoading, setIsLoading, setGetCards } =
-    useContext(DataContext);
+  const {
+    getCards,
+    isLoading,
+    setIsLoading,
+    setGetCards,
+    setIsEdit,
+    getCourse,
+  } = useContext(DataContext);
 
   const handleEdit = (card) => {
     setIsEdit((prev) => !prev);
     setCardInfo((prev) => {
       return {
+        ...prev,
         card_name: card.card_name,
         card_description: card.card_description,
         card_id: card._id,
+        card_edit: true,
       };
     });
     window.scrollTo({ top: 0, behavior: "smooth" });
-    console.log(card);
   };
 
-  // useEffect(() => {
-  //   console.log(cardData);
-  // },[cardData]);
-
-  // useEffect(() => {
-  //   console.log(getCards);
-  // }, []);
-
-  const handleDelete = async (id) => {
+  const handleDelete = async (id, cardId) => {
     setIsLoading(true);
     try {
       const res = await deleteCard(id);
+      const cards = await deleteCoruse(cardId);
       const { data } = await getCardsData();
       setGetCards(data);
     } catch (error) {
@@ -47,6 +47,16 @@ const AdminPanelCardTable = ({ setCardInfo }) => {
     }
     setIsLoading(false);
   };
+
+  const filterCourses = useCallback(
+    (cardId) => {
+      const [course] = getCourse.filter((item) => {
+        return item.card_id === cardId;
+      });
+      return course?._id;
+    },
+    [getCourse]
+  );
 
   const imgDelete = async (id, imageName) => {
     setIsLoading(true);
@@ -78,48 +88,55 @@ const AdminPanelCardTable = ({ setCardInfo }) => {
               </tr>
             </thead>
             <tbody>
-              {getCards.map((el, idx) => (
-                <tr key={uuidv4()}>
-                  <td>{el._id}</td>
+              {getCards.map((el, idx) => {
+                const course = filterCourses(el._id);
+                console.log(course);
+                return (
+                  <tr key={uuidv4()}>
+                    <td>{el._id}</td>
 
-                  <td
-                    style={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    {el.card_image}
-                    {el.card_image === null ? (
-                      <></>
-                    ) : (
-                      <>
-                        <button
-                          onClick={() => {
-                            imgDelete(el._id, el.card_image);
-                          }}
-                        >
-                          <AiFillDelete />
-                        </button>
-                      </>
-                    )}
-                  </td>
-                  <td>{el.card_name}</td>
-                  <td>{el.card_description}</td>
-                  <td>
-                    <button
-                      onClick={() => {
-                        handleEdit(el);
+                    <td
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
                       }}
                     >
-                      <TbEdit />
-                    </button>
-                    <button
-                      onClick={() => {
-                        handleDelete(el._id);
-                      }}
-                    >
-                      <AiFillDelete />
-                    </button>
-                  </td>
-                </tr>
-              ))}
+                      {el.card_image}
+                      {el.card_image === null ? (
+                        <></>
+                      ) : (
+                        <>
+                          <button
+                            onClick={() => {
+                              imgDelete(el._id, el.card_image);
+                            }}
+                          >
+                            <AiFillDelete />
+                          </button>
+                        </>
+                      )}
+                    </td>
+                    <td>{el.card_name}</td>
+                    <td>{el.card_description}</td>
+                    <td>
+                      <button
+                        onClick={() => {
+                          handleEdit(el);
+                        }}
+                      >
+                        <TbEdit />
+                      </button>
+                      <button
+                        onClick={() => {
+                          handleDelete(el._id, course);
+                        }}
+                      >
+                        <AiFillDelete />
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

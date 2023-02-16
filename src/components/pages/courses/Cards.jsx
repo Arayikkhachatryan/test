@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, memo } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { DataContext } from "../../../context/DataContext";
 import { getCardsData, getCourseData } from "../../../api/api";
 import Loader from "../../common/Loader";
@@ -172,4 +172,4 @@ const Cards = ({ open, setOpen, match }) => {
   );
 };
 
-export default Cards;
+export default memo(Cards);

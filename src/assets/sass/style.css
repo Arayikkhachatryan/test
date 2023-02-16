@@ -7919,10 +7919,12 @@ aside div svg {
   padding-left: 40px;
 }
 
-.cards-table-wrapper table tbody tr td:last-child {
+/* .cards-table-wrapper table tbody tr td:last-child {
   text-align: center;
   display: flex;
-}
+  align-items: center;
+  justify-content: center;
+} */
 
 .cards-table-wrapper table tbody tr td svg {
   width: 24px;

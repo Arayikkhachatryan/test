@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import InputField from "../../common/InputField";
 import emailjs from "emailjs-com";
-import ModalBg from "../../../assets/images/modal-bg.png"
+import ModalBg from "../../../assets/images/modal-bg.png";
 const CoursesModalForm = ({ open, onClose }) => {
   const { t } = useTranslation();
   const [values, setValues] = useState({
@@ -15,7 +15,6 @@ const CoursesModalForm = ({ open, onClose }) => {
     user_course: "",
     user_time: "",
   });
-
 
   const updateForm = (e) => {
     setValues({
@@ -75,10 +74,10 @@ const CoursesModalForm = ({ open, onClose }) => {
                 <AiOutlineClose />
               </div>
               <form onSubmit={sendEmail}>
-                <h3>Join Our Coruse!</h3>
+                <h3>{t("courseRegisterModal.joinCourse")}</h3>
                 <div className="modal-form-name">
                   <InputField
-                    placeholder="Name"
+                    placeholder={t("courseRegisterModal.name")}
                     name="user_name"
                     type="text"
                     updateForm={updateForm}
@@ -87,14 +86,14 @@ const CoursesModalForm = ({ open, onClose }) => {
                 </div>
                 <div className="modal-form-email-phone">
                   <InputField
-                    placeholder="Email"
+                    placeholder={t("courseRegisterModal.email")}
                     name="user_email"
                     type="email"
                     updateForm={updateForm}
                     className="modal-email"
                   />
                   <InputField
-                    placeholder="Phone number"
+                    placeholder={t("courseRegisterModal.phone")}
                     name="user_phone"
                     type="text"
                     updateForm={updateForm}

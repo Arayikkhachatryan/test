@@ -1,5 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
-import { addCardImage, cardSubmit, getCardsData } from "../../../../api/api";
+import {
+  addCardImage,
+  api,
+  cardSubmit,
+  getCardsData,
+} from "../../../../api/api";
 import { DataContext } from "../../../../context/DataContext";
 import { v4 as uuidv4 } from "uuid";
 import AdminPanelCardTable from "../adminPanelTables/AdminPanelCardTable";
@@ -7,7 +12,7 @@ import Loader from "../../../common/Loader";
 
 const AdminPanelCoruseCards = () => {
   /// Context
-  const { isLoading, setGetCards, setIsLoading, getCards } =
+  const { isLoading, setGetCards, setIsLoading, getCards, isEdit } =
     useContext(DataContext);
 
   /// States
@@ -17,6 +22,7 @@ const AdminPanelCoruseCards = () => {
     card_name: "",
     card_description: "",
     card_id: "",
+    card_edit: false,
   });
 
   /// Get data on component mount
@@ -33,6 +39,10 @@ const AdminPanelCoruseCards = () => {
     }
     getPageData();
   }, []);
+
+  // useEffect(() => {
+  //   console.log(cardInfo.card_edit);
+  // }, [cardInfo.card_edit]);
 
   /// Img upload
   const handleChange = (e) => {
@@ -58,17 +68,37 @@ const AdminPanelCoruseCards = () => {
   /// Form Submit
   const cardFormSubmit = async () => {
     setIsLoading(true);
-    try {
-      const res = await cardSubmit(
-        cardInfo.card_name,
-        cardInfo.card_description
-      );
-      const data = await getCardsData();
-      setGetCards(data.data);
-      setCardInfo({ card_name: "", card_description: "" });
-    } catch (error) {
-      console.log(error);
+    if (cardInfo.card_edit) {
+      try {
+        const res = await api.put(
+          `https://innova-api.onrender.com/api/cards/${cardInfo.card_id}`,
+          {
+            card_name: cardInfo.card_name,
+            card_description: cardInfo.card_description,
+          }
+        );
+        setCardInfo({
+          card_name: "",
+          card_id: "",
+          card_description: "",
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        const res = await cardSubmit(
+          cardInfo.card_name,
+          cardInfo.card_description
+        );
+        const data = await getCardsData();
+        setGetCards(data.data);
+        setCardInfo({ card_name: "", card_description: "" });
+      } catch (error) {
+        console.log(error);
+      }
     }
+
     setIsLoading(false);
   };
 
@@ -137,6 +167,7 @@ const AdminPanelCoruseCards = () => {
           <form onSubmit={cardFormSubmit}>
             <div className="admin-panel-course-card">
               <div className="card-name">
+                <h1>Course Card Name</h1>
                 <div className="login-field">
                   <input
                     type="text"

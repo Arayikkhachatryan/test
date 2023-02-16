@@ -15,9 +15,7 @@ import Loader from "../../../common/Loader";
 
 const AdminPanelCourseTable = ({ setCardInfo }) => {
   const [isEdit, setIsEdit] = useState(false);
-  const [cardName, setCardName] = useState({
-    name: "",
-  });
+
   // const [cardData, setCardData] = useState({
   //   card_name: "",
   //   card_description: ""
@@ -43,7 +41,9 @@ const AdminPanelCourseTable = ({ setCardInfo }) => {
       const res = await deleteCourseImage(id, imageName);
       const { data } = await getCardsData();
       setGetCourse(data);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
     setIsLoading(false);
   };
 

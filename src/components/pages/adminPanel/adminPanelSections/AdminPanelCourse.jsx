@@ -24,8 +24,8 @@ const AdminPanelCourse = () => {
     async function getPageData() {
       setIsLoading(true);
       try {
-        const data = await getCourseData();
-        setGetCourse(data.data);
+        const coruse = await getCourseData();
+        setGetCourse(coruse.data);
         const cards = await getCardsData();
         setGetCards(cards.data);
       } catch (error) {
@@ -75,12 +75,12 @@ const AdminPanelCourse = () => {
     setIsLoading(false);
   };
 
-  const filterCourses = useCallback(
+  const filterCards = useCallback(
     (cardId) => {
-      const [course] = getCards.filter((item) => {
+      const [card] = getCards.filter((item) => {
         return item._id === cardId;
       });
-      return course;
+      return card;
     },
     [getCards]
   );
@@ -103,8 +103,8 @@ const AdminPanelCourse = () => {
                 <p>Choose Card</p>
               </div>
               {getCourse.map((item) => {
-                const course = filterCourses(item.card_id);
-                console.log(course.card_image);
+                const card = filterCards(item.card_id);
+                console.log(card);
                 return (
                   <div
                     style={{
@@ -128,7 +128,7 @@ const AdminPanelCourse = () => {
                             : "",
                       }}
                     >
-                      {course.card_name}
+                      {card?.card_name}
                     </p>
                   </div>
                 );

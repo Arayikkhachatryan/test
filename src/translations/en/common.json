@@ -91,13 +91,19 @@
     }
   },
   "singleCoursePage": {
-    "trainers":{
-      "title":  "Trainers",
+    "trainers": {
+      "title": "Trainers",
       "about": "Our experienced specialists will provide you with seemingly complex information in a rather simplified form."
     },
     "slider": {
       "title": "Programming courses",
       "about": "Programming courses for beginners"
     }
+  },
+  "courseRegisterModal": {
+    "joinCourse": "Join our Course!",
+    "name": "Enter Your Name and Surname",
+    "email": "Enter Your Email",
+    "phone": "Enter your Phone Number"
   }
 }

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link, useHistory, useLocation, useParams, useRouteMatch } from "react-router-dom";
+import React, { useEffect, useState, memo } from "react";
+import { Link, useParams } from "react-router-dom";
 import { SRLWrapper } from "simple-react-lightbox";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Navigation } from "swiper";
@@ -17,7 +17,7 @@ SwiperCore.use([Navigation, Autoplay]);
 function AllCoursesSlider(props) {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation();
-  const params = useParams()
+  const params = useParams();
   const {
     isLoading,
     setIsLoading,
@@ -26,7 +26,7 @@ function AllCoursesSlider(props) {
     getCourse,
     setCoursDesc,
   } = useContext(DataContext);
-  
+
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -208,4 +208,4 @@ function AllCoursesSlider(props) {
   );
 }
 
-export default AllCoursesSlider;
+export default memo(AllCoursesSlider);

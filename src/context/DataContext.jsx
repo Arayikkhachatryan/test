@@ -9,6 +9,7 @@ export const DataProvider = ({ children }) => {
   const [getTrainers, setGetTrainers] = useState([]);
   const [coruseName, setCoruseName] = useState([]);
   const [coursDesc, setCoursDesc] = useState([]);
+  const [isEdit, setIsEdit] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
   return (
@@ -26,6 +27,8 @@ export const DataProvider = ({ children }) => {
         setGetTrainers,
         coursDesc,
         setCoursDesc,
+        isEdit,
+        setIsEdit,
       }}
     >
       {children}

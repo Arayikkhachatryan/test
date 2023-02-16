@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./i18n";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import SimpleReactLightbox from "simple-react-lightbox";
 import MainLayout from "./components/layout/MainLayout";
 import AboutPage from "./components/pages/aboutUs/AboutPage";

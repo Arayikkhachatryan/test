@@ -68,10 +68,13 @@ const AdminPanelTrainers = () => {
         trainerInfo.trainer_name,
         trainerInfo.trainer_workplace
       );
-      // const res = await api.post("/trainers");
       const data = await getTrainersData();
       setGetTrainers(data.data);
-      console.log(getTrainers);
+      setTrainerInfo({
+        trainer_name: "",
+        trainer_workplace: "",
+        trainer_id: "",
+      });
     } catch (error) {
       console.log(error);
     }
